@@ -1,0 +1,19 @@
+.magnetic-button {
+  display: inline-block;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+@media (pointer: coarse) {
+  .magnetic-button {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magnetic-button {
+    transform: none !important;
+    transition: none;
+  }
+}

@@ -1,17 +1,23 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import MagneticButton from "./MagneticButton";
 import "./Footer.css";
 
 function Footer() {
+  const handleBackToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <footer className="site-footer">
-
       <div className="footer-inner">
 
         <div className="footer-top">
 
-          <div>
+          <div className="footer-heading-wrap">
             <span className="footer-eyebrow">
               HAVE A PROJECT?
             </span>
@@ -23,38 +29,44 @@ function Footer() {
             </h2>
           </div>
 
-          <Link
-            to="/contact"
-            className="footer-contact-btn"
-          >
-            Start a conversation
-            <ArrowUpRight size={18} />
-          </Link>
+          <MagneticButton>
+            <Link
+              to="/contact"
+              className="footer-contact-btn"
+            >
+              <span>Start a conversation</span>
+
+              <span className="footer-contact-icon">
+                <ArrowUpRight size={18} />
+              </span>
+            </Link>
+          </MagneticButton>
 
         </div>
 
         <div className="footer-bottom">
 
-          <span>
+          <span className="footer-copyright">
             © {new Date().getFullYear()} Faiz Alam
           </span>
 
           <div className="footer-links">
 
             <Link to="/about">
-              About
+              <span>About</span>
             </Link>
 
             <Link to="/projects">
-              Projects
+              <span>Projects</span>
             </Link>
 
             <Link to="/contact">
-              Contact
+              <span>Contact</span>
             </Link>
 
             <Link to="/links">
-              Profile ↗
+              <span>Social Media</span>
+              <ArrowUpRight size={13} />
             </Link>
 
           </div>
@@ -62,7 +74,6 @@ function Footer() {
         </div>
 
       </div>
-
     </footer>
   );
 }

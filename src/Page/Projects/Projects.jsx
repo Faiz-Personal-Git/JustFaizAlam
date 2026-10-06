@@ -1,5 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
 
+import ScrollReveal from "../../components/ScrollReveal";
+import SEO from "../../components/SEO";
+
 import "./Projects.css";
 
 const projects = [
@@ -37,64 +40,74 @@ function Projects() {
   return (
     <div className="projects-page">
 
+      <SEO
+        title="Projects — Faiz Alam"
+        description="Explore projects built by Faiz Alam, including web applications, React projects, software solutions and creative digital experiences."
+        path="/projects"
+      />
+      {/* HEADER */}
       <section className="projects-header">
-
         <div className="projects-container">
 
-          <span>
-            01 / SELECTED WORK
-          </span>
+          <ScrollReveal direction="up">
+            <span>
+              01 / SELECTED WORK
+            </span>
+          </ScrollReveal>
 
-          <h1>
-            Projects &
-            <br />
-            <em>experiments.</em>
-          </h1>
+          <ScrollReveal direction="up" delay={100}>
+            <h1>
+              Projects &
+              <br />
+              <em>experiments.</em>
+            </h1>
+          </ScrollReveal>
 
         </div>
-
       </section>
 
 
+      {/* PROJECTS */}
       <section className="projects-list">
-
         <div className="projects-container">
 
-          {projects.map((project) => (
-            <article
-              className="project-item"
+          {projects.map((project, index) => (
+            <ScrollReveal
               key={project.number}
+              direction="up"
+              delay={index * 120}
             >
+              <article className="project-item">
 
-              <span className="project-item-number">
-                {project.number}
-              </span>
-
-              <div className="project-item-content">
-
-                <span>
-                  {project.category}
+                <span className="project-item-number">
+                  {project.number}
                 </span>
 
-                <h2>
-                  {project.title}
-                </h2>
+                <div className="project-item-content">
 
-                <p>
-                  {project.description}
-                </p>
+                  <span>
+                    {project.category}
+                  </span>
 
-              </div>
+                  <h2>
+                    {project.title}
+                  </h2>
 
-              <button>
-                <ArrowUpRight size={22} />
-              </button>
+                  <p>
+                    {project.description}
+                  </p>
 
-            </article>
+                </div>
+
+                <button type="button">
+                  <ArrowUpRight size={22} />
+                </button>
+
+              </article>
+            </ScrollReveal>
           ))}
 
         </div>
-
       </section>
 
     </div>

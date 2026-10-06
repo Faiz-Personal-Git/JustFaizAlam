@@ -1,217 +1,963 @@
-.site-header {
-  position: sticky;
-  top: 0;
+/* =========================================================
+   FLOATING HEADER
+========================================================= */
+
+.floating-header {
+  position: fixed;
+  top: 22px;
+  left: 50%;
+
+  width: min(1180px, calc(100% - 40px));
+
+  transform: translateX(-50%);
+
   z-index: 1000;
 
-  width: 100%;
-
-  background: rgba(12, 13, 13, 0.82);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition:
+    top 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.4s ease;
 }
 
-.header-inner {
-  width: min(1180px, calc(100% - 40px));
-  height: 76px;
 
-  margin: auto;
+/* =========================================================
+   HEADER INNER
+========================================================= */
+
+.floating-header-inner {
+  position: relative;
+
+  height: 68px;
+
+  padding: 7px 8px 7px 10px;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  background: rgba(18, 18, 17, 0.72);
+
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 999px;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  transition:
+    background 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
 }
 
-/* LOGO */
+.floating-header:hover .floating-header-inner {
+  border-color: rgba(255, 255, 255, 0.15);
+}
 
-.site-logo {
-  display: inline-flex;
+.floating-header.is-scrolled {
+  top: 14px;
+}
+
+.floating-header.is-scrolled
+.floating-header-inner {
+  background: rgba(12, 12, 11, 0.92);
+
+  border-color: rgba(255, 255, 255, 0.13);
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.header-brand {
+  display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 11px;
 
-  color: #fff;
+  min-width: 220px;
+
+  color: #f2eee7;
 
   text-decoration: none;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.logo-mark {
-  width: 38px;
-  height: 38px;
+.header-brand:hover {
+  opacity: 0.95;
+  transform: translateX(2px);
+}
+
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.header-avatar {
+  position: relative;
+
+  width: 47px;
+  height: 47px;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  border-radius: 50%;
+
+  background: #242320;
+
+  transition:
+    transform 0.5s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.header-avatar::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: inherit;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2),
+    transparent 45%
+  );
+
+  opacity: 0;
+
+  transition: opacity 0.35s ease;
+
+  pointer-events: none;
+}
+
+.header-brand:hover .header-avatar {
+  transform: scale(1.07) rotate(-2deg);
+
+  border-color: rgba(199, 166, 106, 0.65);
+
+  box-shadow:
+    0 0 0 4px rgba(199, 166, 106, 0.08),
+    0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.header-brand:hover .header-avatar::after {
+  opacity: 1;
+}
+
+.header-avatar img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition:
+    transform 0.6s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header-brand:hover .header-avatar img {
+  transform: scale(1.08);
+}
+
+
+/* =========================================================
+   BRAND TEXT
+========================================================= */
+
+.header-brand-info {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 1.1;
+}
+
+.header-brand-info strong {
+  color: #f2eee7;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: -0.2px;
+
+  transition: color 0.3s ease;
+}
+
+.header-brand:hover .header-brand-info strong {
+  color: #ffffff;
+}
+
+.header-brand-info small {
+  margin-top: 4px;
+
+  color: #77746e;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 1.3px;
+
+  text-transform: uppercase;
+
+  transition:
+    color 0.3s ease,
+    letter-spacing 0.35s ease;
+}
+
+.header-brand:hover .header-brand-info small {
+  color: #9a968d;
+  letter-spacing: 1.45px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.header-nav {
+  flex: 1;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border: 1px solid rgba(255, 255, 255, 0.2);
-
-  border-radius: 50%;
-
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
+  gap: 7px;
 }
 
-.logo-text {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-/* NAV */
-
-.desktop-nav {
-  display: flex;
-  align-items: center;
-  gap: 36px;
-}
-
-.desktop-nav a {
+.header-nav-link {
   position: relative;
 
-  color: #999;
+  padding: 10px 14px;
+
+  color: #8d8a84;
+
+  border-radius: 999px;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 11px;
+  font-weight: 600;
 
   text-decoration: none;
 
-  font-size: 14px;
-  font-weight: 500;
-
-  transition: 0.25s ease;
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    transform 0.35s
+      cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.desktop-nav a:hover {
-  color: #fff;
+.header-nav-link:hover {
+  color: #f2eee7;
+
+  transform: translateY(-1px);
 }
 
-.desktop-nav a.active {
-  color: #fff;
+.header-nav-text {
+  position: relative;
 }
 
-.desktop-nav a.active::after {
+
+/* animated underline */
+
+.header-nav-text::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -4px;
+
+  width: 100%;
+  height: 1px;
+
+  background: #c7a66a;
+
+  transform: scaleX(0);
+  transform-origin: right;
+
+  transition:
+    transform 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header-nav-link:hover .header-nav-text::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+
+/* active */
+
+.header-nav-link.active {
+  color: #f2eee7;
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.header-nav-link.active::after {
   content: "";
 
   position: absolute;
 
   left: 50%;
-  bottom: -9px;
+  bottom: 5px;
 
-  width: 4px;
-  height: 4px;
+  width: 3px;
+  height: 3px;
 
-  transform: translateX(-50%);
-
-  background: #d6a86c;
+  transform: translateX(-50%) scale(1);
 
   border-radius: 50%;
+
+  background: #c7a66a;
+
+  box-shadow:
+    0 0 0 3px rgba(199, 166, 106, 0.08);
+
+  transition:
+    transform 0.35s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease;
 }
 
-/* CTA */
+.header-nav-link.active:hover::after {
+  transform: translateX(-50%) scale(1.35);
 
-.header-cta {
+  box-shadow:
+    0 0 0 5px rgba(199, 166, 106, 0.08);
+}
+
+
+/* =========================================================
+   TALK BUTTON
+========================================================= */
+
+.header-talk {
+  position: relative;
+
+  min-width: 112px;
+  height: 48px;
+
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
 
-  padding: 11px 17px;
+  gap: 7px;
 
-  color: #111;
-  background: #f1e8db;
+  overflow: hidden;
+
+  color: #171612;
+
+  background: #e9ddca;
 
   border-radius: 999px;
 
+  font-family: "Manrope", sans-serif;
+
+  font-size: 10px;
+  font-weight: 800;
+
   text-decoration: none;
 
-  font-size: 13px;
-  font-weight: 700;
-
-  transition: 0.25s ease;
+  transition:
+    transform 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-.header-cta:hover {
-  transform: translateY(-2px);
-  background: #fff;
+
+/* shine */
+
+.header-talk::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -110%;
+
+  width: 70%;
+  height: 100%;
+
+  background: linear-gradient(
+    105deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+
+  transform: skewX(-18deg);
+
+  transition:
+    left 0.65s
+      cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* MOBILE */
+.header-talk:hover::before {
+  left: 140%;
+}
 
-.mobile-menu-btn {
+.header-talk:hover {
+  transform: translateY(-3px);
+
+  background: #f5ead8;
+
+  box-shadow:
+    0 10px 30px rgba(199, 166, 106, 0.16);
+}
+
+.header-talk > span {
+  position: relative;
+  z-index: 1;
+}
+
+.header-talk-icon {
+  display: inline-flex;
+
+  transition:
+    transform 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header-talk:hover .header-talk-icon {
+  transform: translate(3px, -3px);
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
+
+.header-menu-button {
+  position: relative;
+
   display: none;
 
-  width: 42px;
-  height: 42px;
+  width: 46px;
+  height: 46px;
 
-  border: 1px solid rgba(255,255,255,.12);
+  align-items: center;
+  justify-content: center;
+
+  color: #f2eee7;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+
   border-radius: 50%;
 
-  background: rgba(255,255,255,.05);
-
-  color: white;
-
   cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.35s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.3s ease;
 }
 
-.mobile-nav {
-  display: none;
+.header-menu-button:hover {
+  background: rgba(199, 166, 106, 0.12);
+
+  border-color: rgba(199, 166, 106, 0.35);
+
+  color: #e1d0b2;
+
+  transform: rotate(4deg);
 }
 
-/* RESPONSIVE */
+.header-menu-button:active {
+  transform: scale(0.94);
+}
 
-@media (max-width: 768px) {
+.menu-icon {
+  position: absolute;
 
-  .header-inner {
-    height: 68px;
-    width: min(100% - 28px, 1180px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.menu-icon-menu {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+.menu-icon-close {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.7);
+}
+
+.header-menu-button.is-open {
+  background: rgba(199, 166, 106, 0.1);
+
+  border-color: rgba(199, 166, 106, 0.3);
+}
+
+.header-menu-button.is-open .menu-icon-menu {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.7);
+}
+
+.header-menu-button.is-open .menu-icon-close {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.mobile-menu {
+  position: absolute;
+
+  top: calc(100% + 9px);
+
+  left: 0;
+  right: 0;
+
+  display: block;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform:
+    translateY(-12px)
+    scale(0.98);
+
+  transform-origin: top center;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.45s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.35s ease;
+}
+
+.mobile-menu.open {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform:
+    translateY(0)
+    scale(1);
+
+  pointer-events: auto;
+}
+
+.mobile-menu-inner {
+  padding: 22px;
+
+  background: rgba(17, 17, 16, 0.96);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  border-radius: 26px;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+}
+
+
+/* =========================================================
+   MOBILE MENU LABEL
+========================================================= */
+
+.mobile-menu-label {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: #696761;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   MOBILE NAV LINKS
+========================================================= */
+
+.mobile-nav-link {
+  position: relative;
+
+  min-height: 58px;
+
+  display: grid;
+
+  grid-template-columns: 30px 1fr auto;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color: #a09c94;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  text-decoration: none;
+
+  transform: translateX(0);
+
+  transition:
+    color 0.3s ease,
+    padding-left 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.3s ease;
+}
+
+.mobile-nav-link span {
+  color: #625f59;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 9px;
+
+  transition:
+    color 0.3s ease,
+    transform 0.35s ease;
+}
+
+.mobile-nav-link strong {
+  color: inherit;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 20px;
+
+  font-weight: 500;
+
+  letter-spacing: -0.5px;
+
+  transition:
+    color 0.3s ease,
+    letter-spacing 0.35s ease;
+}
+
+.mobile-nav-link svg {
+  opacity: 0.35;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobile-nav-link:hover {
+  color: #f2eee7;
+
+  padding-left: 7px;
+}
+
+.mobile-nav-link:hover span {
+  color: #c7a66a;
+
+  transform: translateX(2px);
+}
+
+.mobile-nav-link:hover strong {
+  letter-spacing: -0.2px;
+}
+
+.mobile-nav-link:hover svg {
+  opacity: 1;
+
+  transform: translate(4px, -4px);
+}
+
+.mobile-nav-link.active {
+  color: #f2eee7;
+}
+
+.mobile-nav-link.active span {
+  color: #c7a66a;
+}
+
+.mobile-nav-link.active svg {
+  opacity: 1;
+
+  color: #c7a66a;
+}
+
+
+/* =========================================================
+   MOBILE PROFILE LINK
+========================================================= */
+
+.mobile-profile-link {
+  position: relative;
+
+  margin-top: 18px;
+
+  min-height: 52px;
+
+  padding: 0 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  overflow: hidden;
+
+  color: #171612;
+
+  background: #e9ddca;
+
+  border-radius: 14px;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.mobile-profile-link:hover {
+  transform: translateY(-3px);
+
+  background: #f5ead8;
+
+  box-shadow:
+    0 10px 30px rgba(199, 166, 106, 0.14);
+}
+
+.mobile-profile-arrow {
+  display: flex;
+
+  transition:
+    transform 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobile-profile-link:hover .mobile-profile-arrow {
+  transform: translate(3px, -3px);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 850px) {
+  .floating-header {
+    top: 14px;
+
+    width: calc(100% - 24px);
   }
 
-  .desktop-nav,
-  .header-cta {
+  .floating-header.is-scrolled {
+    top: 10px;
+  }
+
+  .floating-header-inner {
+    height: 62px;
+
+    padding: 6px 7px 6px 8px;
+  }
+
+  .header-avatar {
+    width: 44px;
+    height: 44px;
+  }
+
+  .header-brand {
+    min-width: auto;
+  }
+
+  .header-brand-info small {
     display: none;
   }
 
-  .mobile-menu-btn {
+  .header-nav,
+  .header-talk {
+    display: none;
+  }
+
+  .header-menu-button {
     display: flex;
-    align-items: center;
-    justify-content: center;
+
+    margin-left: auto;
   }
 
-  .mobile-nav {
-    display: flex;
+  /*
+    Stagger mobile menu items when menu opens
+  */
 
-    flex-direction: column;
+  .mobile-menu.open .mobile-nav-link {
+    animation:
+      mobileNavIn 0.5s
+      cubic-bezier(0.22, 1, 0.36, 1)
+      both;
 
-    padding: 10px 20px 24px;
-
-    background: #0c0d0d;
-
-    border-top: 1px solid rgba(255,255,255,.06);
+    animation-delay:
+      calc(
+        80ms +
+        (var(--mobile-index) * 45ms)
+      );
   }
 
-  .mobile-nav a {
-    padding: 14px 0;
+  .mobile-menu.open .mobile-profile-link {
+    animation:
+      mobileProfileIn 0.5s
+      cubic-bezier(0.22, 1, 0.36, 1)
+      420ms both;
+  }
+}
 
-    color: #aaa;
 
-    text-decoration: none;
+/* =========================================================
+   MOBILE MENU ANIMATIONS
+========================================================= */
 
-    font-size: 15px;
+@keyframes mobileNavIn {
+  from {
+    opacity: 0;
 
-    border-bottom: 1px solid rgba(255,255,255,.06);
+    transform:
+      translateX(-18px)
+      translateY(4px);
   }
 
-  .mobile-nav a.active {
-    color: white;
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(0)
+      translateY(0);
+  }
+}
+
+@keyframes mobileProfileIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(12px)
+      scale(0.97);
   }
 
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-header,
+  .floating-header-inner,
+  .header-brand,
+  .header-avatar,
+  .header-avatar img,
+  .header-nav-link,
+  .header-talk,
+  .header-menu-button,
+  .mobile-menu,
+  .mobile-nav-link,
   .mobile-profile-link {
-    margin-top: 10px;
+    transition: none !important;
+    animation: none !important;
+  }
+}
 
-    padding: 14px 16px !important;
 
-    color: #111 !important;
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
-    background: #f1e8db;
+@media (max-width: 480px) {
+  .floating-header {
+    width: calc(100% - 18px);
+  }
 
-    border-radius: 12px;
+  .floating-header-inner {
+    height: 58px;
+  }
 
-    text-align: center;
+  .header-avatar {
+    width: 42px;
+    height: 42px;
+  }
+
+  .header-brand-info strong {
+    font-size: 12px;
+  }
+
+  .header-menu-button {
+    width: 43px;
+    height: 43px;
+  }
+
+  .mobile-menu-inner {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .mobile-nav-link {
+    min-height: 54px;
+  }
+
+  .mobile-nav-link strong {
+    font-size: 18px;
   }
 }

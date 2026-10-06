@@ -1,109 +1,186 @@
-import { Link, NavLink } from "react-router-dom";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import { useState } from "react";
-
+import { Link, NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import MagneticButton from "./MagneticButton";
 import "./Header.css";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const closeMenu = () => {
     setMenuOpen(false);
   };
 
+  const navItems = [
+    { label: "Home", path: "/" },
+    { label: "Work", path: "/projects" },
+    { label: "Videos", path: "/videos" },
+    { label: "Quiz", path: "/quiz" },
+    { label: "About", path: "/about" },
+    { label: "Contact", path: "/contact" },
+    { label: "Social Media", path: "/links" },
+  ];
+
   return (
-    <header className="site-header">
+    <header
+      className={`floating-header ${scrolled ? "is-scrolled" : ""
+        } ${menuOpen ? "menu-open" : ""}`}
+    >
+      <div className="floating-header-inner">
 
-      <div className="header-inner">
+        {/* Brand */}
 
-        {/* Logo */}
         <Link
           to="/"
-          className="site-logo"
+          className="header-brand"
           onClick={closeMenu}
+          aria-label="Faiz Alam home"
         >
-          <span className="logo-mark">FA</span>
+          <span className="header-avatar">
+            <img
+              src="/Images/dp.png"
+              alt="Faiz Alam"
+            />
+          </span>
 
-          <span className="logo-text">
-            Faiz Alam
+          <span className="header-brand-info">
+            <strong>Faiz Alam</strong>
+            <small>Engineer · Creator</small>
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="desktop-nav">
 
-          <NavLink to="/">
-            Home
-          </NavLink>
+        {/* Desktop Nav */}
 
-          <NavLink to="/about">
-            About
-          </NavLink>
-
-          <NavLink to="/projects">
-            Projects
-          </NavLink>
-
-          <NavLink to="/contact">
-            Contact
-          </NavLink>
-
+        <nav className="header-nav">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) =>
+                `header-nav-link ${isActive ? "active" : ""
+                }`
+              }
+            >
+              <span className="header-nav-text">
+                {item.label}
+              </span>
+            </NavLink>
+          ))}
         </nav>
 
-        {/* CTA */}
-        <Link
-          to="/contact"
-          className="header-cta"
-        >
-          Let's Talk
-          <ArrowUpRight size={16} />
-        </Link>
+
+        {/* Desktop CTA */}
+        <MagneticButton>
+          <Link
+            to="/contact"
+            className="header-talk"
+          >
+            <span>Let's talk</span>
+
+            <span className="header-talk-icon">
+              <ArrowUpRight size={16} />
+            </span>
+          </Link>
+        </MagneticButton>
 
         {/* Mobile Button */}
+
         <button
-          className="mobile-menu-btn"
+          className={`header-menu-button ${menuOpen ? "is-open" : ""
+            }`}
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          aria-label={
+            menuOpen
+              ? "Close navigation"
+              : "Open navigation"
+          }
+          aria-expanded={menuOpen}
+          type="button"
         >
-          {menuOpen ? (
-            <X size={22} />
-          ) : (
-            <Menu size={22} />
-          )}
+          <span className="menu-icon menu-icon-menu">
+            <Menu size={21} />
+          </span>
+
+          <span className="menu-icon menu-icon-close">
+            <X size={21} />
+          </span>
         </button>
 
       </div>
 
-      {/* Mobile Navigation */}
-      {menuOpen && (
-        <nav className="mobile-nav">
 
-          <NavLink to="/" onClick={closeMenu}>
-            Home
-          </NavLink>
+      {/* Mobile Menu */}
 
-          <NavLink to="/about" onClick={closeMenu}>
-            About
-          </NavLink>
+      <div
+        className={`mobile-menu ${menuOpen ? "open" : ""
+          }`}
+      >
+        <div className="mobile-menu-inner">
 
-          <NavLink to="/projects" onClick={closeMenu}>
-            Projects
-          </NavLink>
+          <span className="mobile-menu-label">
+            NAVIGATION
+          </span>
 
-          <NavLink to="/contact" onClick={closeMenu}>
-            Contact
-          </NavLink>
+          <nav>
+            {navItems.map((item, index) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  `mobile-nav-link ${isActive ? "active" : ""
+                  }`
+                }
+                style={{
+                  "--mobile-index": index,
+                }}
+              >
+                <span>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <strong>
+                  {item.label}
+                </strong>
+
+                <ArrowUpRight size={19} />
+              </NavLink>
+            ))}
+          </nav>
+
 
           <Link
-            to="/profile"
-            onClick={closeMenu}
+            to="/links"
             className="mobile-profile-link"
+            onClick={closeMenu}
           >
-            My Profile ↗
+            <span>Personal Links</span>
+
+            <span className="mobile-profile-arrow">
+              <ArrowUpRight size={18} />
+            </span>
           </Link>
 
-        </nav>
-      )}
+        </div>
+      </div>
 
     </header>
   );

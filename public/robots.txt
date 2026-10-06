@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://justfaizalam.vercel.app/sitemap.xml

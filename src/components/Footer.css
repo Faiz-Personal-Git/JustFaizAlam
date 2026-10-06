@@ -3,7 +3,7 @@
 
   color: white;
 
-  border-top: 1px solid rgba(255,255,255,.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-inner {
@@ -12,7 +12,10 @@
   margin: auto;
 }
 
-/* TOP */
+
+/* =========================================================
+   FOOTER TOP
+========================================================= */
 
 .footer-top {
   min-height: 420px;
@@ -22,7 +25,19 @@
   align-items: flex-end;
   justify-content: space-between;
 
+  gap: 60px;
+
   padding: 90px 0;
+}
+
+.footer-heading-wrap {
+  transition:
+    transform 0.5s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-heading-wrap:hover {
+  transform: translateX(4px);
 }
 
 .footer-eyebrow {
@@ -36,6 +51,16 @@
   font-weight: 700;
 
   letter-spacing: 2px;
+
+  transition:
+    color 0.3s ease,
+    letter-spacing 0.35s ease;
+}
+
+.footer-heading-wrap:hover .footer-eyebrow {
+  color: #c7a66a;
+
+  letter-spacing: 2.4px;
 }
 
 .footer-top h2 {
@@ -43,28 +68,49 @@
 
   font-size: clamp(42px, 6vw, 78px);
 
-  line-height: .95;
+  line-height: 0.95;
 
   letter-spacing: -4px;
 }
 
 .footer-top h2 em {
   color: #d6a86c;
+
   font-family: Georgia, serif;
+
   font-weight: 400;
+
+  transition:
+    color 0.35s ease;
 }
 
-/* BUTTON */
+.footer-heading-wrap:hover h2 em {
+  color: #e1d0b2;
+}
+
+
+/* =========================================================
+   CONTACT BUTTON
+========================================================= */
 
 .footer-contact-btn {
+  position: relative;
+
   display: inline-flex;
 
   align-items: center;
+  justify-content: center;
+
   gap: 10px;
+
+  min-width: 190px;
 
   padding: 17px 22px;
 
+  overflow: hidden;
+
   color: #111;
+
   background: #f1e8db;
 
   border-radius: 999px;
@@ -74,50 +120,229 @@
   font-size: 14px;
   font-weight: 700;
 
-  transition: .25s ease;
+  transition:
+    transform 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* hover fill */
+
+.footer-contact-btn::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: #c7a66a;
+
+  transform: translateX(-101%);
+
+  transition:
+    transform 0.55s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-contact-btn:hover::before {
+  transform: translateX(0);
+}
+
+.footer-contact-btn > span {
+  position: relative;
+
+  z-index: 1;
 }
 
 .footer-contact-btn:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 16px 35px rgba(199, 166, 106, 0.15);
 }
 
-/* BOTTOM */
+.footer-contact-icon {
+  display: flex;
+
+  transition:
+    transform 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-contact-btn:hover .footer-contact-icon {
+  transform: translate(4px, -4px);
+}
+
+
+/* =========================================================
+   FOOTER BOTTOM
+========================================================= */
 
 .footer-bottom {
   min-height: 80px;
 
-  display: flex;
+  display: grid;
+
+  grid-template-columns: 1fr auto auto;
 
   align-items: center;
-  justify-content: space-between;
 
-  border-top: 1px solid rgba(255,255,255,.08);
+  gap: 30px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 
   color: #777;
 
   font-size: 12px;
 }
 
+.footer-copyright {
+  transition: color 0.3s ease;
+}
+
+.footer-copyright:hover {
+  color: #aaa;
+}
+
+
+/* =========================================================
+   FOOTER LINKS
+========================================================= */
+
 .footer-links {
   display: flex;
+
+  align-items: center;
+
   gap: 25px;
 }
 
 .footer-links a {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 4px;
+
   color: #999;
 
   text-decoration: none;
 
-  transition: .2s ease;
+  transition:
+    color 0.3s ease,
+    transform 0.35s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-links a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -5px;
+
+  width: calc(100% - 16px);
+  height: 1px;
+
+  background: #c7a66a;
+
+  transform: scaleX(0);
+
+  transform-origin: right;
+
+  transition:
+    transform 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .footer-links a:hover {
-  color: white;
+  color: #fff;
+
+  transform: translateY(-2px);
 }
 
-/* MOBILE */
+.footer-links a:hover::after {
+  transform: scaleX(1);
+
+  transform-origin: left;
+}
+
+.footer-links a svg {
+  transition:
+    transform 0.35s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-links a:hover svg {
+  transform: translate(3px, -3px);
+
+  color: #c7a66a;
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.footer-back-top {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 8px 0;
+
+  color: #777;
+
+  background: transparent;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.8px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.3s ease,
+    transform 0.35s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-back-top:hover {
+  color: #c7a66a;
+
+  transform: translateY(-2px);
+}
+
+.footer-back-top svg {
+  transition:
+    transform 0.35s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-back-top:hover svg {
+  transform: translate(3px, -3px);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 768px) {
+
+  .footer-inner {
+    width: min(100% - 28px, 1180px);
+  }
 
   .footer-top {
     min-height: auto;
@@ -141,7 +366,9 @@
     padding: 22px 0;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: flex-start;
 
     gap: 18px;
@@ -149,6 +376,32 @@
 
   .footer-links {
     flex-wrap: wrap;
+
     gap: 15px;
+  }
+
+  .footer-back-top {
+    padding-top: 4px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-heading-wrap,
+  .footer-contact-btn,
+  .footer-contact-icon,
+  .footer-links a,
+  .footer-back-top,
+  .footer-back-top svg {
+    transition: none !important;
+  }
+
+  .footer-contact-btn::before,
+  .footer-links a::after {
+    transition: none !important;
   }
 }

@@ -1,0 +1,205 @@
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+
+.custom-cursor {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 1px;
+  height: 1px;
+
+  pointer-events: none;
+
+  z-index: 99999;
+
+  opacity: 0;
+
+  transform:
+    translate3d(
+      var(--cursor-x),
+      var(--cursor-y),
+      0
+    );
+
+  transition: opacity 0.25s ease;
+
+  will-change: transform;
+}
+
+.custom-cursor.is-visible {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   INNER DOT
+========================================================= */
+
+.cursor-dot {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 7px;
+  height: 7px;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+
+  border-radius: 50%;
+
+  background: #c7a66a;
+
+  box-shadow:
+    0 0 12px rgba(199, 166, 106, 0.45);
+
+  transition:
+    transform 0.25s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   OUTER RING
+========================================================= */
+
+.cursor-ring {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 34px;
+  height: 34px;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+
+  border: 1px solid rgba(199, 166, 106, 0.65);
+
+  border-radius: 50%;
+
+  background: rgba(199, 166, 106, 0.025);
+
+  transition:
+    width 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   HOVER INTERACTION
+========================================================= */
+
+.custom-cursor.is-hovering .cursor-dot {
+  transform:
+    translate(-50%, -50%)
+    scale(0.55);
+
+  background: #f2eee7;
+
+  box-shadow:
+    0 0 15px rgba(242, 238, 231, 0.35);
+}
+
+.custom-cursor.is-hovering .cursor-ring {
+  width: 52px;
+  height: 52px;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.05);
+
+  border-color: rgba(199, 166, 106, 0.9);
+
+  background: rgba(199, 166, 106, 0.08);
+
+  box-shadow:
+    0 0 25px rgba(199, 166, 106, 0.08);
+}
+
+
+/* =========================================================
+   CLICK INTERACTION
+========================================================= */
+
+.custom-cursor.is-clicking .cursor-dot {
+  transform:
+    translate(-50%, -50%)
+    scale(0.8);
+}
+
+.custom-cursor.is-clicking .cursor-ring {
+  transform:
+    translate(-50%, -50%)
+    scale(0.82);
+
+  border-color: rgba(225, 208, 178, 1);
+
+  background: rgba(199, 166, 106, 0.13);
+}
+
+
+/* =========================================================
+   DESKTOP ONLY
+========================================================= */
+
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    cursor: none;
+  }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor {
+    display: none;
+  }
+
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    cursor: auto;
+  }
+}
