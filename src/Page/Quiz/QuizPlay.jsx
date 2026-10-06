@@ -395,11 +395,15 @@ function QuizPlay() {
   return (
     <main className="quiz-play-page">
 
-      <SEO
-        title={`${video.title} Quiz — Faiz Alam`}
-        description={`Test your knowledge about ${video.title} with this interactive quiz by Faiz Alam.`}
-        path={`/quiz/video/${video.id}`}
-      />
+<SEO
+  title={`${selectedVideo?.title || "Quiz"} Quiz — Faiz Alam`}
+  description={
+    selectedVideo
+      ? `Test your knowledge about ${selectedVideo.title} with this interactive quiz by Faiz Alam.`
+      : "Test your knowledge with an interactive quiz by Faiz Alam."
+  }
+  path={`/quiz/video/${numericVideoId}`}
+/>
 
       <section className="quiz-play-container">
 
