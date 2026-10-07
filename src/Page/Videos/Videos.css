@@ -133,7 +133,7 @@
 
 .category-dropdown {
   position: relative;
-  z-index: 50;
+  z-index: 9999;
 }
 
 .category-trigger {
@@ -194,22 +194,24 @@
 
 .category-menu {
   position: absolute;
-
   top: calc(100% + 8px);
   right: 0;
-
   width: 100%;
-
   padding: 7px;
 
   border: 1px solid var(--border);
 
-  background: #151514;
+  /* FORCE SOLID BACKGROUND */
+  background-color: #151514 !important;
+  opacity: 1 !important;
 
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.45);
+  /* Keep it above everything */
+  z-index: 9999;
 
-  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+
+  /* Remove this if you don't specifically need the glass effect */
+  backdrop-filter: none;
 
   animation: categoryMenuIn 0.18s ease-out;
 }

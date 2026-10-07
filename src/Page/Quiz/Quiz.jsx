@@ -217,86 +217,89 @@ function Quiz() {
 
         <div className="quiz-category-grid">
 
-          {categoryData.map((category, index) => {
+          {categoryData
+            .filter((category) => category.id !== "all")
+            .map((category, index) => {
 
-            const Icon = category.icon;
+              const Icon = category.icon;
 
-            /*
-             * Only categories with an actual quiz
-             * should open a quiz.
-             */
+              /*
+               * Only categories with an actual quiz
+               * should open a quiz.
+               */
 
-            const categoryVideos = videos.filter((video) => {
-              const videoCategory = video.category
-                ?.toLowerCase()
-                .replace(/\s+/g, "-");
+              const categoryVideos = videos.filter((video) => {
+                const videoCategory = video.category
+                  ?.toLowerCase()
+                  .replace(/\s+/g, "-");
 
-              if (category.id === "all") {
-                return true;
-              }
+                if (category.id === "all") {
+                  return true;
+                }
 
-              return videoCategory === category.id;
-            });
+                return videoCategory === category.id;
+              });
 
-            const categoryQuiz = quizList.find((quiz) =>
-              categoryVideos.some(
-                (video) => video.id === quiz.videoId
-              )
-            );
+              const categoryQuiz = quizList.find((quiz) =>
+                categoryVideos.some(
+                  (video) => video.id === quiz.videoId
+                )
+              );
 
-            const destination = categoryQuiz
-              ? `/quiz/video/${categoryQuiz.videoId}`
-              : "/quiz";
+              const destination =
+                category.quizCount > 0
+                  ? `/quiz/${category.id}`
+                  : "/quiz";
 
-            return (
-              <ScrollReveal
-                key={category.id}
-                direction="up"
-                delay={index * 70}
-              >
-
-                <Link
-                  to={destination}
-                  className={`quiz-category-card ${category.quizCount === 0
-                      ? "quiz-category-disabled"
-                      : ""
-                    }`}
+              return (
+                <ScrollReveal
+                  key={category.id}
+                  direction="up"
+                  delay={index * 70}
                 >
 
-                  <div className="quiz-category-top">
+                  <Link
+                    to={destination}
+                    className={`quiz-category-card ${category.quizCount === 0
+                      ? "quiz-category-disabled"
+                      : ""
+                      }`}
+                  >
 
-                    <div className="quiz-category-icon">
-                      {Icon && <Icon size={21} />}
+                    <div className="quiz-category-top">
+
+                      <div className="quiz-category-icon">
+                        {Icon && <Icon size={21} />}
+                      </div>
+
+                      <ArrowRight
+                        className="quiz-category-arrow"
+                        size={18}
+                      />
+
                     </div>
 
-                    <ArrowRight
-                      className="quiz-category-arrow"
-                      size={18}
-                    />
 
-                  </div>
+                    <div className="quiz-category-content">
 
+                      <h3>
+                        {category.name}
+                      </h3>
 
-                  <div className="quiz-category-content">
+                      <span>
+                        {category.quizCount}{" "}
+                        {category.quizCount === 1
+                          ? "quiz"
+                          : "quizzes"}
+                      </span>
 
-                    <h3>
-                      {category.name}
-                    </h3>
+                    </div>
 
-                    <span>
-                      {category.quizCount}{" "}
-                      {category.quizCount === 1
-                        ? "quiz"
-                        : "quizzes"}
-                    </span>
+                  </Link>
 
-                  </div>
-
-                </Link>
-
-              </ScrollReveal>
-            );
-          })}
+                </ScrollReveal>
+              );
+            })}
 
         </div>
 

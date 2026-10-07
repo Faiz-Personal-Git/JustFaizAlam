@@ -1,41 +1,61 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Cursor.css";
 
 function Cursor() {
-  const [position, setPosition] = useState({
-    x: -100,
-    y: -100,
-  });
+  const cursorRef = useRef(null);
+  const animationFrameRef = useRef(null);
 
   const [isVisible, setIsVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
 
   useEffect(() => {
-    // Don't run custom cursor on touch devices
     const mediaQuery = window.matchMedia(
       "(pointer: fine)"
     );
 
+    // Don't run custom cursor on touch devices
     if (!mediaQuery.matches) {
       return;
     }
 
-    const handleMouseMove = (event) => {
-      setPosition({
-        x: event.clientX,
-        y: event.clientY,
-      });
+    const handlePointerMove = (event) => {
+      const x = event.clientX;
+      const y = event.clientY;
 
+      // Cancel previous frame
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(
+          animationFrameRef.current
+        );
+      }
+
+      animationFrameRef.current =
+        requestAnimationFrame(() => {
+          if (cursorRef.current) {
+            cursorRef.current.style.setProperty(
+              "--cursor-x",
+              `${x}px`
+            );
+
+            cursorRef.current.style.setProperty(
+              "--cursor-y",
+              `${y}px`
+            );
+          }
+        });
+
+      if (!isVisible) {
+        setIsVisible(true);
+      }
+    };
+
+    const handleMouseEnter = () => {
       setIsVisible(true);
     };
 
     const handleMouseLeave = () => {
       setIsVisible(false);
-    };
-
-    const handleMouseEnter = () => {
-      setIsVisible(true);
     };
 
     const handleMouseDown = () => {
@@ -52,7 +72,9 @@ function Cursor() {
           "a, button, input, textarea, select, [role='button']"
         );
 
-      setIsHovering(Boolean(interactiveElement));
+      if (interactiveElement) {
+        setIsHovering(true);
+      }
     };
 
     const handlePointerOut = (event) => {
@@ -61,14 +83,19 @@ function Cursor() {
           "a, button, input, textarea, select, [role='button']"
         );
 
-      if (interactiveElement) {
+      if (
+        interactiveElement &&
+        !interactiveElement.contains(
+          event.relatedTarget
+        )
+      ) {
         setIsHovering(false);
       }
     };
 
     window.addEventListener(
-      "mousemove",
-      handleMouseMove,
+      "pointermove",
+      handlePointerMove,
       { passive: true }
     );
 
@@ -104,8 +131,8 @@ function Cursor() {
 
     return () => {
       window.removeEventListener(
-        "mousemove",
-        handleMouseMove
+        "pointermove",
+        handlePointerMove
       );
 
       document.removeEventListener(
@@ -137,20 +164,25 @@ function Cursor() {
         "mouseout",
         handlePointerOut
       );
+
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(
+          animationFrameRef.current
+        );
+      }
     };
-  }, []);
+  }, [isVisible]);
 
   return (
     <div
+      ref={cursorRef}
       className={`custom-cursor ${
         isVisible ? "is-visible" : ""
-      } ${isHovering ? "is-hovering" : ""} ${
+      } ${
+        isHovering ? "is-hovering" : ""
+      } ${
         isClicking ? "is-clicking" : ""
       }`}
-      style={{
-        "--cursor-x": `${position.x}px`,
-        "--cursor-y": `${position.y}px`,
-      }}
       aria-hidden="true"
     >
       <span className="cursor-dot" />

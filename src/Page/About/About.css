@@ -1,128 +1,548 @@
+/* =========================================================
+   ABOUT PAGE
+========================================================= */
+
 .about-page {
   background: #0c0d0d;
   color: #f5f2ec;
+  overflow: hidden;
 }
 
 .about-container {
   width: min(1180px, calc(100% - 40px));
-  margin: auto;
+  margin: 0 auto;
 }
+
+.about-label {
+  display: inline-block;
+  color: #777;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .about-hero {
   padding: 150px 0 130px;
 }
 
-.about-label {
-  color: #777;
-
-  font-size: 10px;
-  font-weight: 700;
-
-  letter-spacing: 2px;
-}
-
 .about-hero h1 {
   margin: 35px 0 0;
-
+  max-width: 1000px;
   font-size: clamp(64px, 9vw, 120px);
-
-  line-height: .88;
-
+  line-height: 0.88;
   letter-spacing: -7px;
+  font-weight: 700;
 }
 
 .about-hero h1 em {
   color: #d6a86c;
-
-  font-family: Georgia, serif;
+  font-family: Georgia, "Times New Roman", serif;
   font-weight: 400;
 }
 
-.about-hero p {
-  max-width: 560px;
-
-  margin-top: 40px;
-
+.about-hero-text {
+  max-width: 590px;
+  margin: 45px 0 0;
   color: #888;
-
   font-size: 18px;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
-.about-story {
-  padding: 120px 0;
+/* =========================================================
+   PROFILE
+========================================================= */
 
+.about-profile {
+  padding: 120px 0;
   background: #111313;
 }
 
-.about-grid {
+.profile-grid {
   display: grid;
-
-  grid-template-columns: .5fr 1.5fr;
-
-  gap: 80px;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 100px;
+  align-items: center;
 }
 
-.about-grid h2 {
-  margin: 0;
-
-  max-width: 800px;
-
-  font-size: clamp(38px, 5vw, 64px);
-
-  line-height: 1.02;
-
-  letter-spacing: -3px;
+.profile-image-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 470px;
+  margin: 0 auto;
 }
 
-.about-grid h2 em {
+.profile-image-wrap::before {
+  content: "";
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  right: -20px;
+  bottom: -20px;
+  border: 1px solid rgba(214, 168, 108, 0.25);
+  z-index: 0;
+}
+
+.profile-image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+  background: #181a1a;
+  filter: grayscale(12%);
+}
+
+.profile-image-tag {
+  position: absolute;
+  z-index: 2;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 14px;
+
+  background: rgba(12, 13, 13, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: #f5f2ec;
+}
+
+.profile-image-tag span:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 25px;
+  height: 25px;
+
+  border-radius: 50%;
+
+  background: #d6a86c;
+  color: #111;
+}
+
+.profile-content {
+  max-width: 680px;
+}
+
+.profile-content h2 {
+  margin: 25px 0 30px;
+  font-size: clamp(48px, 5vw, 72px);
+  line-height: 0.95;
+  letter-spacing: -4px;
+}
+
+.profile-content h2 em {
   color: #d6a86c;
-
-  font-family: Georgia, serif;
+  font-family: Georgia, "Times New Roman", serif;
   font-weight: 400;
 }
 
-.about-grid p {
+.profile-content p {
   max-width: 650px;
-
-  margin-top: 30px;
-
+  margin: 0 0 22px;
   color: #888;
-
   font-size: 16px;
-
   line-height: 1.8;
 }
 
-.about-cta {
+/* =========================================================
+   WHAT I DO
+========================================================= */
+
+.about-services {
   padding: 130px 0;
 }
 
-.about-cta h2 {
+.section-heading-row {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 80px;
+  margin-bottom: 65px;
+}
+
+.section-small-text {
+  max-width: 450px;
+  margin: 0;
+  color: #777;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.services-list {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.service-item {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 70px 50px 1fr 30px;
+  gap: 25px;
+  align-items: center;
+
+  min-height: 150px;
+  padding: 30px 10px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  transition:
+    background 0.3s ease,
+    padding 0.3s ease;
+}
+
+.service-item:hover {
+  padding-left: 20px;
+  padding-right: 20px;
+  background: #111313;
+}
+
+.service-number {
+  color: #555;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.service-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  border: 1px solid rgba(214, 168, 108, 0.25);
+  color: #d6a86c;
+}
+
+.service-main h3 {
+  margin: 0 0 8px;
+
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+
+.service-main p {
+  max-width: 620px;
   margin: 0;
 
+  color: #777;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.service-arrow {
+  color: #555;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.service-item:hover .service-arrow {
+  color: #d6a86c;
+  transform: translate(4px, -4px);
+}
+
+/* =========================================================
+   INTERESTS
+========================================================= */
+
+.about-interests {
+  padding: 130px 0;
+  background: #111313;
+}
+
+.interests-heading {
+  margin: 30px 0 70px;
+
   font-size: clamp(48px, 6vw, 82px);
-
-  line-height: .95;
-
+  line-height: 0.95;
   letter-spacing: -5px;
+}
+
+.interests-heading em {
+  color: #d6a86c;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.interest-card {
+  position: relative;
+  min-height: 270px;
+  padding: 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0c0d0d;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.interest-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(214, 168, 108, 0.35);
+}
+
+.interest-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background: rgba(214, 168, 108, 0.1);
+  color: #d6a86c;
+}
+
+.interest-card h3 {
+  margin: 65px 0 12px;
+
+  font-size: 23px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+
+.interest-card p {
+  margin: 0;
+
+  color: #777;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.interest-index {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+
+  color: #444;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+/* =========================================================
+   PHILOSOPHY
+========================================================= */
+
+.about-philosophy {
+  padding: 160px 0;
+  text-align: center;
+}
+
+.about-philosophy .about-label {
+  margin-bottom: 40px;
+}
+
+.about-philosophy h2 {
+  margin: 0 auto;
+
+  font-size: clamp(52px, 7vw, 96px);
+  line-height: 0.92;
+  letter-spacing: -6px;
+}
+
+.about-philosophy h2 em {
+  color: #d6a86c;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+
+.about-philosophy p {
+  max-width: 650px;
+  margin: 45px auto 0;
+
+  color: #777;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.about-gallery {
+  padding: 130px 0;
+  background: #111313;
+}
+
+.gallery-heading {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr;
+  gap: 80px;
+  align-items: end;
+
+  margin-bottom: 65px;
+}
+
+.gallery-heading h2 {
+  margin: 30px 0 0;
+
+  font-size: clamp(50px, 6vw, 82px);
+  line-height: 0.9;
+  letter-spacing: -5px;
+}
+
+.gallery-heading h2 em {
+  color: #d6a86c;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+
+.gallery-heading p {
+  max-width: 400px;
+  margin: 0;
+
+  color: #777;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr 0.7fr;
+  grid-auto-rows: 280px;
+  gap: 14px;
+}
+
+.gallery-item {
+  position: relative;
+  height: 100%;
+  min-height: 280px;
+  overflow: hidden;
+  background: #181a1a;
+}
+
+.gallery-large {
+  grid-row: span 2;
+}
+
+.gallery-item img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.6s ease,
+    filter 0.6s ease;
+
+  filter: grayscale(15%);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  padding: 25px;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.gallery-overlay span {
+  display: block;
+  margin-bottom: 7px;
+
+  color: #d6a86c;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.gallery-overlay h3 {
+  margin: 0;
+
+  color: #fff;
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.gallery-overlay > svg {
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay > svg {
+  transform: translate(4px, -4px);
+}
+
+.gallery-note {
+  margin: 20px 0 0;
+
+  color: #555;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.about-cta {
+  padding: 150px 0 170px;
+}
+
+.about-cta h2 {
+  margin: 35px 0 0;
+
+  font-size: clamp(52px, 7vw, 96px);
+  line-height: 0.92;
+  letter-spacing: -6px;
 }
 
 .about-cta h2 em {
   color: #d6a86c;
-
-  font-family: Georgia, serif;
+  font-family: Georgia, "Times New Roman", serif;
   font-weight: 400;
 }
 
-.about-cta a {
+.about-cta-button {
   display: inline-flex;
   align-items: center;
   gap: 10px;
 
-  margin-top: 35px;
-
-  padding: 14px 20px;
+  margin-top: 40px;
+  padding: 15px 22px;
 
   background: #f1e8db;
   color: #111;
@@ -133,31 +553,285 @@
 
   font-size: 13px;
   font-weight: 700;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
 }
 
-@media (max-width: 768px) {
+.about-cta-button:hover {
+  transform: translateY(-3px);
+  background: #d6a86c;
+}
 
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+    gap: 70px;
+  }
+
+  .profile-image-wrap {
+    max-width: 500px;
+    margin: 0;
+  }
+
+  .profile-content {
+    max-width: 700px;
+  }
+
+  .interests-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery-large {
+    grid-column: span 2;
+    grid-row: span 1;
+    min-height: 450px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
   .about-container {
     width: min(100% - 28px, 1180px);
   }
 
   .about-hero {
-    padding: 100px 0;
+    padding: 100px 0 90px;
   }
 
   .about-hero h1 {
+    margin-top: 28px;
+    font-size: clamp(56px, 17vw, 90px);
+    letter-spacing: -5px;
+  }
+
+  .about-hero-text {
+    margin-top: 30px;
+    font-size: 16px;
+  }
+
+  .about-profile {
+    padding: 85px 0;
+  }
+
+  .profile-grid {
+    gap: 55px;
+  }
+
+  .profile-image-wrap::before {
+    right: -10px;
+    bottom: -10px;
+  }
+
+  .profile-image-tag {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .profile-content h2 {
+    margin-top: 20px;
+    font-size: 52px;
+    letter-spacing: -3px;
+  }
+
+  .profile-content p {
+    font-size: 15px;
+  }
+
+  .about-services {
+    padding: 90px 0;
+  }
+
+  .section-heading-row {
+    display: block;
+    margin-bottom: 45px;
+  }
+
+  .section-small-text {
+    margin-top: 25px;
+  }
+
+  .service-item {
+    grid-template-columns: 35px 42px 1fr;
+    gap: 15px;
+
+    min-height: 160px;
+    padding: 25px 0;
+  }
+
+  .service-arrow {
+    display: none;
+  }
+
+  .service-main h3 {
+    font-size: 23px;
+  }
+
+  .service-main p {
+    font-size: 13px;
+  }
+
+  .about-interests {
+    padding: 90px 0;
+  }
+
+  .interests-heading {
+    margin: 25px 0 45px;
+    font-size: 54px;
     letter-spacing: -4px;
   }
 
-  .about-grid {
+  .interests-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .interest-card {
+    min-height: 250px;
+    padding: 22px;
+  }
+
+  .interest-card h3 {
+    margin-top: 55px;
+    font-size: 20px;
+  }
+
+  .interest-card p {
+    font-size: 12px;
+  }
+
+  .interest-index {
+    top: 22px;
+    right: 22px;
+  }
+
+  .about-philosophy {
+    padding: 110px 0;
+  }
+
+  .about-philosophy h2 {
+    font-size: 55px;
+    letter-spacing: -4px;
+  }
+
+  .about-philosophy p {
+    margin-top: 30px;
+    font-size: 15px;
+  }
+
+  .about-gallery {
+    padding: 90px 0;
+  }
+
+  .gallery-heading {
     display: block;
+    margin-bottom: 45px;
   }
 
-  .about-grid > div {
-    margin-top: 45px;
+  .gallery-heading h2 {
+    margin-top: 25px;
+    font-size: 55px;
+    letter-spacing: -4px;
   }
 
-  .about-story {
-    padding: 80px 0;
+  .gallery-heading p {
+    margin-top: 25px;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 220px;
+    gap: 10px;
+  }
+
+  .gallery-large {
+    grid-column: span 2;
+    min-height: 300px;
+  }
+
+  .gallery-item {
+    min-height: 220px;
+  }
+
+  .gallery-overlay {
+    padding: 17px;
+  }
+
+  .gallery-overlay h3 {
+    font-size: 17px;
+  }
+
+  .about-cta {
+    padding: 110px 0 120px;
+  }
+
+  .about-cta h2 {
+    font-size: 56px;
+    letter-spacing: -4px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .about-hero h1 {
+    font-size: 54px;
+    letter-spacing: -4px;
+  }
+
+  .profile-image {
+    aspect-ratio: 1 / 1.15;
+  }
+
+  .profile-content h2 {
+    font-size: 46px;
+  }
+
+  .interests-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .interest-card {
+    min-height: 220px;
+  }
+
+  .about-philosophy h2 {
+    font-size: 46px;
+    letter-spacing: -3px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 260px;
+  }
+
+  .gallery-large {
+    grid-column: span 1;
+    min-height: 300px;
+  }
+
+  .gallery-item {
+    min-height: 260px;
+  }
+
+  .about-cta h2 {
+    font-size: 48px;
+    letter-spacing: -3px;
   }
 }

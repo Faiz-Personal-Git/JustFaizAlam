@@ -395,15 +395,15 @@ function QuizPlay() {
   return (
     <main className="quiz-play-page">
 
-<SEO
-  title={`${selectedVideo?.title || "Quiz"} Quiz — Faiz Alam`}
-  description={
-    selectedVideo
-      ? `Test your knowledge about ${selectedVideo.title} with this interactive quiz by Faiz Alam.`
-      : "Test your knowledge with an interactive quiz by Faiz Alam."
-  }
-  path={`/quiz/video/${numericVideoId}`}
-/>
+      <SEO
+        title={`${selectedVideo?.title || "Quiz"} Quiz — Faiz Alam`}
+        description={
+          selectedVideo
+            ? `Test your knowledge about ${selectedVideo.title} with this interactive quiz by Faiz Alam.`
+            : "Test your knowledge with an interactive quiz by Faiz Alam."
+        }
+        path={`/quiz/video/${numericVideoId}`}
+      />
 
       <section className="quiz-play-container">
 
@@ -610,9 +610,9 @@ function QuizPlay() {
 
                 <div
                   className={`quiz-answer-message ${selectedAnswer ===
-                      currentQuestion.correctAnswer
-                      ? "answer-correct"
-                      : "answer-wrong"
+                    currentQuestion.correctAnswer
+                    ? "answer-correct"
+                    : "answer-wrong"
                     }`}
                 >
 

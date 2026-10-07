@@ -17,16 +17,19 @@
 
   opacity: 0;
 
-  transform:
-    translate3d(
-      var(--cursor-x),
-      var(--cursor-y),
-      0
-    );
+  transform: translate3d(
+    var(--cursor-x, -100px),
+    var(--cursor-y, -100px),
+    0
+  );
 
-  transition: opacity 0.25s ease;
+  transition: opacity 0.15s ease;
 
   will-change: transform;
+
+  /* Important for smooth rendering */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .custom-cursor.is-visible {
@@ -59,10 +62,12 @@
     0 0 12px rgba(199, 166, 106, 0.45);
 
   transition:
-    transform 0.25s
+    transform 0.18s
       cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.25s ease,
-    box-shadow 0.25s ease;
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+
+  will-change: transform;
 }
 
 
@@ -83,27 +88,31 @@
     translate(-50%, -50%)
     scale(1);
 
-  border: 1px solid rgba(199, 166, 106, 0.65);
+  border: 1px solid
+    rgba(199, 166, 106, 0.65);
 
   border-radius: 50%;
 
-  background: rgba(199, 166, 106, 0.025);
+  background:
+    rgba(199, 166, 106, 0.025);
 
   transition:
-    width 0.4s
+    width 0.22s
       cubic-bezier(0.22, 1, 0.36, 1),
-    height 0.4s
+    height 0.22s
       cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.4s
+    transform 0.22s
       cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.3s ease,
-    background 0.3s ease,
-    box-shadow 0.3s ease;
+    border-color 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+
+  will-change: transform, width, height;
 }
 
 
 /* =========================================================
-   HOVER INTERACTION
+   HOVER
 ========================================================= */
 
 .custom-cursor.is-hovering .cursor-dot {
@@ -114,7 +123,8 @@
   background: #f2eee7;
 
   box-shadow:
-    0 0 15px rgba(242, 238, 231, 0.35);
+    0 0 15px
+    rgba(242, 238, 231, 0.35);
 }
 
 .custom-cursor.is-hovering .cursor-ring {
@@ -123,19 +133,22 @@
 
   transform:
     translate(-50%, -50%)
-    scale(1.05);
+    scale(1.02);
 
-  border-color: rgba(199, 166, 106, 0.9);
+  border-color:
+    rgba(199, 166, 106, 0.9);
 
-  background: rgba(199, 166, 106, 0.08);
+  background:
+    rgba(199, 166, 106, 0.08);
 
   box-shadow:
-    0 0 25px rgba(199, 166, 106, 0.08);
+    0 0 25px
+    rgba(199, 166, 106, 0.08);
 }
 
 
 /* =========================================================
-   CLICK INTERACTION
+   CLICK
 ========================================================= */
 
 .custom-cursor.is-clicking .cursor-dot {
@@ -149,14 +162,16 @@
     translate(-50%, -50%)
     scale(0.82);
 
-  border-color: rgba(225, 208, 178, 1);
+  border-color:
+    rgba(225, 208, 178, 1);
 
-  background: rgba(199, 166, 106, 0.13);
+  background:
+    rgba(199, 166, 106, 0.13);
 }
 
 
 /* =========================================================
-   DESKTOP ONLY
+   DESKTOP
 ========================================================= */
 
 @media (pointer: fine) {
@@ -168,14 +183,15 @@
   button,
   input,
   textarea,
-  select {
+  select,
+  [role="button"] {
     cursor: none;
   }
 }
 
 
 /* =========================================================
-   TOUCH DEVICES
+   TOUCH
 ========================================================= */
 
 @media (pointer: coarse) {

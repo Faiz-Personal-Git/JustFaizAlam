@@ -25,6 +25,10 @@ const QuizPlay = lazy(() =>
 const Contact = lazy(() => import("./Page/Contact/Contact"));
 const Links = lazy(() => import("./Page/Links/Links"));
 
+const QuizCategoryPlay = lazy(() =>
+  import("./Page/Quiz/QuizCategoryPlay")
+);
+
 function PageLoader() {
   return (
     <div className="page-loader">
@@ -101,6 +105,12 @@ function App() {
             <Route
               path="/quiz/video/:videoId"
               element={<QuizPlay />}
+            />
+
+
+            <Route
+              path="/quiz/:categoryId"
+              element={<QuizCategoryPlay />}
             />
 
             <Route

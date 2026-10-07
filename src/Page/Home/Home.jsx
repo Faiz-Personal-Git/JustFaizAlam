@@ -9,9 +9,10 @@ import {
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
-
+import { useMemo } from "react";
 import videos from "../../data/videos";
 import categories from "../../data/categories";
+import quizzes from "../../data/quizzes";
 
 import ScrollReveal from "../../components/ScrollReveal";
 
@@ -65,9 +66,55 @@ const stack = [
 function Home() {
   const featuredVideos = videos.slice(0, 3);
 
-  const quizCategories = categories.filter(
-    (category) => category.id !== "all"
+  const quizCategories = useMemo(() => {
+  const quizList = Object.values(quizzes || {});
+
+  return categories
+    .filter((category) => category.id !== "all")
+    .map((category) => {
+      const categoryVideos = videos.filter((video) => {
+        const videoCategory = video.category
+          ?.toLowerCase()
+          .replace(/\s+/g, "-");
+
+        return videoCategory === category.id;
+      });
+
+      const categoryVideoIds = categoryVideos.map(
+        (video) => video.id
+      );
+
+      const categoryQuizzes = quizList.filter((quiz) =>
+        categoryVideoIds.includes(quiz.videoId)
+      );
+
+      return {
+        ...category,
+        quizCount: categoryQuizzes.length,
+      };
+    })
+    .filter((category) => category.quizCount > 0);
+}, []);
+
+{quizCategories.slice(0, 6).map((category) => {
+  const Icon = category.icon;
+
+  return (
+    <Link
+      to={`/quiz/${category.id}`}
+      className="home-quiz-category"
+      key={category.id}
+    >
+      <span className="home-quiz-category-icon">
+        <Icon size={17} />
+      </span>
+
+      <span>{category.name}</span>
+
+      <ArrowRight size={15} />
+    </Link>
   );
+})}
 
   return (
     <div className="home-page">

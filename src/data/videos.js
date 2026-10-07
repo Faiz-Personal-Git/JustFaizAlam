@@ -45,7 +45,7 @@ const videos = [
     id: 4,
     title: "How I Create My YouTube Videos",
     subtitle: "Research, scripting, recording and editing",
-    category: "history",
+    category: "science",
     youtubeId: "dQw4w9WgXcQ",
     description:
       "A look at the process behind creating videos, from the first idea to the final upload.",
