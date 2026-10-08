@@ -6,6 +6,7 @@ import MainLayout from "./layouts/MainLayout";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import Cursor from "./components/Cursor";
+import AskFaiz from "./components/AskFaiz";
 
 // Lazy-loaded pages
 const Home = lazy(() => import("./Page/Home/Home"));
@@ -28,6 +29,10 @@ const Links = lazy(() => import("./Page/Links/Links"));
 const QuizCategoryPlay = lazy(() =>
   import("./Page/Quiz/QuizCategoryPlay")
 );
+
+import Blog from "./Page/Blog/Blog";
+import BlogPost from "./Page/Blog/BlogPost";
+
 
 function PageLoader() {
   return (
@@ -68,6 +73,8 @@ function App() {
 
       {/* Floating scroll-to-top button */}
       <ScrollToTopButton />
+
+      <AskFaiz />
 
       <Suspense fallback={<PageLoader />}>
         <Routes>
@@ -117,6 +124,11 @@ function App() {
               path="/contact"
               element={<Contact />}
             />
+
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+
+
           </Route>
 
           {/* Standalone social links page */}

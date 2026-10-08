@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 import videos from "../../data/videos";
-
+import { articles } from "../../data/articles";
 import ScrollReveal from "../../components/ScrollReveal";
 
 import "./VideoDetail.css";
@@ -102,6 +102,14 @@ function VideoDetail() {
 
   const quizPath =
     `/quiz/video/${video.id}`;
+
+  const relatedArticle = articles.find(
+    (article) => article.relatedVideoId === video.id
+  );
+
+  const articlePath = relatedArticle
+    ? `/blog/${relatedArticle.slug}`
+    : null;
 
 
   return (
@@ -204,7 +212,6 @@ function VideoDetail() {
                   <div className="video-detail-actions">
 
                     {/* Watch on YouTube */}
-
                     <a
                       href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
                       target="_blank"
@@ -213,25 +220,29 @@ function VideoDetail() {
                     >
                       Watch on YouTube
 
-                      <ArrowUpRight
-                        size={17}
-                      />
-
+                      <ArrowUpRight size={17} />
                     </a>
 
+                    {/* Read Article */}
+                    {relatedArticle && (
+                      <Link
+                        to={articlePath}
+                        className="read-article-button"
+                      >
+                        Read Article
+
+                        <ArrowUpRight size={17} />
+                      </Link>
+                    )}
 
                     {/* Take Quiz */}
-
                     <Link
                       to={quizPath}
                       className="take-quiz-button"
                     >
                       Take Quiz
 
-                      <ArrowUpRight
-                        size={17}
-                      />
-
+                      <ArrowUpRight size={17} />
                     </Link>
 
                   </div>
@@ -298,7 +309,21 @@ function VideoDetail() {
 
           </ScrollReveal>
 
-
+          {relatedArticle && (
+            <ScrollReveal
+              direction="up"
+              delay={100}
+            >
+              <Link
+                to={articlePath}
+                className="detail-nav-item"
+              >
+                <span>02</span>
+                Article
+              </Link>
+            </ScrollReveal>
+          )}
+          
           <ScrollReveal
             direction="up"
             delay={100}

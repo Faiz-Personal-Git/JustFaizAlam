@@ -186,7 +186,7 @@ function QuizCategoryPlay() {
     const finalQuizScore =
       score +
       (selectedAnswer ===
-      currentQuestion.correctAnswer
+        currentQuestion.correctAnswer
         ? 1
         : 0);
 
@@ -303,9 +303,9 @@ function QuizCategoryPlay() {
   const finalPercentage =
     finalTotal > 0
       ? Math.round(
-          (finalScore / finalTotal) *
-            100
-        )
+        (finalScore / finalTotal) *
+        100
+      )
       : 0;
 
   // =========================================================
@@ -390,7 +390,8 @@ function QuizCategoryPlay() {
       <>
         <SEO
           title={`${category.name} Quiz Result | Faiz Alam`}
-          description={`Final quiz result for ${category.name}.`}
+          description={`Complete the ${category.name} quizzes by Faiz Alam and see your final score, questions answered and overall performance.`}
+          path={`/quiz/${categoryId}`}
         />
 
         <main className="category-quiz-page">
@@ -416,8 +417,8 @@ function QuizCategoryPlay() {
                     ? "Excellent work."
                     : finalPercentage >=
                       50
-                    ? "Nice work."
-                    : "Keep learning."}
+                      ? "Nice work."
+                      : "Keep learning."}
                 </h1>
 
                 <p>
@@ -505,10 +506,10 @@ function QuizCategoryPlay() {
     const currentPercentage =
       questions.length > 0
         ? Math.round(
-            (score /
-              questions.length) *
-              100
-          )
+          (score /
+            questions.length) *
+          100
+        )
         : 0;
 
     return (
@@ -539,13 +540,13 @@ function QuizCategoryPlay() {
 
                 <h1>
                   {score ===
-                  questions.length
+                    questions.length
                     ? "Perfect score."
                     : score >=
                       questions.length /
-                        2
-                    ? "Nice work."
-                    : "Keep learning."}
+                      2
+                      ? "Nice work."
+                      : "Keep learning."}
                 </h1>
 
                 <p>
@@ -665,14 +666,14 @@ function QuizCategoryPlay() {
   const progress =
     questions.length > 0
       ? ((questionIndex + 1) /
-          questions.length) *
-        100
+        questions.length) *
+      100
       : 0;
 
   const isCorrect =
     submitted &&
     selectedAnswer ===
-      currentQuestion.correctAnswer;
+    currentQuestion.correctAnswer;
 
   // =========================================================
   // MAIN QUIZ SCREEN
@@ -789,13 +790,13 @@ function QuizCategoryPlay() {
                     const isOptionCorrect =
                       submitted &&
                       option.value ===
-                        currentQuestion.correctAnswer;
+                      currentQuestion.correctAnswer;
 
                     const isWrong =
                       submitted &&
                       isSelected &&
                       option.value !==
-                        currentQuestion.correctAnswer;
+                      currentQuestion.correctAnswer;
 
                     return (
                       <button
@@ -868,11 +869,10 @@ function QuizCategoryPlay() {
                   delay={50}
                 >
                   <div
-                    className={`category-quiz-answer ${
-                      isCorrect
+                    className={`category-quiz-answer ${isCorrect
                         ? "correct"
                         : "wrong"
-                    }`}
+                      }`}
                   >
 
                     <div className="category-quiz-answer-heading">
@@ -928,7 +928,7 @@ function QuizCategoryPlay() {
 
                           {activeVideo.youtubeId &&
                             activeVideo.youtubeId !==
-                              "YOUR_YOUTUBE_ID" && (
+                            "YOUR_YOUTUBE_ID" && (
                               <a
                                 href={`https://www.youtube.com/watch?v=${activeVideo.youtubeId}`}
                                 target="_blank"

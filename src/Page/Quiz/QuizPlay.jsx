@@ -1,3 +1,4 @@
+import { articles } from "../../data/articles";
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
@@ -39,6 +40,14 @@ function QuizPlay() {
   // ---------------------------------------------
 
   const quiz = quizzes[numericVideoId];
+
+  const relatedArticle = articles.find(
+    (article) => article.relatedVideoId === numericVideoId
+  );
+
+  const articlePath = relatedArticle
+    ? `/blog/${relatedArticle.slug}`
+    : null;
 
   // ---------------------------------------------
   // QUESTIONS
@@ -338,7 +347,6 @@ function QuizPlay() {
           >
 
             <div className="quiz-result-actions">
-
               <button
                 type="button"
                 onClick={restartQuiz}
@@ -348,15 +356,23 @@ function QuizPlay() {
                 Try Again
               </button>
 
-
               <Link
                 to={`/videos/${quiz.videoId}`}
                 className="quiz-back-button"
               >
-                Back to Video
+                Watch Documentary
                 <ArrowRight size={16} />
               </Link>
 
+              {relatedArticle && (
+                <Link
+                  to={articlePath}
+                  className="quiz-back-button"
+                >
+                  Read Full Article
+                  <ArrowRight size={16} />
+                </Link>
+              )}
             </div>
 
           </ScrollReveal>
@@ -396,11 +412,11 @@ function QuizPlay() {
     <main className="quiz-play-page">
 
       <SEO
-        title={`${selectedVideo?.title || "Quiz"} Quiz — Faiz Alam`}
+        title={`${selectedVideo?.title || "Quiz"} | Quiz by Faiz Alam`}
         description={
           selectedVideo
-            ? `Test your knowledge about ${selectedVideo.title} with this interactive quiz by Faiz Alam.`
-            : "Test your knowledge with an interactive quiz by Faiz Alam."
+            ? `Test your knowledge about ${selectedVideo.title} with this interactive quiz by Faiz Alam. Watch the video, answer questions and explore the sources behind the story.`
+            : "Test your knowledge with interactive quizzes based on Faiz Alam's videos, documentaries and educational content."
         }
         path={`/quiz/video/${numericVideoId}`}
       />

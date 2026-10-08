@@ -704,3 +704,38 @@
     width: 100%;
   }
 }
+
+.read-article-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 14px 20px;
+
+  border: 1px solid rgba(214, 168, 108, 0.4);
+  border-radius: 100px;
+
+  color: #d6a86c;
+  background: transparent;
+
+  text-decoration: none;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.read-article-button:hover {
+  background: #d6a86c;
+  border-color: #d6a86c;
+  color: #111;
+  transform: translateY(-2px);
+}

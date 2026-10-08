@@ -8,31 +8,48 @@ import "./Projects.css";
 const projects = [
   {
     number: "01",
-    category: "WEB DEVELOPMENT",
-    title: "Digital Experiences",
+    category: "FULL-STACK DEVELOPMENT",
+    title: "BharatTouch",
     description:
-      "Modern responsive websites and landing pages built with React.",
+      "A full-stack web platform where I worked across the user panel, admin panel and database-driven functionality using ASP.NET MVC and MySQL.",
+    tech: ["ASP.NET MVC", "MySQL"],
+    link: "https://bharattouch.com/",
   },
   {
     number: "02",
-    category: "PERSONAL BRAND",
-    title: "Creator Portfolio",
+    category: "API DEVELOPMENT",
+    title: "BONC Network",
     description:
-      "Personal branding experiences designed to showcase people and their work.",
+      "Backend and API development for a web platform, built with ASP.NET Core and MySQL.",
+    tech: ["ASP.NET Core", "MySQL"],
+    link: "https://www.boncnetwork.com/",
   },
   {
     number: "03",
-    category: "PRODUCT",
-    title: "Business Solutions",
+    category: "FULL-STACK DEVELOPMENT",
+    title: "Eagle Eye Car Rental",
     description:
-      "Practical digital solutions focused on solving real business problems.",
+      "Worked on the admin panel and database-driven functionality, contributing to the full-stack implementation using ASP.NET and MySQL.",
+    tech: ["ASP.NET", "MySQL"],
+    link: "https://eaglecarrental.singhfarmfresh.in/",
   },
   {
     number: "04",
-    category: "EXPERIMENT",
-    title: "Creative Ideas",
+    category: "FULL-STACK DEVELOPMENT",
+    title: "PatrolX",
     description:
-      "Experimental projects exploring design, technology and storytelling.",
+      "A security management platform where I worked across the backend and full-stack implementation using ASP.NET MVC and MySQL.",
+    tech: ["ASP.NET MVC", "MySQL"],
+    link: "https://www.patrolx.app/",
+  },
+  {
+    number: "05",
+    category: "REACT / PERSONAL BRAND",
+    title: "Faiz Alam Portfolio",
+    description:
+      "A personal portfolio website built with React to showcase my software development work, creative projects and digital experiences.",
+    tech: ["React"],
+    link: "https://justfaizalam.vercel.app/",
   },
 ];
 
@@ -41,10 +58,11 @@ function Projects() {
     <div className="projects-page">
 
       <SEO
-        title="Projects — Faiz Alam"
-        description="Explore projects built by Faiz Alam, including web applications, React projects, software solutions and creative digital experiences."
+        title="Projects | Faiz Alam"
+        description="Explore projects by Faiz Alam, including React applications, .NET software solutions, web development projects, digital products and creative web experiences."
         path="/projects"
       />
+
       {/* HEADER */}
       <section className="projects-header">
         <div className="projects-container">
@@ -97,11 +115,25 @@ function Projects() {
                     {project.description}
                   </p>
 
+                  <div className="project-tech">
+                    {project.tech.map((tech) => (
+                      <span key={tech}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
                 </div>
 
-                <button type="button">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="project-item-link"
+                  aria-label={`Visit ${project.title}`}
+                >
                   <ArrowUpRight size={22} />
-                </button>
+                </a>
 
               </article>
             </ScrollReveal>

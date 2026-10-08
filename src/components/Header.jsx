@@ -35,6 +35,7 @@ function Header() {
     { label: "Quiz", path: "/quiz" },
     { label: "About", path: "/about" },
     { label: "Contact", path: "/contact" },
+    { label: "Blog", path: "/blog" },
     { label: "Social Media", path: "/links" },
   ];
 
@@ -165,19 +166,6 @@ function Header() {
               </NavLink>
             ))}
           </nav>
-
-
-          <Link
-            to="/links"
-            className="mobile-profile-link"
-            onClick={closeMenu}
-          >
-            <span>Personal Links</span>
-
-            <span className="mobile-profile-arrow">
-              <ArrowUpRight size={18} />
-            </span>
-          </Link>
 
         </div>
       </div>

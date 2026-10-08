@@ -1,41 +1,46 @@
+import { useMemo } from "react";
+
 import {
-  ArrowDown,
   ArrowRight,
   ArrowUpRight,
-  Layers3,
-  MonitorSmartphone,
   Play,
-  Sparkles,
+  ShieldCheck,
+  Mail,
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
-import { useMemo } from "react";
+
 import videos from "../../data/videos";
 import categories from "../../data/categories";
 import quizzes from "../../data/quizzes";
 
 import ScrollReveal from "../../components/ScrollReveal";
-
-import ImageReveal from "../../components/ImageReveal";
-import MagneticButton from "../../components/MagneticButton";
+import SEO from "../../components/SEO";
 
 import "./Home.css";
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
 
 const services = [
   {
     number: "01",
-    title: "Software Development",
+    title: "Software",
     description:
-      "Scalable web applications, APIs and digital systems built around real-world problems.",
+      "Web applications, APIs and digital systems built around real-world problems.",
     tags: ["React", ".NET", "APIs"],
   },
+
   {
     number: "02",
-    title: "Web Experiences",
+    title: "Websites",
     description:
-      "High-quality websites and landing pages designed to make businesses and ideas stand out.",
+      "Clean, responsive websites and landing pages designed to make ideas and businesses stand out.",
     tags: ["Web", "UI", "Responsive"],
   },
+
   {
     number: "03",
     title: "Digital Products",
@@ -43,81 +48,180 @@ const services = [
       "From an early idea to a working product — structure, interface and technology together.",
     tags: ["Product", "UX", "Systems"],
   },
+
   {
     number: "04",
-    title: "Creative Work",
+    title: "Creative Projects",
     description:
-      "Storytelling, content and visual experiments that live beyond traditional software development.",
-    tags: ["Content", "Video", "Creative"],
+      "Documentaries, storytelling and digital experiments beyond traditional software development.",
+    tags: ["Video", "Research", "Creative"],
   },
 ];
 
-const stack = [
-  "React",
-  ".NET",
-  "C#",
-  "JavaScript",
-  "Node",
-  "SQL",
-  "REST API",
-  "Git",
+
+/* =========================================================
+   SELECTED WORK
+========================================================= */
+
+const workItems = [
+  {
+    number: "01",
+    category: "FULL-STACK DEVELOPMENT",
+    title: "BharatTouch",
+    description:
+      "Full-stack web platform with user panel, admin panel and database-driven functionality.",
+    tech: ["ASP.NET MVC", "MySQL"],
+    image: "/Images/btlogo.svg",
+    link: "https://bharattouch.com/",
+  },
+  {
+    number: "02",
+    category: "API DEVELOPMENT",
+    title: "BONC Network",
+    description:
+      "API development and backend implementation using ASP.NET Core and MySQL.",
+    tech: ["ASP.NET Core", "MySQL"],
+    image: "/Images/bonclogo.svg",
+    link: "https://boncnetwork.com/",
+  },
+  {
+    number: "03",
+    category: "FULL-STACK DEVELOPMENT",
+    title: "PatrolX",
+    description:
+      "Full-stack security management platform with backend development using ASP.NET MVC and MySQL.",
+    tech: ["ASP.NET MVC", "MySQL"],
+    image: "/Images/patrolxlogo.png",
+    link: "https://patrolx.app/",
+  },
 ];
+
+
+/* =========================================================
+   HOW I WORK
+========================================================= */
+
+const howIWork = [
+  {
+    number: "01",
+    icon: "video",
+    title: "The videos",
+    description: (
+      <>
+        <p>
+          My expertise is creating informative and educational content
+          that gives objective, concise and simplified explanations of
+          complex issues.
+        </p>
+
+        <p>
+          I believe in speaking truth to power, and in promoting
+          democracy, freedom, rationalism and critical thinking through
+          my videos.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: "02",
+    icon: "content",
+    title: "Content and promotions",
+    description: (
+      <>
+        <p>
+          All my content is suitable for family viewing, free from
+          abusive language, adult jokes and extreme violence.
+        </p>
+
+        <p>
+          Nothing that harms human health, ecology or social wellbeing:
+          no alcohol, tobacco or gambling. And no paid promotions for
+          political parties, ever.
+        </p>
+      </>
+    ),
+  },
+  {
+    number: "03",
+    icon: "contact",
+    title: "Getting in touch",
+    description: (
+      <>
+        <p>
+          Keep messages precise and short. Emails with large attachments,
+          tracker links or inappropriate text are set for automated
+          deletion.
+        </p>
+
+        <p>
+          I cannot respond to every personal problem. Video topic
+          suggestions are always welcome and kept in mind.
+        </p>
+      </>
+    ),
+    email: "justfaizalam@gmail.com",
+  },
+];
+
+
+/* =========================================================
+   HOME
+========================================================= */
 
 function Home() {
   const featuredVideos = videos.slice(0, 3);
 
+
+  /* =======================================================
+     QUIZ CATEGORIES
+  ======================================================= */
+
   const quizCategories = useMemo(() => {
-  const quizList = Object.values(quizzes || {});
+    const quizList = Object.values(quizzes || {});
 
-  return categories
-    .filter((category) => category.id !== "all")
-    .map((category) => {
-      const categoryVideos = videos.filter((video) => {
-        const videoCategory = video.category
-          ?.toLowerCase()
-          .replace(/\s+/g, "-");
+    return categories
+      .filter((category) => category.id !== "all")
 
-        return videoCategory === category.id;
-      });
+      .map((category) => {
+        const categoryVideos = videos.filter((video) => {
+          const videoCategory = video.category
+            ?.toLowerCase()
+            .replace(/\s+/g, "-");
 
-      const categoryVideoIds = categoryVideos.map(
-        (video) => video.id
-      );
+          return videoCategory === category.id;
+        });
 
-      const categoryQuizzes = quizList.filter((quiz) =>
-        categoryVideoIds.includes(quiz.videoId)
-      );
+        const categoryVideoIds = categoryVideos.map(
+          (video) => video.id
+        );
 
-      return {
-        ...category,
-        quizCount: categoryQuizzes.length,
-      };
-    })
-    .filter((category) => category.quizCount > 0);
-}, []);
+        const categoryQuizzes = quizList.filter((quiz) =>
+          categoryVideoIds.includes(quiz.videoId)
+        );
 
-{quizCategories.slice(0, 6).map((category) => {
-  const Icon = category.icon;
+        return {
+          ...category,
+          quizCount: categoryQuizzes.length,
+        };
+      })
 
-  return (
-    <Link
-      to={`/quiz/${category.id}`}
-      className="home-quiz-category"
-      key={category.id}
-    >
-      <span className="home-quiz-category-icon">
-        <Icon size={17} />
-      </span>
+      .filter((category) => category.quizCount > 0);
+  }, []);
 
-      <span>{category.name}</span>
-
-      <ArrowRight size={15} />
-    </Link>
-  );
-})}
 
   return (
     <div className="home-page">
+
+      {/* =====================================================
+          SEO
+      ===================================================== */}
+
+      <SEO
+        title="Faiz Alam | Software Engineer, YouTuber & Documentary Creator"
+        description="Faiz Alam is a software engineer, YouTuber and documentary creator from India building digital products, websites and stories worth understanding."
+        path="/"
+      />
+
 
       {/* =====================================================
           HERO
@@ -125,132 +229,72 @@ function Home() {
 
       <section className="home-hero">
 
-        <div className="hero-grid" />
+        <div className="home-container hero-container">
 
-        <div className="hero-glow hero-glow-one" />
-        <div className="hero-glow hero-glow-two" />
+          <div className="hero-content">
 
-        <div className="hero-container">
-
-          <ScrollReveal direction="up">
-            <div className="hero-top-meta">
-              <span>
-                <i />
-                AVAILABLE FOR SELECT PROJECTS
+            <ScrollReveal direction="up">
+              <span className="hero-label">
+                FAIZ ALAM · SOFTWARE ENGINEER · YOUTUBER
               </span>
-
-              <span className="hero-location">
-                AMBALA · INDIA
-              </span>
-            </div>
-          </ScrollReveal>
-
-
-          <div className="hero-main">
-
-            {/* HERO COPY */}
-
-            <ScrollReveal direction="left">
-              <div className="hero-copy">
-
-                <div className="hero-kicker">
-                  SOFTWARE ENGINEER
-                  <span>·</span>
-                  CREATOR
-                  <span>·</span>
-                  BUILDER
-                </div>
-
-                <h1 className="hero-title">
-                  <span className="hero-title-line">
-                    I build
-                  </span>
-
-                  <span className="hero-title-line hero-serif">
-                    digital
-                  </span>
-
-                  <span className="hero-title-line">
-                    experiences
-                    <em>.</em>
-                  </span>
-                </h1>
-
-                <p className="hero-description">
-                  I combine technology, creativity and
-                  problem-solving to turn ideas into
-                  meaningful digital experiences.
-                </p>
-
-                <div className="hero-actions">
-
-                  <MagneticButton>
-                    <Link
-                      to="/projects"
-                      className="hero-primary-button"
-                    >
-                      View my work
-                      <ArrowUpRight size={15} />
-                    </Link>
-                  </MagneticButton>
-
-                  <Link
-                    to="/about"
-                    className="hero-text-button"
-                  >
-                    More about me
-                    <span />
-                  </Link>
-
-                </div>
-
-              </div>
             </ScrollReveal>
 
 
-            {/* HERO VISUAL */}
-
-            <ScrollReveal direction="right" delay={150}>
-              <div className="hero-visual">
-
-                <div className="hero-visual-orbit orbit-one" />
-                <div className="hero-visual-orbit orbit-two" />
-
-                <div className="hero-image-frame">
-
-                  <div className="hero-image-top">
-                    <span>FA / 01</span>
-                    <span>PORTRAIT</span>
-                  </div>
-
-                  <div className="hero-image-wrap">
-
-                    <ImageReveal
-                      src="/Images/dp.png"
-                      alt="Faiz Alam"
-                    />
-
-                    <div className="hero-image-overlay" />
-
-                  </div>
-
-                  <div className="hero-image-bottom">
-                    <span>FAIZ ALAM</span>
-                    <span>2026</span>
-                  </div>
-
-                </div>
+            <ScrollReveal
+              direction="up"
+              delay={100}
+            >
+              <h1 className="hero-title">
+                I build things.
+                <br />
+                <em>I tell stories.</em>
+              </h1>
+            </ScrollReveal>
 
 
-                <div className="hero-floating-card hero-card-one">
-                  <span>01</span>
-                  <strong>BUILD</strong>
-                </div>
+            <ScrollReveal
+              direction="up"
+              delay={180}
+            >
+              <p className="hero-description">
+                Software engineer, YouTuber and documentary
+                creator exploring technology, people and
+                stories worth understanding.
+              </p>
+            </ScrollReveal>
 
-                <div className="hero-floating-card hero-card-two">
-                  <span>BASED IN</span>
-                  <strong>INDIA</strong>
-                </div>
+
+            <ScrollReveal
+              direction="up"
+              delay={240}
+            >
+              <div className="hero-actions">
+
+                <Link
+                  to="/videos"
+                  className="button button-primary"
+                >
+                  Watch documentaries
+                  <ArrowUpRight size={16} />
+                </Link>
+
+
+                <Link
+                  to="/quiz"
+                  className="button button-secondary"
+                >
+                  Take a quiz
+                  <ArrowUpRight size={16} />
+                </Link>
+
+
+                <Link
+                  to="/projects"
+                  className="button button-secondary"
+                >
+                  My work
+                  <ArrowUpRight size={16} />
+                </Link>
 
               </div>
             </ScrollReveal>
@@ -258,66 +302,32 @@ function Home() {
           </div>
 
 
-          <ScrollReveal direction="up" delay={200}>
-            <div className="hero-bottom">
+          <ScrollReveal
+            direction="right"
+            delay={120}
+          >
+            <div className="hero-image">
 
-              <span className="hero-scroll">
-
-                <span className="scroll-circle">
-                  <ArrowDown size={14} />
-                </span>
-
-                SCROLL TO EXPLORE
-
-              </span>
-
-              <span className="hero-bottom-note">
-                DIGITAL · CREATIVE · HUMAN
-              </span>
+              <img
+                src="/Images/dp.png"
+                alt="Faiz Alam"
+              />
 
             </div>
           </ScrollReveal>
 
         </div>
-      </section>
 
 
-      {/* =====================================================
-          MARQUEE
-      ===================================================== */}
+        <div className="hero-footer">
 
-      <section className="home-marquee">
+          <span>
+            AMBALA · INDIA
+          </span>
 
-        <div className="marquee-track">
-
-          {[...Array(2)].map((_, index) => (
-
-            <div
-              className="marquee-content"
-              key={index}
-            >
-
-              <span>REACT</span>
-              <i>✦</i>
-
-              <span>.NET</span>
-              <i>✦</i>
-
-              <span>WEB DEVELOPMENT</span>
-              <i>✦</i>
-
-              <span>DIGITAL PRODUCTS</span>
-              <i>✦</i>
-
-              <span>CREATIVE</span>
-              <i>✦</i>
-
-              <span>STORYTELLING</span>
-              <i>✦</i>
-
-            </div>
-
-          ))}
+          <span>
+            SOFTWARE · DOCUMENTARIES · CREATIVE WORK
+          </span>
 
         </div>
 
@@ -325,62 +335,114 @@ function Home() {
 
 
       {/* =====================================================
-          INTRODUCTION
+          WHO I AM
       ===================================================== */}
 
-      <section className="home-introduction">
+      <section className="home-section who-section">
 
-        <div className="page-container">
+        <div className="home-container">
 
           <ScrollReveal direction="up">
 
-            <div className="section-index">
+            <div className="section-label">
 
-              <span>01</span>
-              <div />
-              <span>WHO I AM</span>
+              <span>
+                01
+              </span>
+
+              <span>
+                WHO I AM
+              </span>
 
             </div>
 
           </ScrollReveal>
 
 
-          <div className="intro-layout">
+          <div className="who-grid">
+
+
+            {/* =================================================
+                IMAGE GALLERY
+            ================================================= */}
 
             <ScrollReveal direction="left">
 
-              <h2>
-                I don't just write
-                <span> code.</span>
-                <br />
-                I turn ideas into
-                <em> digital reality.</em>
-              </h2>
+              <div className="who-gallery">
+
+                <div className="who-gallery-main">
+
+                  <img
+                    src="/Images/1.png"
+                    alt="Faiz Alam"
+                  />
+
+                </div>
+
+
+                <div className="who-gallery-side">
+
+                  <div className="who-gallery-small">
+
+                    <img
+                      src="/Images/5.png"
+                      alt="Faiz Alam"
+                    />
+
+                  </div>
+
+
+                  <div className="who-gallery-small">
+
+                    <img
+                      src="/Images/4.png"
+                      alt="Faiz Alam"
+                    />
+
+                  </div>
+
+                </div>
+
+              </div>
 
             </ScrollReveal>
 
 
-            <ScrollReveal direction="right" delay={150}>
+            {/* =================================================
+                WHO CONTENT
+            ================================================= */}
 
-              <div className="intro-side">
+            <ScrollReveal
+              direction="right"
+              delay={120}
+            >
 
-                <p>
-                  I'm Faiz Alam — a software engineer,
-                  creator and builder interested in the
-                  intersection of technology, design and
-                  storytelling.
+              <div className="who-content">
+
+                <h2>
+                  I'm Faiz Alam.
+                </h2>
+
+
+                <p className="who-lead">
+                  Software engineer by profession,
+                  YouTuber and documentary creator by
+                  passion.
                 </p>
 
+
                 <p>
-                  My focus is simple: create work that
-                  is useful, thoughtful and memorable.
+                  I build digital products, websites and
+                  software — and I create stories that make
+                  complex subjects easier to understand.
                 </p>
+
 
                 <Link
                   to="/about"
-                  className="editorial-link"
+                  className="text-link"
                 >
-                  Discover my story
+                  More about me
                   <ArrowUpRight size={16} />
                 </Link>
 
@@ -396,127 +458,58 @@ function Home() {
 
 
       {/* =====================================================
-          SERVICES
+          LATEST DOCUMENTARIES
       ===================================================== */}
 
-      <section className="home-services">
+      <section className="home-section documentaries-section">
 
-        <div className="page-container">
+        <div className="home-container">
+
+
+          {/* =================================================
+              HEADING
+          ================================================= */}
 
           <ScrollReveal direction="up">
 
-            <div className="section-heading">
+            <div className="videos-heading">
 
               <div>
 
-                <span className="section-eyebrow">
-                  02 / WHAT I DO
-                </span>
+                <div className="section-label">
 
-                <h2>
-                  Ideas need
-                  <em> execution.</em>
-                </h2>
-
-              </div>
-
-              <p>
-                Different problems require
-                different ways of thinking.
-              </p>
-
-            </div>
-
-          </ScrollReveal>
-
-
-          <div className="services-list">
-
-            {services.map((service, index) => (
-
-              <ScrollReveal
-                key={service.number}
-                direction="up"
-                delay={index * 100}
-              >
-
-                <article className="service-row">
-
-                  <span className="service-number">
-                    {service.number}
+                  <span>
+                    02
                   </span>
 
-                  <div className="service-main">
+                  <span>
+                    LATEST DOCUMENTARIES
+                  </span>
 
-                    <h3>
-                      {service.title}
-                    </h3>
-
-                    <p>
-                      {service.description}
-                    </p>
-
-                    <div className="service-tags">
-
-                      {service.tags.map((tag) => (
-
-                        <span key={tag}>
-                          {tag}
-                        </span>
-
-                      ))}
-
-                    </div>
-
-                  </div>
-
-                  <div className="service-icon">
-                    <ArrowUpRight size={22} />
-                  </div>
-
-                </article>
-
-              </ScrollReveal>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
+                </div>
 
 
-      {/* =====================================================
-          SELECTED WORK
-      ===================================================== */}
-
-      <section className="home-work">
-
-        <div className="page-container">
-
-          <ScrollReveal direction="up">
-
-            <div className="section-heading work-heading">
-
-              <div>
-
-                <span className="section-eyebrow">
-                  03 / SELECTED WORK
-                </span>
-
-                <h2>
-                  Things I've
-                  <em> built.</em>
+                <h2 className="videos-title">
+                  Latest documentaries,
+                  <br />
+                  <em>with their sources.</em>
                 </h2>
+
+
+                <p className="videos-description">
+                  Numbered in order, newest first.
+                  Watch the story, test what you remember,
+                  and explore the research behind it.
+                </p>
 
               </div>
 
+
               <Link
-                to="/projects"
-                className="editorial-link"
+                to="/videos"
+                className="text-link"
               >
-                View all projects
+                View all documentaries
                 <ArrowUpRight size={16} />
               </Link>
 
@@ -525,303 +518,143 @@ function Home() {
           </ScrollReveal>
 
 
-          <div className="work-grid">
-
-            <ScrollReveal direction="left">
-
-              <Link
-                to="/projects"
-                className="work-card work-card-large"
-              >
-
-                <div className="work-card-visual visual-one">
-
-                  <div className="mock-browser">
-
-                    <div className="browser-top">
-                      <span />
-                      <span />
-                      <span />
-                    </div>
-
-                    <div className="browser-content">
-                      <div />
-                      <div />
-                      <div />
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div className="work-card-info">
-
-                  <div>
-
-                    <span>
-                      01 · WEB EXPERIENCE
-                    </span>
-
-                    <h3>
-                      Digital
-                      <br />
-                      Experiences
-                    </h3>
-
-                  </div>
-
-                  <ArrowUpRight size={21} />
-
-                </div>
-
-              </Link>
-
-            </ScrollReveal>
-
-
-            <ScrollReveal
-              direction="right"
-              delay={100}
-            >
-
-              <Link
-                to="/projects"
-                className="work-card work-card-small"
-              >
-
-                <div className="work-card-visual visual-two">
-
-                  <div className="visual-type">
-                    <span>FA</span>
-                    <strong>CREATIVE</strong>
-                  </div>
-
-                </div>
-
-                <div className="work-card-info">
-
-                  <div>
-
-                    <span>
-                      02 · PERSONAL BRAND
-                    </span>
-
-                    <h3>
-                      Identity
-                    </h3>
-
-                  </div>
-
-                  <ArrowUpRight size={21} />
-
-                </div>
-
-              </Link>
-
-            </ScrollReveal>
-
-
-            <ScrollReveal
-              direction="right"
-              delay={200}
-            >
-
-              <Link
-                to="/projects"
-                className="work-card work-card-small"
-              >
-
-                <div className="work-card-visual visual-three">
-
-                  <div className="code-lines">
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-
-                </div>
-
-                <div className="work-card-info">
-
-                  <div>
-
-                    <span>
-                      03 · DEVELOPMENT
-                    </span>
-
-                    <h3>
-                      Products
-                    </h3>
-
-                  </div>
-
-                  <ArrowUpRight size={21} />
-
-                </div>
-
-              </Link>
-
-            </ScrollReveal>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          VIDEOS
-      ===================================================== */}
-
-      <section className="home-videos">
-
-        <div className="page-container">
-
-          <ScrollReveal direction="up">
-
-            <div className="home-videos-header">
-
-              <div className="home-videos-heading">
-
-                <span className="section-eyebrow">
-                  04 / FROM THE CHANNEL
-                </span>
-
-                <h2>
-                  Stories,
-                  <em> ideas</em>
-                  <br />
-                  and investigations.
-                </h2>
-
-              </div>
-
-              <div className="home-videos-intro">
-
-                <p>
-                  Explore videos covering technology,
-                  real stories, investigations and ideas
-                  that deserve a deeper look.
-                </p>
-
-                <p>
-                  Watch the video, test what you remember,
-                  and explore the sources behind the story.
-                </p>
-
-              </div>
-
-            </div>
-
-          </ScrollReveal>
-
-
-          <div className="home-video-grid">
+          {/* =================================================
+              VIDEO CARDS
+          ================================================= */}
+
+          <div className="documentary-grid">
 
             {featuredVideos.map((video, index) => (
 
               <ScrollReveal
                 key={video.id}
                 direction="up"
-                delay={index * 120}
+                delay={index * 100}
               >
 
-                <article className="home-video-card">
+                <article className="documentary-card">
+
+
+                  {/* =========================================
+                      THUMBNAIL
+                  ========================================= */}
 
                   <Link
                     to={`/videos/${video.id}`}
-                    className="home-video-image-link"
+                    className="documentary-image"
                   >
 
-                    <div className="home-video-image">
+                    <img
+                      src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
+                      alt={video.title}
+                    />
 
-                      <img
-                        src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
-                        alt={video.title}
+
+                    <div className="documentary-overlay" />
+
+
+                    <span className="documentary-number">
+                      #{String(video.id).padStart(3, "0")}
+                    </span>
+
+
+                    <span className="documentary-play">
+
+                      <Play
+                        size={17}
+                        fill="currentColor"
                       />
 
-                      <div className="home-video-overlay" />
+                    </span>
 
-                      <span className="home-video-number">
-                        VIDEO #{String(video.id).padStart(3, "0")}
-                      </span>
 
-                      <span className="home-video-play">
-
-                        <Play
-                          size={18}
-                          fill="currentColor"
-                        />
-
-                      </span>
-
-                      <span className="home-video-duration">
+                    {video.duration && (
+                      <span className="documentary-duration">
                         {video.duration}
                       </span>
-
-                    </div>
+                    )}
 
                   </Link>
 
 
-                  <div className="home-video-info">
+                  {/* =========================================
+                      VIDEO INFORMATION
+                  ========================================= */}
 
-                    <div className="home-video-meta">
+                  <div className="documentary-info">
+
+
+                    <div className="documentary-meta">
 
                       <span>
                         {video.category}
                       </span>
 
-                      <span>
-                        {video.duration}
-                      </span>
+
+                      {video.duration && (
+                        <span>
+                          {video.duration}
+                        </span>
+                      )}
 
                     </div>
+
 
                     <h3>
                       {video.title}
                     </h3>
 
-                    <p>
-                      {video.subtitle}
-                    </p>
+
+                    {video.subtitle && (
+                      <p>
+                        {video.subtitle}
+                      </p>
+                    )}
 
 
-                    <div className="home-video-actions">
+                    {/* =====================================
+                        THREE BUTTONS
+                    ===================================== */}
+
+                    <div className="documentary-actions">
+
+
+                      {/* QUIZ & SOURCES */}
 
                       <Link
                         to={`/videos/${video.id}`}
-                        className="home-video-action quiz"
+                        className="video-action quiz-action"
                       >
-                        Quiz & Sources
-                        <ArrowUpRight size={14} />
+                        Quiz &amp; Sources
+                        <ArrowUpRight size={13} />
                       </Link>
 
+
+                      {/* WATCH */}
 
                       <a
                         href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
                         target="_blank"
                         rel="noreferrer"
-                        className="home-video-action watch"
+                        className="video-action watch-action"
                       >
                         Watch
 
                         <Play
-                          size={12}
+                          size={11}
                           fill="currentColor"
                         />
 
                       </a>
 
 
+                      {/* SOURCE PDF */}
+
                       <a
                         href={`/Resources/${video.id}.pdf`}
                         target="_blank"
                         rel="noreferrer"
-                        className="home-video-action source"
+                        className="video-action source-action"
                       >
                         Source PDF
                         <ArrowUpRight size={13} />
@@ -840,24 +673,38 @@ function Home() {
           </div>
 
 
-          <ScrollReveal direction="up" delay={200}>
+          {/* =================================================
+              VIDEO FOOTER / TAGLINE
+          ================================================= */}
 
-            <div className="home-videos-footer">
+          <ScrollReveal
+            direction="up"
+            delay={150}
+          >
 
-              <div className="home-videos-footer-line" />
+            <div className="videos-note">
 
-              <Link
-                to="/videos"
-                className="home-videos-all-button"
-              >
+              <div className="videos-note-icon">
+                i
+              </div>
 
-                <span>
-                  Explore all videos
-                </span>
 
-                <ArrowUpRight size={17} />
+              <p>
 
-              </Link>
+                <strong>
+                  Everything is checkable.
+                </strong>{" "}
+
+                Explore the full video archive,
+                research documents and quizzes on the{" "}
+
+                <Link to="/videos">
+                  Videos page
+                </Link>
+
+                {" "}and test yourself after watching.
+
+              </p>
 
             </div>
 
@@ -872,61 +719,100 @@ function Home() {
           QUIZ
       ===================================================== */}
 
-      <section className="home-quiz">
+      <section className="home-section quiz-section">
 
-        <div className="page-container">
+        <div className="home-container">
 
-          <div className="quiz-home-grid">
 
-            <ScrollReveal direction="left">
+          <ScrollReveal direction="up">
 
-              <div className="quiz-home-copy">
+            <div className="quiz-header">
 
-                <span className="section-eyebrow">
-                  05 / TEST YOUR KNOWLEDGE
-                </span>
+              <div>
 
-                <h2>
-                  Don't just
-                  <br />
-                  <em>watch.</em>
-                  <br />
-                  Remember.
-                </h2>
+                <div className="section-label">
 
-                <p>
-                  Every quiz is connected to the videos.
-                  Test what you actually remember and
-                  go back to the original story and sources.
-                </p>
+                  <span>
+                    03
+                  </span>
 
-                <div className="quiz-home-actions">
-
-                  <Link
-                    to="/quiz"
-                    className="quiz-primary-button"
-                  >
-                    Explore quizzes
-                    <ArrowUpRight size={17} />
-                  </Link>
-
-                  <span className="quiz-home-note">
-                    VIDEO BASED · TOPIC BASED · INTERACTIVE
+                  <span>
+                    QUIZ
                   </span>
 
                 </div>
+
+
+                <h2 className="section-title">
+
+                  Watched the story?
+
+                  <br />
+
+                  <em>
+                    Test what you remember.
+                  </em>
+
+                </h2>
+
+              </div>
+
+
+              <Link
+                to="/quiz"
+                className="text-link"
+              >
+                Explore quizzes
+                <ArrowUpRight size={16} />
+              </Link>
+
+            </div>
+
+          </ScrollReveal>
+
+
+          <div className="quiz-layout">
+
+
+            {/* =================================================
+                QUIZ INTRO
+            ================================================= */}
+
+            <ScrollReveal direction="left">
+
+              <div className="quiz-intro">
+
+                <p>
+                  Every quiz connects back to the
+                  documentary. Watch the story, test your
+                  understanding and explore the topic again.
+                </p>
+
+
+                <Link
+                  to="/quiz"
+                  className="button button-primary"
+                >
+                  Explore quiz library
+                  <ArrowUpRight size={16} />
+                </Link>
 
               </div>
 
             </ScrollReveal>
 
 
+            {/* =================================================
+                QUIZ CATEGORIES
+            ================================================= */}
+
             <ScrollReveal
               direction="right"
-              delay={150}
+              delay={120}
             >
 
-              <div className="quiz-home-panel">
+              <div className="quiz-panel">
+
 
                 <div className="quiz-panel-top">
 
@@ -934,28 +820,17 @@ function Home() {
                     QUIZ LIBRARY
                   </span>
 
-                  <Sparkles size={19} />
-
-                </div>
-
-
-                <div className="quiz-panel-title">
-
-                  <strong>
-                    Choose a topic.
-                  </strong>
-
                   <span>
-                    Start exploring.
+                    {quizCategories.length} TOPICS
                   </span>
 
                 </div>
 
 
-                <div className="quiz-category-grid">
+                <div className="quiz-category-list">
 
                   {quizCategories
-                    .slice(0, 6)
+                    .slice(0, 5)
                     .map((category) => {
 
                       const Icon = category.icon;
@@ -964,17 +839,23 @@ function Home() {
 
                         <Link
                           to={`/quiz/${category.id}`}
-                          className="home-quiz-category"
+                          className="quiz-category"
                           key={category.id}
                         >
 
-                          <span className="home-quiz-category-icon">
-                            <Icon size={17} />
+                          <span className="quiz-category-icon">
+
+                            {Icon && (
+                              <Icon size={16} />
+                            )}
+
                           </span>
+
 
                           <span>
                             {category.name}
                           </span>
+
 
                           <ArrowRight size={15} />
 
@@ -989,7 +870,7 @@ function Home() {
 
                 <Link
                   to="/quiz"
-                  className="quiz-panel-all"
+                  className="quiz-panel-link"
                 >
                   View all topics
                   <ArrowUpRight size={15} />
@@ -1005,170 +886,128 @@ function Home() {
 
       </section>
 
-
       {/* =====================================================
-          KNOWLEDGE LOOP
+          SELECTED WORK
       ===================================================== */}
 
-      <section className="home-knowledge">
+      <section className="home-section work-section">
 
-        <div className="page-container">
+        <div className="home-container">
+
 
           <ScrollReveal direction="up">
 
-            <div className="knowledge-header">
+            <div className="section-heading">
 
               <div>
 
-                <span className="section-eyebrow">
-                  06 / THE KNOWLEDGE LOOP
-                </span>
+                <div className="section-label">
 
-                <h2>
-                  Watch.
-                  <em> Question.</em>
+                  <span>
+                    05
+                  </span>
+
+                  <span>
+                    SELECTED WORK
+                  </span>
+
+                </div>
+
+
+                <h2 className="section-title">
+
+                  Things I've
+
                   <br />
-                  Verify.
+
+                  <em>
+                    built.
+                  </em>
+
                 </h2>
 
               </div>
 
-              <p>
-                A different way to experience documentary
-                content — from watching the story to
-                exploring the evidence behind it.
-              </p>
+
+              <Link
+                to="/projects"
+                className="text-link"
+              >
+                View all projects
+                <ArrowUpRight size={16} />
+              </Link>
 
             </div>
 
           </ScrollReveal>
 
 
-          <div className="knowledge-flow">
+          <div className="work-grid">
 
-            <ScrollReveal direction="up">
+            {workItems.map((work, index) => (
+              <ScrollReveal
+                key={work.number}
+                direction="up"
+                delay={index * 100}
+              >
 
-              <div className="knowledge-step">
+                <a
+                  href={work.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="work-card"
+                >
 
-                <span>01</span>
+                  <div className="work-visual">
 
-                <div className="knowledge-step-icon">
+                    <img
+                      src={work.image}
+                      alt={`${work.title} project preview`}
+                      loading="lazy"
+                    />
 
-                  <Play
-                    size={20}
-                    fill="currentColor"
-                  />
+                    <div className="work-image-overlay" />
 
-                </div>
+                    <span className="work-image-label">
+                      VIEW PROJECT ↗
+                    </span>
 
-                <h3>
-                  Watch
-                </h3>
+                  </div>
 
-                <p>
-                  Start with the story and understand
-                  the bigger picture.
-                </p>
+                  <div className="work-card-bottom">
 
-              </div>
+                    <div>
 
-            </ScrollReveal>
+                      <span>
+                        {work.number} · {work.category}
+                      </span>
 
+                      <h3>
+                        {work.title}
+                      </h3>
 
-            <div className="knowledge-connector">
-              <ArrowRight size={18} />
-            </div>
+                      <p className="work-card-description">
+                        {work.description}
+                      </p>
 
+                      <div className="work-card-tech">
+                        {work.tech.map((tech) => (
+                          <span key={tech}>
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
 
-            <ScrollReveal
-              direction="up"
-              delay={100}
-            >
+                    </div>
 
-              <div className="knowledge-step">
+                    <ArrowUpRight size={19} />
 
-                <span>02</span>
+                  </div>
 
-                <div className="knowledge-step-icon">
-                  <Sparkles size={20} />
-                </div>
+                </a>
 
-                <h3>
-                  Question
-                </h3>
-
-                <p>
-                  Test what you actually remember
-                  from the video.
-                </p>
-
-              </div>
-
-            </ScrollReveal>
-
-
-            <div className="knowledge-connector">
-              <ArrowRight size={18} />
-            </div>
-
-
-            <ScrollReveal
-              direction="up"
-              delay={200}
-            >
-
-              <div className="knowledge-step">
-
-                <span>03</span>
-
-                <div className="knowledge-step-icon">
-                  <Layers3 size={20} />
-                </div>
-
-                <h3>
-                  Verify
-                </h3>
-
-                <p>
-                  Go deeper into the sources and
-                  evidence behind the story.
-                </p>
-
-              </div>
-
-            </ScrollReveal>
-
-
-            <div className="knowledge-connector">
-              <ArrowRight size={18} />
-            </div>
-
-
-            <ScrollReveal
-              direction="up"
-              delay={300}
-            >
-
-              <div className="knowledge-step">
-
-                <span>04</span>
-
-                <div className="knowledge-step-icon">
-                  <MonitorSmartphone size={20} />
-                </div>
-
-                <h3>
-                  Explore
-                </h3>
-
-                <p>
-                  Discover another story and continue
-                  the journey.
-                </p>
-
-              </div>
-
-            </ScrollReveal>
+              </ScrollReveal>
+            ))}
 
           </div>
 
@@ -1178,62 +1017,262 @@ function Home() {
 
 
       {/* =====================================================
-          STACK
+          NOW
       ===================================================== */}
 
-      <section className="home-stack">
+      <section className="home-section now-section">
 
-        <div className="page-container">
+        <div className="home-container">
 
-          <ScrollReveal direction="left">
 
-            <div className="stack-top">
+          <ScrollReveal direction="up">
 
-              <div className="section-index">
+            <div className="section-label">
 
-                <span>07</span>
-                <div />
+              <span>
+                06
+              </span>
 
-                <span>
-                  THE STACK
-                </span>
-
-              </div>
-
-              <p>
-                Technology is a tool.
-                Knowing when and how to use it
-                is the real skill.
-              </p>
+              <span>
+                NOW
+              </span>
 
             </div>
 
           </ScrollReveal>
 
 
-          <div className="stack-list">
+          <div className="now-layout">
 
-            {stack.map((item, index) => (
 
-              <ScrollReveal
-                key={item}
-                direction="right"
-                delay={index * 70}
-              >
+            <ScrollReveal direction="left">
 
-                <div className="stack-item">
+              <div className="now-intro">
+
+                <h2>
+
+                  What I'm working
+
+                  <br />
+
+                  on <em>right now.</em>
+
+                </h2>
+
+
+                <p>
+                  A quick look at what currently
+                  has my attention.
+                </p>
+
+              </div>
+
+            </ScrollReveal>
+
+
+            <div className="now-list">
+
+
+              <ScrollReveal direction="right">
+
+                <div className="now-item">
 
                   <span>
-                    {String(index + 1).padStart(2, "0")}
+                    01
                   </span>
 
-                  <strong>
-                    {item}
-                  </strong>
 
-                  <ArrowUpRight size={18} />
+                  <div>
+
+                    <small>
+                      DOCUMENTARIES
+                    </small>
+
+                    <h3>
+                      Researching new stories
+                    </h3>
+
+                    <p>
+                      Working on investigative and
+                      documentary content.
+                    </p>
+
+                  </div>
 
                 </div>
+
+              </ScrollReveal>
+
+
+              <ScrollReveal
+                direction="right"
+                delay={100}
+              >
+
+                <div className="now-item">
+
+                  <span>
+                    02
+                  </span>
+
+
+                  <div>
+
+                    <small>
+                      DEVELOPMENT
+                    </small>
+
+                    <h3>
+                      Building digital products
+                    </h3>
+
+                    <p>
+                      Developing web applications
+                      and practical digital experiences.
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </ScrollReveal>
+
+
+              <ScrollReveal
+                direction="right"
+                delay={200}
+              >
+
+                <div className="now-item">
+
+                  <span>
+                    03
+                  </span>
+
+
+                  <div>
+
+                    <small>
+                      WRITING
+                    </small>
+
+                    <h3>
+                      Connecting stories and research
+                    </h3>
+
+                    <p>
+                      Publishing articles connected
+                      to documentaries and ideas.
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </ScrollReveal>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          HOW I WORK
+      ===================================================== */}
+
+      <section className="home-section how-section">
+
+        <div className="home-container">
+
+
+          <ScrollReveal direction="up">
+
+            <div className="section-heading">
+
+              <div>
+
+                <div className="section-label">
+
+                  <span>
+                    07
+                  </span>
+
+                  <span>
+                    HOW I WORK
+                  </span>
+
+                </div>
+
+
+                <h2 className="section-title">
+
+                  Simple process.
+
+                  <br />
+
+                  <em>
+                    Thoughtful work.
+                  </em>
+
+                </h2>
+
+              </div>
+
+            </div>
+
+          </ScrollReveal>
+
+
+          <div className="how-grid">
+
+            {howIWork.map((item, index) => (
+
+              <ScrollReveal
+                key={item.number}
+                direction="up"
+                delay={index * 100}
+              >
+
+                <article className="how-card">
+
+                  <div className="how-card-icon">
+
+                    {item.icon === "video" && (
+                      <Play size={20} strokeWidth={1.6} />
+                    )}
+
+                    {item.icon === "content" && (
+                      <ShieldCheck size={20} strokeWidth={1.6} />
+                    )}
+
+                    {item.icon === "contact" && (
+                      <Mail size={20} strokeWidth={1.6} />
+                    )}
+
+                  </div>
+
+                  <h3>
+                    {item.title}
+                  </h3>
+
+                  <div className="how-card-description">
+                    {item.description}
+                  </div>
+
+                  {item.email && (
+                    <a
+                      href={`mailto:${item.email}`}
+                      className="how-email"
+                    >
+                      {item.email}
+                    </a>
+                  )}
+
+                </article>
 
               </ScrollReveal>
 
@@ -1247,289 +1286,61 @@ function Home() {
 
 
       {/* =====================================================
-          BEYOND CODE
+          WORK WITH ME
       ===================================================== */}
 
-      <section className="home-beyond">
+      <section className="home-section work-with-section">
 
-        <div className="page-container">
+        <div className="home-container">
 
-          <div className="beyond-grid">
+          <ScrollReveal direction="up">
 
-            <ScrollReveal direction="left">
-
-              <div className="beyond-copy">
-
-                <span className="section-eyebrow">
-                  08 / BEYOND CODE
-                </span>
-
-                <h2>
-                  A developer
-                  <br />
-                  <em>by profession.</em>
-                  <br />
-                  A creator
-                  <br />
-                  by curiosity.
-                </h2>
-
-                <p>
-                  Technology is only one part of what
-                  I do. I'm equally interested in
-                  storytelling, content, visual ideas
-                  and building something of my own.
-                </p>
-
-                <a
-                  href="https://www.youtube.com/@JustFaizAlam"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="editorial-link"
-                >
-                  Visit YouTube
-                  <ArrowUpRight size={16} />
-                </a>
-
-              </div>
-
-            </ScrollReveal>
+            <div className="work-with-box">
 
 
-            <ScrollReveal
-              direction="right"
-              delay={150}
-            >
+              <div className="work-with-heading">
 
-              <div className="beyond-visual">
-
-                <div className="beyond-image">
-
-                  <ImageReveal
-                    src="/Images/dp.png"
-                    alt="Faiz Alam"
-                  />
-
-                  <div className="beyond-image-text">
-
-                    <span>
-                      CREATIVE / 08
-                    </span>
-
-                    <strong>
-                      BEYOND
-                      <br />
-                      CODE.
-                    </strong>
-
-                  </div>
-
-                </div>
-
-
-                <div className="play-badge">
-
-                  <Play
-                    size={15}
-                    fill="currentColor"
-                  />
+                <span className="section-label">
 
                   <span>
-                    WATCH
+                    08
                   </span>
 
-                </div>
+                  <span>
+                    WORK WITH ME
+                  </span>
 
-              </div>
-
-            </ScrollReveal>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          JOURNEY
-      ===================================================== */}
-
-      <section className="home-journey">
-
-        <div className="page-container">
-
-          <ScrollReveal direction="up">
-
-            <div className="section-heading">
-
-              <div>
-
-                <span className="section-eyebrow">
-                  09 / THE JOURNEY
                 </span>
 
+
                 <h2>
-                  Always
-                  <em> evolving.</em>
+
+                  Join the team,
+
+                  <br />
+
+                  or <em>
+                    partner with a brand.
+                  </em>
+
                 </h2>
 
               </div>
 
-            </div>
-
-          </ScrollReveal>
-
-
-          <div className="journey-line">
-
-            <ScrollReveal direction="up">
-
-              <div className="journey-item">
-
-                <span>
-                  NOW
-                </span>
-
-                <div className="journey-dot" />
-
-                <div>
-
-                  <h3>
-                    Building & Creating
-                  </h3>
-
-                  <p>
-                    Exploring software, digital products,
-                    content and new ideas.
-                  </p>
-
-                </div>
-
-              </div>
-
-            </ScrollReveal>
-
-
-            <ScrollReveal
-              direction="up"
-              delay={150}
-            >
-
-              <div className="journey-item">
-
-                <span>
-                  NEXT
-                </span>
-
-                <div className="journey-dot" />
-
-                <div>
-
-                  <h3>
-                    Bigger Ideas
-                  </h3>
-
-                  <p>
-                    Turning experiments into products
-                    and meaningful businesses.
-                  </p>
-
-                </div>
-
-              </div>
-
-            </ScrollReveal>
-
-
-            <ScrollReveal
-              direction="up"
-              delay={300}
-            >
-
-              <div className="journey-item">
-
-                <span>
-                  BEYOND
-                </span>
-
-                <div className="journey-dot" />
-
-                <div>
-
-                  <h3>
-                    Keep Exploring
-                  </h3>
-
-                  <p>
-                    Technology changes.
-                    Curiosity stays.
-                  </p>
-
-                </div>
-
-              </div>
-
-            </ScrollReveal>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          CTA
-      ===================================================== */}
-
-      <section className="home-cta">
-
-        <div className="cta-grid" />
-
-        <div className="page-container">
-
-          <ScrollReveal direction="up">
-
-            <span className="section-eyebrow">
-              10 / LET'S BUILD
-            </span>
-
-          </ScrollReveal>
-
-
-          <ScrollReveal
-            direction="up"
-            delay={100}
-          >
-
-            <h2>
-              Have an
-              <br />
-              <em>idea?</em>
-            </h2>
-
-          </ScrollReveal>
-
-
-          <ScrollReveal
-            direction="up"
-            delay={200}
-          >
-
-            <div className="cta-bottom">
 
               <p>
-                Let's turn it into something
-                people remember.
+                Have a project, collaboration or idea
+                in mind? Let's talk about what we can
+                build together.
               </p>
+
 
               <Link
                 to="/contact"
-                className="cta-button"
+                className="button button-primary"
               >
-                Start a conversation
-                <ArrowUpRight size={18} />
+                Get in touch
+                <ArrowUpRight size={17} />
               </Link>
 
             </div>
@@ -1543,5 +1354,6 @@ function Home() {
     </div>
   );
 }
+
 
 export default Home;

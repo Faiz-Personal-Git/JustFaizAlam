@@ -220,13 +220,12 @@ function Contact() {
   const getEmailBody = () => {
     return `Hi Faiz,
 
-I am contacting you regarding ${
-      activeForm === "team"
+I am contacting you regarding ${activeForm === "team"
         ? "joining your team."
         : activeForm === "sponsor"
-        ? "a brand sponsorship opportunity."
-        : "a website/project."
-    }
+          ? "a brand sponsorship opportunity."
+          : "a website/project."
+      }
 
 Name:
 ${formData.name}
@@ -443,8 +442,8 @@ Thank you.`;
     <div className="contact-page">
 
       <SEO
-        title="Contact Faiz Alam"
-        description="Work with Faiz Alam for creative collaborations, brand sponsorships, websites and digital projects."
+        title="Contact Faiz Alam | Collaborations & Projects"
+        description="Contact Faiz Alam for brand collaborations, sponsorships, website development, software projects and creative digital work."
         path="/contact"
       />
 
@@ -532,11 +531,10 @@ Thank you.`;
 
                     <button
                       type="button"
-                      className={`enquiry-card ${
-                        isActive
-                          ? "active"
-                          : ""
-                      }`}
+                      className={`enquiry-card ${isActive
+                        ? "active"
+                        : ""
+                        }`}
                       onClick={() =>
                         handleTypeChange(
                           item.id
@@ -608,8 +606,8 @@ Thank you.`;
                 {activeForm === "team"
                   ? "01"
                   : activeForm === "sponsor"
-                  ? "02"
-                  : "03"}
+                    ? "02"
+                    : "03"}
 
               </span>
 
@@ -1054,6 +1052,165 @@ Thank you.`;
         </div>
 
       </section>
+      {/* =================================================
+          PROMOTION CRITERIA
+      ================================================= */}
+
+      <section className="promotion-criteria-section">
+
+        <div className="contact-container">
+
+          <ScrollReveal direction="up">
+
+            <div className="promotion-criteria-card">
+
+              <div className="promotion-criteria-heading">
+
+                <span>
+                  04 / PROMOTIONS
+                </span>
+
+                <h2>
+                  Promotion <em>criteria.</em>
+                </h2>
+
+              </div>
+
+
+              <div className="promotion-criteria-list">
+
+                {/* POSITIVE */}
+
+                <div className="promotion-criteria-item is-positive">
+
+                  <span className="criteria-icon">
+                    ✓
+                  </span>
+
+                  <p>
+                    I only work with brands, products and services
+                    that align with my audience and values.
+                  </p>
+
+                </div>
+
+
+                <div className="promotion-criteria-item is-positive">
+
+                  <span className="criteria-icon">
+                    ✓
+                  </span>
+
+                  <p>
+                    Preference goes to products that provide
+                    genuine value and have a clear purpose.
+                  </p>
+
+                </div>
+
+
+                <div className="promotion-criteria-item is-positive">
+
+                  <span className="criteria-icon">
+                    ✓
+                  </span>
+
+                  <p>
+                    I expect transparent communication about the
+                    brand, product and campaign.
+                  </p>
+
+                </div>
+
+
+                {/* NEGATIVE */}
+
+                <div className="promotion-criteria-item is-negative">
+
+                  <span className="criteria-icon">
+                    ×
+                  </span>
+
+                  <p>
+                    No misleading claims, deceptive products or
+                    promotions I would not personally stand behind.
+                  </p>
+
+                </div>
+
+
+                <div className="promotion-criteria-item is-negative">
+
+                  <span className="criteria-icon">
+                    ×
+                  </span>
+
+                  <p>
+                    No gambling, tobacco, adult products or other
+                    harmful or restricted promotions.
+                  </p>
+
+                </div>
+
+
+                <div className="promotion-criteria-item is-negative">
+
+                  <span className="criteria-icon">
+                    ×
+                  </span>
+
+                  <p>
+                    No political party promotions or politically
+                    motivated paid content.
+                  </p>
+
+                </div>
+
+
+                <div className="promotion-criteria-item is-negative">
+
+                  <span className="criteria-icon">
+                    ×
+                  </span>
+
+                  <p>
+                    No undisclosed promotional pitches. Please
+                    clearly mention the brand and product in your enquiry.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            {/* QUICK NOTE */}
+
+            <div className="promotion-note">
+
+              <div className="promotion-note-icon">
+                <MessageCircle size={18} />
+              </div>
+
+              <p>
+                <strong>A quick note:</strong>{" "}
+                All enquiries submitted through this page are
+                reviewed personally. Please provide complete and
+                accurate details so I can understand your proposal
+                without unnecessary follow-ups. For anything else, email <b style={{ color: "white" }}>
+                  justfaizalam@gmail.com
+                </b> directly and keep it short.
+              </p>
+
+            </div>
+
+          </ScrollReveal>
+
+        </div>
+
+      </section>
+
 
       {/* =================================================
           CONNECT
@@ -1266,9 +1423,8 @@ function FormInput({
 }) {
   return (
     <div
-      className={`form-field ${
-        error ? "has-error" : ""
-      }`}
+      className={`form-field ${error ? "has-error" : ""
+        }`}
     >
 
       <label htmlFor={name}>
@@ -1315,9 +1471,8 @@ function FormSelect({
 }) {
   return (
     <div
-      className={`form-field ${
-        error ? "has-error" : ""
-      }`}
+      className={`form-field ${error ? "has-error" : ""
+        }`}
     >
 
       <label htmlFor={name}>
@@ -1385,9 +1540,8 @@ function FormTextarea({
 }) {
   return (
     <div
-      className={`form-field form-field-full ${
-        error ? "has-error" : ""
-      }`}
+      className={`form-field form-field-full ${error ? "has-error" : ""
+        }`}
     >
 
       <label htmlFor={name}>

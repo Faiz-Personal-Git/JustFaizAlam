@@ -86,8 +86,8 @@ function About() {
   return (
     <div className="about-page">
       <SEO
-        title="About Faiz Alam — Software Engineer & Creator"
-        description="Learn more about Faiz Alam, a software developer, YouTuber, freelancer and creative builder working across technology, storytelling and digital projects."
+        title="About Faiz Alam | Software Engineer & Creator"
+        description="Learn more about Faiz Alam, a software engineer, YouTuber, freelancer and digital creator working across software development, technology, storytelling and creative projects."
         path="/about"
       />
 
@@ -334,9 +334,8 @@ function About() {
                 key={`${item.title}-${index}`}
               >
                 <div
-                  className={`gallery-item ${
-                    item.large ? "gallery-large" : ""
-                  }`}
+                  className={`gallery-item ${item.large ? "gallery-large" : ""
+                    }`}
                 >
                   <img
                     src={item.image}

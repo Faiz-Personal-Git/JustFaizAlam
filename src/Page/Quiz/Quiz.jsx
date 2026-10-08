@@ -94,8 +94,8 @@ function Quiz() {
     <main className="quiz-page">
 
       <SEO
-        title="Quiz — Faiz Alam"
-        description="Test your knowledge with interactive quizzes based on Faiz Alam's documentary and educational videos."
+        title="Quizzes | Faiz Alam"
+        description="Test your knowledge with interactive quizzes based on Faiz Alam's documentary, educational, technology and YouTube videos. Choose a topic, answer questions and explore the sources behind each story."
         path="/quiz"
       />
       {/* =====================================================

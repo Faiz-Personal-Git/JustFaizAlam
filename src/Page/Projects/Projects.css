@@ -132,11 +132,58 @@
     gap: 15px;
   }
 
-  .project-item button {
-    display: none;
-  }
+  .project-item-link {
+  width: 42px;
+  height: 42px;
+}
 
   .project-item-content h2 {
     font-size: 34px;
   }
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.project-tech span {
+  padding: 7px 10px;
+  color: #aaa;
+  font-family: monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-item-link {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+
+  background: transparent;
+  color: white;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.project-item-link:hover {
+  transform: translate(4px, -4px);
+  background: #d6a86c;
+  border-color: #d6a86c;
+  color: #0c0d0d;
 }
