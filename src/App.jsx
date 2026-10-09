@@ -74,7 +74,7 @@ function App() {
       {/* Floating scroll-to-top button */}
       <ScrollToTopButton />
 
-      <AskFaiz />
+      {/* <AskFaiz /> */}
 
       <Suspense fallback={<PageLoader />}>
         <Routes>
