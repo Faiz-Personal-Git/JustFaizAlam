@@ -12,13 +12,13 @@ export const articles = [
 
     relatedQuizId: 1,
 
-    date: "October 8, 2026",
+    date: "October 9, 2026",
 
-    publishedAt: "2026-10-08T00:00:00+05:30",
+    publishedAt: "2026-10-09T00:00:00+05:30",
 
-    updatedDate: "October 8, 2026",
+    updatedDate: "October 9, 2026",
 
-    updatedAt: "2026-10-08T00:00:00+05:30",
+    updatedAt: "2026-10-09T00:00:00+05:30",
 
     readTime: "8 min read",
 
