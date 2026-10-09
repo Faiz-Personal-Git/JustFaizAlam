@@ -2267,3 +2267,54 @@
     box-sizing: border-box;
   }
 }
+
+
+@media (max-width: 700px) {
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-label {
+    justify-content: center;
+    margin-inline: auto;
+    max-width: 100%;
+    white-space: normal;
+    line-height: 1.7;
+  }
+
+  .hero-title {
+    text-align: center;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .hero-description {
+    max-width: 320px;
+    margin: 24px auto 0;
+    text-align: center;
+    text-wrap: pretty;
+    overflow-wrap: normal;
+    line-height: 1.8;
+  }
+
+  .hero-actions {
+    width: 100%;
+    max-width: 340px;
+    margin: 28px auto 0;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-image {
+    width: min(330px, 100%);
+    justify-self: center;
+    margin-inline: auto;
+  }
+
+  .hero-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}

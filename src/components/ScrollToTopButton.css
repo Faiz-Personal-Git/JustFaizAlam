@@ -1,6 +1,6 @@
 .scroll-to-top {
   position: fixed;
-  right: 150px;
+  right: 24px;
   bottom: 28px;
 
   width: 48px;
@@ -55,10 +55,26 @@
 /* Mobile */
 @media (max-width: 700px) {
   .scroll-to-top {
-    right: 68px;
+    right: 16px;
     bottom: 18px;
-
     width: 44px;
     height: 44px;
+  }
+}
+
+/* Touch devices */
+@media (hover: none) {
+  .scroll-to-top:hover {
+    background: rgba(21, 21, 20, 0.88);
+    border-color: rgba(255, 255, 255, 0.14);
+    color: #f2eee7;
+    transform: translateY(0);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-to-top {
+    transition: none;
   }
 }
