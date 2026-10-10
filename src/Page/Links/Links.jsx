@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./Links.css";
+import { youtubeApi } from "../../data/youtubeApi";
 
 const PROFILE_URL = "https://justfaizalam.vercel.app/";
 const USERNAME = "@justfaizalam";
@@ -305,6 +306,7 @@ function App() {
   const [emailOpen, setEmailOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [nativeShared, setNativeShared] = useState(false);
+  const [latestVideo, setLatestVideo] = useState(null);
 
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("fa-theme") || "terracotta";
@@ -321,6 +323,32 @@ function App() {
     localStorage.setItem("fa-theme", theme);
   }, [theme]);
 
+
+  useEffect(() => {
+    let active = true;
+
+    const fetchLatestVideo = async () => {
+      try {
+        const result = await youtubeApi.getVideos(1);
+
+        if (active) {
+          setLatestVideo(result.data?.[0] ?? null);
+        }
+      } catch (error) {
+        console.error("Failed to load latest YouTube video:", error);
+      }
+    };
+
+    fetchLatestVideo();
+
+    // Refresh every 5 minutes.
+    const intervalId = setInterval(fetchLatestVideo, 5 * 60 * 1000);
+
+    return () => {
+      active = false;
+      clearInterval(intervalId);
+    };
+  }, []);
 
   /* =====================================================
      OPEN LINK
@@ -571,11 +599,10 @@ function App() {
                     {themes.map((item) => (
                       <button
                         key={item.id}
-                        className={`theme-item ${
-                          theme === item.id
-                            ? "active"
-                            : ""
-                        }`}
+                        className={`theme-item ${theme === item.id
+                          ? "active"
+                          : ""
+                          }`}
                         onClick={() =>
                           selectTheme(item.id)
                         }
@@ -744,7 +771,11 @@ function App() {
                 className={`link-card ${link.type}`}
                 key={link.type}
                 onClick={() =>
-                  openLink(link.url)
+                  openLink(
+                    link.type === "youtube"
+                      ? latestVideo?.url || link.url
+                      : link.url
+                  )
                 }
                 type="button"
               >
@@ -759,17 +790,27 @@ function App() {
                 </span>
 
 
-                <span className="link-content">
 
+                <span className="link-content">
                   <strong>
-                    {link.title}
+                    {link.type === "youtube"
+                      ? latestVideo?.title || "Latest YouTube video"
+                      : link.title}
                   </strong>
 
                   <small>
-                    {link.subtitle}
+                    {link.type === "youtube" && latestVideo
+                      ? `${Number(latestVideo.views ?? 0).toLocaleString()} views · ${new Date(
+                        latestVideo.publishedAt
+                      ).toLocaleDateString("en-IN", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })}`
+                      : link.subtitle}
                   </small>
-
                 </span>
+
 
 
                 <span className="link-arrow">
@@ -783,11 +824,10 @@ function App() {
             {/* EMAIL */}
 
             <button
-              className={`link-card email ${
-                emailOpen
-                  ? "email-active"
-                  : ""
-              }`}
+              className={`link-card email ${emailOpen
+                ? "email-active"
+                : ""
+                }`}
               onClick={() =>
                 setEmailOpen(!emailOpen)
               }
@@ -958,9 +998,8 @@ function App() {
 
 
               <button
-                className={`url-copy ${
-                  copied ? "success" : ""
-                }`}
+                className={`url-copy ${copied ? "success" : ""
+                  }`}
                 onClick={copyLink}
                 type="button"
               >
@@ -1093,9 +1132,8 @@ function App() {
             <div className="share-options">
 
               <button
-                className={`share-option copy ${
-                  copied ? "is-copied" : ""
-                }`}
+                className={`share-option copy ${copied ? "is-copied" : ""
+                  }`}
                 onClick={copyLink}
                 type="button"
               >
