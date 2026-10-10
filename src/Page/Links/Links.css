@@ -2842,3 +2842,23 @@ button:focus-visible {
   overflow-wrap: anywhere;
   line-height: 1.4;
 }
+
+
+/* WhatsApp */
+.link-platform {
+  /* Keep your existing styles */
+}
+
+
+
+.whatsapp .link-platform {
+  color: #25D366;
+  background: color-mix(
+    in srgb,
+    var(--accent) 15%,
+    var(--theme-card)
+  );
+}
+
+
+

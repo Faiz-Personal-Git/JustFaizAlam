@@ -7,6 +7,9 @@ const PROFILE_URL = "https://justfaizalam.vercel.app/";
 const USERNAME = "@justfaizalam";
 const REAL_NAME = "Faiz Alam";
 const EMAIL = "JustFaizAlam@gmail.com";
+const WHATSAPP_URL = "https://wa.me/justfaizalam";
+
+
 
 const themes = [
   {
@@ -194,6 +197,18 @@ function Icon({ type }) {
           strokeLinecap="round"
           strokeLinejoin="round"
         />
+      </svg>
+    );
+  }
+
+  if (type === "whatsapp") {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        fill="currentColor"
+      >
+        <path d="M12.04 2C6.58 2 2.14 6.42 2.14 11.86c0 1.75.46 3.46 1.34 4.98L2 22l5.32-1.39a9.94 9.94 0 0 0 4.72 1.2h.01c5.45 0 9.89-4.43 9.89-9.88A9.84 9.84 0 0 0 19.03 4.9 9.83 9.83 0 0 0 12.04 2Zm0 18.12h-.01a8.24 8.24 0 0 1-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.2 8.2 0 1 1 7.02 3.89Zm4.51-6.15c-.25-.12-1.48-.73-1.71-.81-.23-.08-.4-.12-.57.12-.17.25-.65.81-.8.97-.15.16-.3.18-.55.06-.25-.12-1.06-.39-2.02-1.24-.75-.66-1.25-1.47-1.4-1.72-.15-.25-.02-.38.1-.5.11-.1.25-.27.37-.41.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.01 2.59.12.16 1.75 2.67 4.24 3.74.59.25 1.05.4 1.4.51.59.19 1.12.16 1.54.09.47-.07 1.48-.61 1.69-1.2.21-.59.21-1.1.15-1.2-.06-.1-.23-.16-.48-.29Z" />
       </svg>
     );
   }
@@ -860,6 +875,27 @@ function App() {
                 {emailOpen ? "↓" : "↗"}
               </span>
 
+            </button>
+
+
+            {/* WHATSAPP */}
+            <button
+              className="link-card whatsapp"
+              onClick={() => openLink(WHATSAPP_URL)}
+              type="button"
+            >
+              <span className="link-number">06</span>
+
+              <span className="link-platform">
+                <Icon type="whatsapp" />
+              </span>
+
+              <span className="link-content">
+                <strong>WhatsApp</strong>
+                <small>Message me directly</small>
+              </span>
+
+              <span className="link-arrow">↗</span>
             </button>
 
 
