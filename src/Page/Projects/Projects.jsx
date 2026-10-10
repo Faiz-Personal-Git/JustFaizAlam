@@ -44,6 +44,15 @@ const projects = [
   },
   {
     number: "05",
+    category: "FULL-STACK DEVELOPMENT",
+    title: "GroopGo",
+    description:
+      "A club management platform where I worked across the backend and full-stack implementation using ASP.NET MVC and MySQL.",
+    tech: ["ASP.NET MVC", "MySQL"],
+    link: "https://www.groopgo.in/",
+  },
+  {
+    number: "06",
     category: "REACT / PERSONAL BRAND",
     title: "Faiz Alam Portfolio",
     description:
