@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./Links.css";
 
@@ -266,60 +267,33 @@ function Icon({ type }) {
    FA LOGO
 ===================================================== */
 
+
 function FALogo() {
   return (
-    <div className="fa-logo" aria-label="FA">
-      <svg
-        viewBox="0 0 100 100"
-        className="fa-logo-svg"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* F vertical */}
-        <path
-          className="fa-new-f"
-          d="M25 73V27H59"
-        />
-
-        {/* F upper bar */}
-        <path
-          className="fa-new-f"
-          d="M25 29H58"
-        />
-
-        {/* F middle bar */}
-        <path
-          className="fa-new-f"
-          d="M25 48H51"
-        />
-
-        {/* A */}
-        <path
-          className="fa-new-a"
-          d="M43 73L64 27L85 73"
-        />
-
-        {/* A crossbar */}
-        <path
-          className="fa-new-a-bar"
-          d="M52 54H76"
-        />
-
-        {/* small premium accent */}
-        <path
-          className="fa-new-accent"
-          d="M69 19H84"
-        />
-
-        <circle
-          className="fa-new-dot"
-          cx="87"
-          cy="19"
-          r="3.5"
-        />
-      </svg>
-    </div>
+    <Link
+      to="/"
+      className="fa-logo-link"
+      aria-label="Go to Home page"
+    >
+      <div className="fa-logo">
+        <svg
+          viewBox="0 0 100 100"
+          className="fa-logo-svg"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path className="fa-new-f" d="M25 73V27H59" />
+          <path className="fa-new-f" d="M25 29H58" />
+          <path className="fa-new-f" d="M25 48H51" />
+          <path className="fa-new-a" d="M43 73L64 27L85 73" />
+          <path className="fa-new-a-bar" d="M52 54H76" />
+          <path className="fa-new-accent" d="M69 19H84" />
+          <circle className="fa-new-dot" cx="87" cy="19" r="3.5" />
+        </svg>
+      </div>
+    </Link>
   );
 }
+
 
 
 /* =====================================================
