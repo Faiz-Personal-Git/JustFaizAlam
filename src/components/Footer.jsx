@@ -133,36 +133,36 @@ function Footer() {
           </div>
 
 
-          {/* WHAT I DO */}
+
+          {/* LEGAL & POLICIES */}
 
           <div className="footer-column">
 
             <span className="footer-column-label">
-              WHAT I DO
+              LEGAL &amp; POLICIES
             </span>
 
-            <Link to="/projects">
-              Web Development
+            <Link to="/privacy-policy">
+              Privacy Policy
             </Link>
 
-            <Link to="/projects">
-              React & .NET
+            <Link to="/terms-and-conditions">
+              Terms &amp; Conditions
             </Link>
 
-            <Link to="/projects">
-              API Development
+            <Link to="/disclaimer">
+              Disclaimer
             </Link>
 
-            <Link to="/projects">
-              Full-Stack Development
+            <Link to="/content-usage">
+              Copyright &amp; Content Usage
             </Link>
 
-            <Link to="/projects">
-              Digital Products
+            <Link to="/cookie-policy">
+              Cookie Policy
             </Link>
 
           </div>
-
 
           {/* EXPLORE */}
 

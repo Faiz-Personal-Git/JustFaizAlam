@@ -8,6 +8,27 @@ import ScrollToTopButton from "./components/ScrollToTopButton";
 import Cursor from "./components/Cursor";
 import AskFaiz from "./components/AskFaiz";
 
+
+const PrivacyPolicy = lazy(() =>
+  import("./Page/PrivacyPolicy/PrivacyPolicy")
+);
+
+const TermsConditions = lazy(() =>
+  import("./Page/TermsConditions/TermsConditions")
+);
+
+const Disclaimer = lazy(() =>
+  import("./Page/Disclaimer/Disclaimer")
+);
+
+const ContentUsage = lazy(() =>
+  import("./Page/ContentUsage/ContentUsage")
+);
+
+const CookiePolicy = lazy(() =>
+  import("./Page/CookiePolicy/CookiePolicy")
+);
+
 // Lazy-loaded pages
 const Home = lazy(() => import("./Page/Home/Home"));
 const About = lazy(() => import("./Page/About/About"));
@@ -128,6 +149,30 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
 
+            <Route
+              path="/privacy-policy"
+              element={<PrivacyPolicy />}
+            />
+
+            <Route
+              path="/terms-and-conditions"
+              element={<TermsConditions />}
+            />
+
+            <Route
+              path="/disclaimer"
+              element={<Disclaimer />}
+            />
+
+            <Route
+              path="/content-usage"
+              element={<ContentUsage />}
+            />
+
+            <Route
+              path="/cookie-policy"
+              element={<CookiePolicy />}
+            />
 
           </Route>
 

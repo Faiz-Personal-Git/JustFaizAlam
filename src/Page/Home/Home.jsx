@@ -19,46 +19,6 @@ import SEO from "../../components/SEO";
 
 import "./Home.css";
 
-
-/* =========================================================
-   SERVICES
-========================================================= */
-
-const services = [
-  {
-    number: "01",
-    title: "Software",
-    description:
-      "Web applications, APIs and digital systems built around real-world problems.",
-    tags: ["React", ".NET", "APIs"],
-  },
-
-  {
-    number: "02",
-    title: "Websites",
-    description:
-      "Clean, responsive websites and landing pages designed to make ideas and businesses stand out.",
-    tags: ["Web", "UI", "Responsive"],
-  },
-
-  {
-    number: "03",
-    title: "Digital Products",
-    description:
-      "From an early idea to a working product — structure, interface and technology together.",
-    tags: ["Product", "UX", "Systems"],
-  },
-
-  {
-    number: "04",
-    title: "Creative Projects",
-    description:
-      "Documentaries, storytelling and digital experiments beyond traditional software development.",
-    tags: ["Video", "Research", "Creative"],
-  },
-];
-
-
 /* =========================================================
    SELECTED WORK
 ========================================================= */
