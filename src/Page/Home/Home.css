@@ -2318,3 +2318,310 @@
     object-fit: cover;
   }
 }
+
+
+
+/* =========================================================
+   WHAT I BELIEVE IN
+========================================================= */
+
+.beliefs-section {
+  padding-top: 110px;
+  padding-bottom: 120px;
+
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(201, 166, 107, 0.055),
+      transparent 32%
+    ),
+    var(--bg);
+}
+
+.beliefs-heading {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 0.72fr);
+  align-items: end;
+  gap: 50px;
+
+  margin-top: 25px;
+}
+
+.beliefs-heading .section-title {
+  margin-top: 0;
+}
+
+.beliefs-heading .section-title em {
+  display: inline-block;
+}
+
+.beliefs-intro {
+  max-width: 490px;
+
+  margin: 0 0 5px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.beliefs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+
+  margin-top: 48px;
+}
+
+.belief-card {
+  position: relative;
+  isolation: isolate;
+
+  min-height: 220px;
+  padding: 26px 24px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0.006)
+    );
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
+}
+
+.belief-card:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(201, 166, 107, 0.35);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(201, 166, 107, 0.055),
+      rgba(255, 255, 255, 0.008)
+    );
+}
+
+/* BACKGROUND NUMBER */
+
+.belief-number {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  z-index: -1;
+
+  color: var(--text);
+
+  opacity: 0.055;
+
+  font-family: var(--display-font);
+  font-size: 32px;
+  line-height: 1;
+}
+
+/* ICON */
+
+.belief-icon {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 22px;
+
+  color: var(--accent-light);
+
+  border: 1px solid rgba(201, 166, 107, 0.28);
+  border-radius: 12px;
+
+  background: rgba(201, 166, 107, 0.07);
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.belief-card:hover .belief-icon {
+  background: rgba(201, 166, 107, 0.13);
+  border-color: rgba(201, 166, 107, 0.5);
+
+  transform: translateY(-2px);
+}
+
+/* TEXT */
+
+.belief-card h3 {
+  margin: 0 0 12px;
+
+  color: var(--text);
+
+  font-family: var(--sans-font);
+  font-size: 17px;
+  font-weight: 600;
+
+  line-height: 1.35;
+  letter-spacing: -0.45px;
+}
+
+.belief-card p {
+  max-width: 340px;
+
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* SUBTLE BOTTOM ACCENT */
+
+.belief-card-line {
+  position: absolute;
+  right: 24px;
+  bottom: 0;
+  left: 24px;
+
+  height: 1px;
+
+  background: var(--accent-light);
+
+  opacity: 0;
+
+  transform: scaleX(0.3);
+  transform-origin: left;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.35s ease;
+}
+
+.belief-card:hover .belief-card-line {
+  opacity: 0.65;
+  transform: scaleX(1);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+  .beliefs-heading {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .beliefs-intro {
+    max-width: 620px;
+  }
+
+  .beliefs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+  .beliefs-section {
+    padding-top: 80px;
+    padding-bottom: 85px;
+  }
+
+  .beliefs-heading {
+    gap: 18px;
+    margin-top: 22px;
+  }
+
+  .beliefs-heading .section-title {
+    font-size: 39px;
+    line-height: 1.05;
+    letter-spacing: -2px;
+  }
+
+  .beliefs-intro {
+    font-size: 12px;
+    line-height: 1.85;
+  }
+
+  .beliefs-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+
+    margin-top: 32px;
+  }
+
+  .belief-card {
+    min-height: auto;
+    padding: 24px 22px;
+
+    border-radius: 17px;
+  }
+
+  .belief-icon {
+    width: 40px;
+    height: 40px;
+
+    margin-bottom: 18px;
+  }
+
+  .belief-card h3 {
+    font-size: 17px;
+    margin-bottom: 9px;
+  }
+
+  .belief-card p {
+    max-width: 100%;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .belief-card,
+  .belief-icon,
+  .belief-card-line {
+    transition: none;
+  }
+
+  .belief-card:hover,
+  .belief-card:hover .belief-icon {
+    transform: none;
+  }
+}
+
+
+.who-content h2 .who-title-white {
+  color: #f4efe5;
+}
+
+.who-content h2 .who-title-accent {
+  color: var(--accent-light);
+
+  font-family: var(--display-font);
+  font-weight: 400;
+  font-style: italic;
+}

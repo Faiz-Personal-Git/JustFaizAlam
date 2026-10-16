@@ -6,6 +6,12 @@ import {
   Play,
   ShieldCheck,
   Mail,
+  Atom,
+  Users,
+  Scale,
+  Leaf,
+  ChartNoAxesColumnIncreasing,
+  Waves,
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
@@ -56,6 +62,54 @@ const workItems = [
   },
 ];
 
+/* =========================================================
+   WHAT I BELIEVE IN
+========================================================= */
+
+const beliefs = [
+  {
+    number: "01",
+    icon: Atom,
+    title: "Rationalism",
+    description:
+      "Evidence first, belief second. A claim that cannot survive a hard question does not deserve to be repeated.",
+  },
+  {
+    number: "02",
+    icon: Users,
+    title: "Democratic Socialism",
+    description:
+      "A country is judged by how it treats the people with the least. Public healthcare, public education, work with dignity.",
+  },
+  {
+    number: "03",
+    icon: Scale,
+    title: "Secularism",
+    description:
+      "The state has no religion. Everyone's faith is their own, and no one's faith gets to decide another person's rights.",
+  },
+  {
+    number: "04",
+    icon: Leaf,
+    title: "Environmentalism",
+    description:
+      "Clean air, clean water and a livable climate are not luxuries to be traded away for one more quarter of growth.",
+  },
+  {
+    number: "05",
+    icon: ChartNoAxesColumnIncreasing,
+    title: "Progressivism",
+    description:
+      "A tradition is worth keeping when it holds up to scrutiny. The rest we are allowed to outgrow, and usually should.",
+  },
+  {
+    number: "06",
+    icon: Waves,
+    title: "Liberty and Inclusivity",
+    description:
+      "The freedom to speak, to dissent, to love and to belong. Extended to everybody, or it was never freedom to begin with.",
+  },
+];
 
 /* =========================================================
    HOW I WORK
@@ -380,7 +434,8 @@ function Home() {
               <div className="who-content">
 
                 <h2>
-                  I'm Faiz Alam.
+                  <span className="who-title-white">I'm </span>
+                  <span className="who-title-accent">Faiz Alam.</span>
                 </h2>
 
 
@@ -839,6 +894,86 @@ function Home() {
               </div>
 
             </ScrollReveal>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =====================================================
+    WHAT I BELIEVE IN
+===================================================== */}
+
+      <section className="home-section beliefs-section">
+
+        <div className="home-container">
+
+          <ScrollReveal direction="up">
+
+            <div className="section-label">
+              <span>04</span>
+              <span>WHAT I BELIEVE IN</span>
+            </div>
+
+            <div className="beliefs-heading">
+
+              <h2 className="section-title">
+                What I <em>believe in.</em>
+              </h2>
+
+              <p className="beliefs-intro">
+                I strongly believe in speaking truth to power,
+                and in promoting the progressive values of
+                rationalism, democratic socialism, scientific
+                temper and critical thinking through my videos.
+              </p>
+
+            </div>
+
+          </ScrollReveal>
+
+
+          <div className="beliefs-grid">
+
+            {beliefs.map((belief, index) => {
+
+              const Icon = belief.icon;
+
+              return (
+
+                <ScrollReveal
+                  key={belief.number}
+                  direction="up"
+                  delay={index * 70}
+                >
+
+                  <article className="belief-card">
+
+                    <span className="belief-number">
+                      {belief.number}
+                    </span>
+
+                    <div className="belief-icon">
+                      <Icon
+                        size={20}
+                        strokeWidth={1.5}
+                      />
+                    </div>
+
+                    <h3>{belief.title}</h3>
+
+                    <p>{belief.description}</p>
+
+                    <span className="belief-card-line" />
+
+                  </article>
+
+                </ScrollReveal>
+
+              );
+
+            })}
 
           </div>
 
