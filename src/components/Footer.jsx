@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 function Footer() {
@@ -53,7 +53,6 @@ function Footer() {
             stroke="currentColor"
             strokeWidth="2"
           />
-
           <circle
             cx="12"
             cy="12"
@@ -62,13 +61,7 @@ function Footer() {
             stroke="currentColor"
             strokeWidth="2"
           />
-
-          <circle
-            cx="17.5"
-            cy="6.5"
-            r="1.2"
-            fill="currentColor"
-          />
+          <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
         </svg>
       );
     }
@@ -90,34 +83,20 @@ function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-inner">
-
-        {/* =====================================================
-            INFORMATION
-        ===================================================== */}
+        {/* INFORMATION */}
 
         <section className="footer-information">
-
           {/* ABOUT */}
 
           <div className="footer-about">
-
-            <span className="footer-column-label">
-              ABOUT
-            </span>
+            <span className="footer-column-label">ABOUT</span>
 
             <div className="footer-about-identity">
-
               <div className="footer-about-image">
-                <img
-                  src="/Images/dp.png"
-                  alt="Faiz Alam"
-                />
+                <img src="/Images/dp.png" alt="Faiz Alam" />
               </div>
 
-              <h3>
-                Faiz Alam
-              </h3>
-
+              <h3>Faiz Alam</h3>
             </div>
 
             <p>
@@ -129,80 +108,40 @@ function Footer() {
             <span className="footer-role">
               SOFTWARE ENGINEER · CREATOR
             </span>
-
           </div>
-
-
 
           {/* LEGAL & POLICIES */}
 
           <div className="footer-column">
-
             <span className="footer-column-label">
               LEGAL &amp; POLICIES
             </span>
 
-            <Link to="/privacy-policy">
-              Privacy Policy
-            </Link>
-
-            <Link to="/terms-and-conditions">
-              Terms &amp; Conditions
-            </Link>
-
-            <Link to="/disclaimer">
-              Disclaimer
-            </Link>
-
-            <Link to="/content-usage">
-              Copyright &amp; Content Usage
-            </Link>
-
-            <Link to="/cookie-policy">
-              Cookie Policy
-            </Link>
-
+            <Link to="/privacy-policy">Privacy Policy</Link>
+            <Link to="/terms-and-conditions">Terms &amp; Conditions</Link>
+            <Link to="/disclaimer">Disclaimer</Link>
+            <Link to="/content-usage">Copyright &amp; Content Usage</Link>
+            <Link to="/cookie-policy">Cookie Policy</Link>
           </div>
 
           {/* EXPLORE */}
 
           <div className="footer-column">
+            <span className="footer-column-label">EXPLORE</span>
 
-            <span className="footer-column-label">
-              EXPLORE
-            </span>
-
-            <Link to="/">
-              Home
+            <Link to="/resources">Resources</Link>
+            <Link to="/store">Digital Store</Link>
+            <Link to="/services/web-development">
+              Web Development
             </Link>
-
-            <Link to="/about">
-              About
-            </Link>
-
-            <Link to="/projects">
-              Projects
-            </Link>
-
-            <Link to="/contact">
-              Contact
-            </Link>
-
-            <Link to="/links">
-              Social Media
-              <span className="footer-small-arrow">↗</span>
-            </Link>
+            <Link to="/tools">AI Tools</Link>
 
           </div>
-
 
           {/* CONNECT */}
 
           <div className="footer-column">
-
-            <span className="footer-column-label">
-              CONNECT
-            </span>
+            <span className="footer-column-label">CONNECT</span>
 
             {socialLinks.map((social) => (
               <a
@@ -218,9 +157,7 @@ function Footer() {
 
                 <span>{social.name}</span>
 
-                <span className="footer-small-arrow">
-                  ↗
-                </span>
+                <span className="footer-small-arrow">↗</span>
               </a>
             ))}
 
@@ -228,31 +165,18 @@ function Footer() {
               All social links
               <span className="footer-small-arrow">↗</span>
             </Link>
-
           </div>
-
         </section>
 
-        {/* =====================================================
-            COPYRIGHT
-        ===================================================== */}
+        {/* COPYRIGHT */}
 
         <section className="footer-bottom">
+          <span>© {new Date().getFullYear()} Faiz Alam</span>
 
-          <span>
-            © {new Date().getFullYear()} Faiz Alam
-          </span>
+          <span>Designed &amp; built by Faiz Alam</span>
 
-          <span>
-            Designed & built by Faiz Alam
-          </span>
-
-          <span>
-            All rights reserved.
-          </span>
-
+          <span>All rights reserved.</span>
         </section>
-
       </div>
     </footer>
   );
