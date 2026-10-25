@@ -237,115 +237,77 @@ function Home() {
       />
 
 
-      {/* =====================================================
-          HERO
-      ===================================================== */}
+      
+{/* =====================================================
+    CINEMATIC HERO — FULL BACKGROUND PORTRAIT
+===================================================== */}
 
-      <section className="home-hero">
+<section className="home-hero">
+  {/* Full-bleed portrait background */}
+  <div className="hero-background" aria-hidden="true">
+    <img src="/Images/dp.png" alt="" />
+  </div>
 
-        <div className="home-container hero-container">
+  {/* Contrast overlays for readable text */}
+  <div className="hero-overlay" aria-hidden="true" />
+  <div className="hero-ambient-light" aria-hidden="true" />
 
-          <div className="hero-content">
+  <div className="home-container hero-container">
+    <div className="hero-content">
+      <ScrollReveal direction="up">
+        <span className="hero-label">
+          <span className="hero-live-dot" />
+          FAIZ ALAM
+          <span className="hero-label-divider">/</span>
+          SOFTWARE ENGINEER · CREATOR
+        </span>
+      </ScrollReveal>
 
-            <ScrollReveal direction="up">
-              <span className="hero-label">
-                FAIZ ALAM · SOFTWARE ENGINEER · YOUTUBER
-              </span>
-            </ScrollReveal>
+      <ScrollReveal direction="up" delay={100}>
+        <p className="hero-kicker">ENGINEERING × STORYTELLING</p>
 
+        <h1 className="hero-title">
+          I build things.
+          <br />
+          <em>I tell stories.</em>
+        </h1>
+      </ScrollReveal>
 
-            <ScrollReveal
-              direction="up"
-              delay={100}
-            >
-              <h1 className="hero-title">
-                I build things.
-                <br />
-                <em>I tell stories.</em>
-              </h1>
-            </ScrollReveal>
+      <ScrollReveal direction="up" delay={180}>
+        <p className="hero-description">
+          Software engineer by profession. Storyteller by passion.
+          Exploring technology, people and stories worth understanding.
+        </p>
+      </ScrollReveal>
 
+      <ScrollReveal direction="up" delay={250}>
+        <div className="hero-actions">
+          <Link to="/videos" className="button button-primary">
+            Watch documentaries
+            <ArrowUpRight size={16} />
+          </Link>
 
-            <ScrollReveal
-              direction="up"
-              delay={180}
-            >
-              <p className="hero-description">
-                Software engineer, YouTuber and documentary
-                creator exploring technology, people and
-                stories worth understanding.
-              </p>
-            </ScrollReveal>
-
-
-            <ScrollReveal
-              direction="up"
-              delay={240}
-            >
-              <div className="hero-actions">
-
-                <Link
-                  to="/videos"
-                  className="button button-primary"
-                >
-                  Watch documentaries
-                  <ArrowUpRight size={16} />
-                </Link>
-
-
-                <Link
-                  to="/quiz"
-                  className="button button-secondary"
-                >
-                  Take a quiz
-                  <ArrowUpRight size={16} />
-                </Link>
-
-
-                <Link
-                  to="/projects"
-                  className="button button-secondary"
-                >
-                  My work
-                  <ArrowUpRight size={16} />
-                </Link>
-
-              </div>
-            </ScrollReveal>
-
-          </div>
-
-
-          <ScrollReveal
-            direction="right"
-            delay={120}
-          >
-            <div className="hero-image">
-
-              <img
-                src="/Images/dp.png"
-                alt="Faiz Alam"
-              />
-
-            </div>
-          </ScrollReveal>
-
+          <Link to="/projects" className="button button-secondary">
+            Explore my work
+            <ArrowUpRight size={16} />
+          </Link>
         </div>
 
+        <Link to="/quiz" className="hero-quiz-link">
+          Or challenge your mind with a quiz
+          <ArrowUpRight size={14} />
+        </Link>
+      </ScrollReveal>
+    </div>
+  </div>
 
-        <div className="hero-footer">
+  <div className="hero-footer">
+    <span>AMBALA · INDIA</span>
+    <span>SOFTWARE · DOCUMENTARIES · CREATIVE WORK</span>
+    <span className="hero-scroll-note">SCROLL TO EXPLORE ↓</span>
+  </div>
+</section>
 
-          <span>
-            AMBALA · INDIA
-          </span>
-
-          <span>
-            SOFTWARE · DOCUMENTARIES · CREATIVE WORK
-          </span>
-
-        </div>
-
-      </section>
 
 
       {/* =====================================================

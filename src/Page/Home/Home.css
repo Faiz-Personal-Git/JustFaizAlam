@@ -2625,3 +2625,662 @@
   font-weight: 400;
   font-style: italic;
 }
+
+
+/* =========================================================
+   CINEMATIC FULL-BLEED HERO
+========================================================= */
+
+.home-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: max(720px, 100svh);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 145px 0 100px;
+  overflow: hidden;
+  background: #0d0d0c;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Your portrait fills the hero background */
+.hero-background {
+  position: absolute;
+  z-index: -3;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-background img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 76%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  opacity: 0.96;
+  filter: saturate(0.82) contrast(1.06);
+}
+
+/* Dark fade on left, subtle fade at bottom */
+.hero-overlay {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      #0d0d0c 0%,
+      rgba(13, 13, 12, 0.98) 22%,
+      rgba(13, 13, 12, 0.86) 40%,
+      rgba(13, 13, 12, 0.38) 60%,
+      rgba(13, 13, 12, 0.04) 100%
+    ),
+    linear-gradient(
+      0deg,
+      #0d0d0c 0%,
+      rgba(13, 13, 12, 0.55) 12%,
+      transparent 38%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(13, 13, 12, 0.55) 0%,
+      transparent 22%
+    );
+}
+
+.hero-ambient-light {
+  position: absolute;
+  z-index: -1;
+  top: 8%;
+  right: 8%;
+  width: 42%;
+  height: 75%;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(199, 166, 106, 0.09),
+    transparent 68%
+  );
+}
+
+/* Content stays on the left */
+.hero-container {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 64px));
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  padding-bottom: 35px;
+}
+
+.hero-content {
+  width: min(650px, 58%);
+  max-width: 650px;
+}
+
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 34px;
+  padding: 10px 14px;
+  color: #c4bdb1;
+  font-family: var(--mono-font);
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  border: 1px solid rgba(225, 208, 178, 0.22);
+  border-radius: 999px;
+  background: rgba(13, 13, 12, 0.46);
+  backdrop-filter: blur(10px);
+}
+
+.hero-live-dot {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(199, 166, 106, 0.55);
+}
+
+.hero-label-divider {
+  color: var(--accent);
+}
+
+.hero-kicker {
+  margin: 0 0 19px;
+  color: var(--accent);
+  font-family: var(--mono-font);
+  font-size: 10px;
+  letter-spacing: 2.4px;
+}
+
+.hero-title {
+  margin: 0;
+  color: #f2eee7;
+  font-family: var(--sans-font);
+  font-size: clamp(60px, 7.2vw, 100px);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -4.5px;
+  text-wrap: nowrap;
+}
+
+.hero-title em {
+  display: inline-block;
+  margin-top: 9px;
+  color: var(--accent-light);
+  font-family: var(--display-font);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -3px;
+}
+
+.hero-description {
+  max-width: 420px;
+  margin: 27px 0 0;
+  color: #c0b9ae;
+  font-size: 14px;
+  line-height: 1.9;
+  text-wrap: pretty;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 31px;
+}
+
+.hero-actions .button {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 18px;
+  font-size: 11px;
+}
+
+.hero-actions .button svg {
+  flex-shrink: 0;
+  transition: transform 180ms ease;
+}
+
+.hero-actions .button:hover svg {
+  transform: translate(3px, -3px);
+}
+
+.hero-quiz-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 20px;
+  color: #aaa297;
+  font-size: 11px;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.hero-quiz-link:hover {
+  color: var(--accent-light);
+}
+
+.hero-quiz-link svg {
+  transition: transform 180ms ease;
+}
+
+.hero-quiz-link:hover svg {
+  transform: translate(3px, -3px);
+}
+
+/* Footer */
+.hero-footer {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 22px;
+  left: 0;
+  width: min(1180px, calc(100% - 64px));
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  color: #9a9286;
+  font-family: var(--mono-font);
+  font-size: 8px;
+  letter-spacing: 1.1px;
+}
+
+.hero-scroll-note {
+  color: var(--accent-light);
+}
+
+/* Laptop / tablet */
+@media (max-width: 1000px) {
+  .home-hero {
+    min-height: 720px;
+  }
+
+  .hero-background img {
+    width: 82%;
+    object-position: 55% 25%;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        #0d0d0c 0%,
+        rgba(13, 13, 12, 0.96) 28%,
+        rgba(13, 13, 12, 0.78) 50%,
+        rgba(13, 13, 12, 0.16) 100%
+      ),
+      linear-gradient(
+        0deg,
+        #0d0d0c 0%,
+        transparent 35%
+      );
+  }
+
+  .hero-container {
+    width: calc(100% - 48px);
+  }
+
+  .hero-content {
+    width: 65%;
+  }
+
+  .hero-title {
+    font-size: clamp(54px, 7vw, 76px);
+    letter-spacing: -3px;
+  }
+
+  .hero-title em {
+    letter-spacing: -2px;
+  }
+
+  .hero-footer {
+    width: calc(100% - 48px);
+    font-size: 7px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .home-hero {
+    min-height: 790px;
+    min-height: max(790px, 100svh);
+    justify-content: flex-start;
+    padding: 130px 0 95px;
+  }
+
+  .hero-background img {
+    top: 0;
+    right: -17%;
+    width: 112%;
+    height: 67%;
+    object-position: 55% 20%;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(13, 13, 12, 0.12) 0%,
+        rgba(13, 13, 12, 0.16) 20%,
+        rgba(13, 13, 12, 0.70) 40%,
+        #0d0d0c 63%,
+        #0d0d0c 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(13, 13, 12, 0.70),
+        transparent 100%
+      );
+  }
+
+  .hero-ambient-light {
+    top: 5%;
+    right: -10%;
+    width: 90%;
+    height: 48%;
+  }
+
+  .hero-container {
+    width: calc(100% - 40px);
+    margin-top: auto;
+    padding-bottom: 0;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-label {
+    max-width: 100%;
+    gap: 8px;
+    margin-bottom: 23px;
+    padding: 9px 11px;
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+
+  .hero-kicker {
+    margin-bottom: 14px;
+    font-size: 8px;
+    letter-spacing: 1.7px;
+  }
+
+  .hero-title {
+    font-size: clamp(47px, 10.5vw, 68px);
+    line-height: 1;
+    letter-spacing: -2.7px;
+    text-wrap: balance;
+  }
+
+  .hero-title em {
+    margin-top: 5px;
+    letter-spacing: -1.8px;
+  }
+
+  .hero-description {
+    max-width: 380px;
+    margin-top: 20px;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .hero-quiz-link {
+    margin-top: 17px;
+  }
+
+  .hero-footer {
+    width: calc(100% - 40px);
+    bottom: 18px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 7px;
+    line-height: 1.6;
+    letter-spacing: 0.7px;
+  }
+
+  .hero-footer > span:nth-child(2) {
+    display: none;
+  }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+  .home-hero {
+    padding-top: 115px;
+  }
+
+  .hero-title {
+    font-size: 45px;
+    letter-spacing: -2px;
+  }
+
+  .hero-label {
+    font-size: 6.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-actions .button svg,
+  .hero-quiz-link,
+  .hero-quiz-link svg {
+    transition: none;
+  }
+}
+
+
+/* MOBILE HERO — FACE CLEAR, IMAGE LESS ZOOMED */
+@media (max-width: 700px) {
+  .home-hero {
+    min-height: 900px;
+    min-height: max(900px, 100svh);
+    padding: 0 0 90px;
+    justify-content: flex-end;
+  }
+
+  /* Keep the portrait above the text */
+  .hero-background {
+    inset: 0;
+  }
+
+  .hero-background img {
+    top: 0;
+    left: 0;
+    right: auto;
+    width: 100%;
+    height: 590px;
+    object-fit: contain;
+    object-position: center top;
+    opacity: 1;
+  }
+
+  /* Fade the portrait into the lower text area */
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(13, 13, 12, 0.02) 0%,
+      rgba(13, 13, 12, 0.04) 24%,
+      rgba(13, 13, 12, 0.20) 36%,
+      rgba(13, 13, 12, 0.78) 51%,
+      #0d0d0c 67%,
+      #0d0d0c 100%
+    );
+  }
+
+  .hero-container {
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    padding: 0;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-label {
+    justify-content: center;
+    margin-bottom: 22px;
+    background: rgba(13, 13, 12, 0.65);
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-kicker,
+  .hero-title,
+  .hero-description {
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: clamp(44px, 10vw, 62px);
+    line-height: 1.04;
+    letter-spacing: -2px;
+    text-wrap: balance;
+  }
+
+  .hero-title em {
+    letter-spacing: -1.5px;
+  }
+
+  .hero-description {
+    max-width: 390px;
+    margin: 18px auto 0;
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .hero-actions {
+    width: 100%;
+    max-width: 380px;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 23px auto 0;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-quiz-link {
+    justify-content: center;
+  }
+
+  .hero-footer {
+    width: calc(100% - 40px);
+    bottom: 18px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* MOBILE HERO — CINEMATIC BLENDING FIX */
+@media (max-width: 700px) {
+  .home-hero {
+    position: relative;
+    min-height: 900px;
+    min-height: max(900px, 100svh);
+    padding: 0 0 85px;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+
+  /* Portrait fills the background without the contain gap */
+  .hero-background img {
+    top: 0;
+    left: 0;
+    right: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    opacity: 1;
+  }
+
+  /* Keep the face visible; blend the lower image into text */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(13, 13, 12, 0.04) 0%,
+      rgba(13, 13, 12, 0.04) 24%,
+      rgba(13, 13, 12, 0.12) 34%,
+      rgba(13, 13, 12, 0.48) 43%,
+      rgba(13, 13, 12, 0.84) 53%,
+      #0d0d0c 69%,
+      #0d0d0c 100%
+    );
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 1;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    padding: 0;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Move the entire text block below the face */
+  .hero-label {
+    margin-top: 310px;
+    margin-bottom: 20px;
+    justify-content: center;
+    background: rgba(13, 13, 12, 0.35);
+    backdrop-filter: blur(5px);
+  }
+
+  .hero-kicker,
+  .hero-title,
+  .hero-description {
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: clamp(44px, 10vw, 62px);
+    line-height: 1.02;
+    letter-spacing: -2px;
+    text-wrap: balance;
+  }
+
+  .hero-title em {
+    letter-spacing: -1.5px;
+  }
+
+  .hero-description {
+    max-width: 390px;
+    margin: 18px auto 0;
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .hero-actions {
+    width: 100%;
+    max-width: 380px;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 23px auto 0;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-quiz-link {
+    justify-content: center;
+  }
+
+  .hero-footer {
+    z-index: 2;
+    width: calc(100% - 40px);
+    bottom: 18px;
+    justify-content: center;
+    text-align: center;
+  }
+}
