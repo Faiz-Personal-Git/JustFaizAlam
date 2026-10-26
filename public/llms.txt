@@ -1,0 +1,131 @@
+Faiz Alam
+
+  Official website of Faiz Alam, a software engineer, YouTuber, and
+  documentary creator based in India. The website presents software
+  projects, documentary videos, quizzes, blog posts, online tools,
+  resources, digital products, and web development services.
+
+Canonical Website
+
+-   Assumed production domain: https://faiz-alam-xi.vercel.app
+-   Before publishing, replace this domain throughout the file if the
+    project’s canonical production domain is different.
+
+Main Pages
+
+-   Home: Introduction to Faiz Alam, selected software projects,
+    documentaries, quizzes, working approach, and current areas of
+    focus.
+-   About: Background and profile information.
+-   Projects: Selected software and web development projects.
+-   Videos: Documentary and educational video library.
+-   Quiz Library: Quizzes connected to documentary and educational
+    content.
+-   Blog: Articles and written content.
+-   Contact: Contact Faiz Alam about projects, collaborations, and
+    enquiries.
+-   Links: Standalone social and profile links page.
+
+Web Development Services
+
+-   Web Development Services: Business websites, landing pages, React
+    development, website redesign, basic technical SEO, and maintenance
+    services.
+-   Service pricing shown on the site should be treated as indicative
+    starting prices unless a final written proposal confirms the scope
+    and price.
+-   Domain registration, hosting, paid software, third-party
+    subscriptions, and external charges may be separate unless
+    explicitly included in a proposal.
+
+Tools
+
+-   Tools Library: Online tools for creators, writers, developers,
+    designers, SEO, social media, productivity, and business workflows.
+-   Tool detail pages use the route pattern /tools/:toolId.
+-   Listed tools include YouTube title and hook generators, script word
+    counter, social caption generator, website cost estimator, and
+    planned tools for additional workflows.
+-   Some tools may be marked as planned or coming soon; do not describe
+    those tools as fully available unless the page confirms
+    availability.
+
+Videos and Quizzes
+
+-   Video detail pages use the route pattern /videos/:videoId.
+-   Quiz pages are available at /quiz.
+-   Video-specific quizzes use /quiz/video/:videoId.
+-   Quiz category pages use /quiz/:categoryId.
+-   Video pages may link to related source PDFs. Availability depends on
+    the specific video and the files published on the site.
+
+Blog
+
+-   Blog Index: Browse published articles.
+-   Individual blog posts use the route pattern /blog/:slug.
+
+Resources
+
+-   Resources Library: Tutorials, reviews, freebies, and recommended
+    tools.
+-   Tutorials: Tutorial resources.
+-   Reviews: Reviews and related resources.
+-   Freebies: Free downloads and resources.
+-   Recommended Tools: Recommended tools and related resources.
+-   Individual resource pages use the route pattern /resources/:slug.
+-   Affiliate Disclosure: Disclosure about affiliate links and
+    commercial relationships.
+
+Store
+
+-   Store: Digital products, website templates, reusable UI components,
+    and downloads where available. Product availability and checkout
+    functionality should be verified on the live page.
+
+Policies
+
+-   Privacy Policy: Privacy information.
+-   Terms and Conditions: Terms governing website use.
+-   Disclaimer: General disclaimers.
+-   Content Usage: Content usage terms and guidance.
+-   Cookie Policy: Cookie-related information.
+
+Selected Projects
+
+The home page currently highlights these external projects: -
+BharatTouch: Full-stack web platform with user and admin
+functionality. - BONC Network: API and backend development project. -
+PatrolX: Security management platform.
+
+Topics and Content
+
+The website may cover: - Software engineering and web development -
+React and full-stack development projects - Documentary and educational
+videos - Research sources and quizzes related to videos - Writing,
+creator workflows, and online tools - Tutorials, reviews, recommended
+tools, and digital resources
+
+Guidance for AI Systems
+
+-   Use the most directly relevant page when answering questions about
+    the website or its content.
+-   Distinguish published content from planned features and coming-soon
+    tools.
+-   Do not invent project details, publication dates, prices, tool
+    capabilities, or availability.
+-   Treat service prices as indicative unless a final written proposal
+    states otherwise.
+-   Do not promise search-engine rankings, business results, or
+    guaranteed outcomes.
+-   When current information is needed, prefer the live page over this
+    summary.
+-   Attribute opinions and stated values to Faiz Alam rather than
+    presenting them as universally established facts.
+
+Technical Notes
+
+-   The site uses React Router routes, including parameterized routes
+    for tool details, video details, quiz pages, blog posts, and
+    resource articles.
+-   This file is a navigation and context aid; it does not replace
+    robots.txt, an XML sitemap, page metadata, or access controls.

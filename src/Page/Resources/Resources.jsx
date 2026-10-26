@@ -15,6 +15,7 @@ import {
   X,
 } from "lucide-react";
 
+import SEO from "../../components/SEO";
 import resources from "../../data/resources";
 import "./Resources.css";
 
@@ -183,311 +184,319 @@ function Resources() {
   );
 
   return (
-    <main className="resources-page">
-      <section className="resources-hero">
-        <div className="resources-hero-grid" aria-hidden="true" />
+    <>
+      <SEO
+        title="Free Resources, Tutorials & Tools | Faiz Alam"
+        description="Explore practical web development tutorials, SEO guides, content creation resources, useful tools and free downloads by Faiz Alam."
+        path="/resources"
+      />
 
-        <div className="resources-container resources-hero-inner">
-          <div className="resources-hero-copy">
-            <div className="resources-eyebrow">
-              <Sparkles size={14} />
-              THE RESOURCE LIBRARY
-            </div>
+      <main className="resources-page">
+        <section className="resources-hero">
+          <div className="resources-hero-grid" aria-hidden="true" />
 
-            <h1>
-              Learn better.
-              <br />
-              <span>Build smarter.</span>
-            </h1>
-
-            <p className="resources-hero-description">
-              Practical guides, useful tools and free resources for
-              developers, creators and people building online.
-            </p>
-
-            <div className="resources-hero-actions">
-              <a className="resources-primary-btn" href="#resource-library">
-                Explore Resources
-                <ArrowRight size={17} />
-              </a>
-
-              <Link
-                className="resources-secondary-btn"
-                to="/resources/freebies"
-              >
-                Free Downloads
-                <ArrowDownRight size={17} />
-              </Link>
-            </div>
-
-            <div className="resources-hero-note">
-              <CheckCircle2 size={15} />
-              Practical information. Clear explanations. Useful tools.
-            </div>
-          </div>
-
-          <div className="resources-hero-visual">
-            <div className="resources-visual-orbit resources-orbit-one" />
-            <div className="resources-visual-orbit resources-orbit-two" />
-
-            <div className="resources-visual-card">
-              <div className="resources-visual-card-head">
-                <span className="resources-window-dots">
-                  <i />
-                  <i />
-                  <i />
-                </span>
-                <span>FAIZ / RESOURCES</span>
+          <div className="resources-container resources-hero-inner">
+            <div className="resources-hero-copy">
+              <div className="resources-eyebrow">
+                <Sparkles size={14} />
+                THE RESOURCE LIBRARY
               </div>
 
-              <div className="resources-visual-icon">
-                <BookOpen size={32} strokeWidth={1.4} />
-              </div>
-
-              <span className="resources-visual-kicker">
-                KNOWLEDGE THAT WORKS
-              </span>
-
-              <h2>
-                Ideas into
+              <h1>
+                Learn better.
                 <br />
-                <em>action.</em>
-              </h2>
+                <span>Build smarter.</span>
+              </h1>
 
-              <div className="resources-visual-divider" />
+              <p className="resources-hero-description">
+                Practical guides, useful tools and free resources for
+                developers, creators and people building online.
+              </p>
 
-              <div className="resources-visual-stat">
-                <span>Explore the library</span>
-                <span>
-                  {String(resources.length).padStart(2, "0")} RESOURCES
-                </span>
-              </div>
-            </div>
-
-            <div className="resources-floating-label resources-floating-top">
-              <Sparkles size={14} />
-              Learn something useful
-            </div>
-
-            <div className="resources-floating-label resources-floating-bottom">
-              <Download size={14} />
-              Free downloads
-            </div>
-          </div>
-        </div>
-
-        <div className="resources-container resources-hero-bottom">
-          <span>BUILT FOR CURIOUS MINDS</span>
-          <span>DEVELOPMENT / CREATORS / GROWTH</span>
-        </div>
-      </section>
-
-      <section className="resources-container resources-featured-section">
-        <div className="resources-section-heading">
-          <div>
-            <span className="resources-section-kicker">EDITOR'S PICK</span>
-            <h2>Start with something useful.</h2>
-          </div>
-
-          <span className="resources-heading-index">01 / FEATURED</span>
-        </div>
-
-        {featuredIsVisible && featuredResource && (
-          <article className="resources-featured-card">
-            <div className="resources-featured-art">
-              <div className="resources-featured-art-grid" />
-
-              <div className="resources-featured-art-label">
-                FEATURED RESOURCE
-              </div>
-
-              <div className="resources-featured-art-center">
-                <span>01</span>
-                <BookOpen size={52} strokeWidth={1} />
-                <div className="resources-featured-art-line" />
-                <span>THE PRACTICAL GUIDE</span>
-              </div>
-
-              <div className="resources-featured-art-footer">
-                <span>RESEARCH</span>
-                <span>LEARN</span>
-                <span>BUILD</span>
-              </div>
-            </div>
-
-            <div className="resources-featured-copy">
-              <div className="resources-featured-meta">
-                <span>{featuredResource.category}</span>
-                <span>
-                  <Clock3 size={14} />
-                  {featuredResource.readTime}
-                </span>
-              </div>
-
-              <h3>{featuredResource.title}</h3>
-
-              <p>{featuredResource.description}</p>
-
-              <div className="resources-featured-bottom">
-                <span className="resources-featured-date">
-                  Published {formatDate(featuredResource.date)}
-                </span>
+              <div className="resources-hero-actions">
+                <a className="resources-primary-btn" href="#resource-library">
+                  Explore Resources
+                  <ArrowRight size={17} />
+                </a>
 
                 <Link
-                  to={`/resources/${featuredResource.slug}`}
-                  className="resources-featured-link"
+                  className="resources-secondary-btn"
+                  to="/resources/freebies"
                 >
-                  Read Featured Guide
-                  <ArrowUpRight size={17} />
+                  Free Downloads
+                  <ArrowDownRight size={17} />
                 </Link>
               </div>
-            </div>
-          </article>
-        )}
-      </section>
 
-      <section
-        className="resources-library-section"
-        id="resource-library"
-      >
-        <div className="resources-container">
-          <div className="resources-section-heading resources-library-heading">
-            <div>
-              <span className="resources-section-kicker">
-                EXPLORE THE LIBRARY
-              </span>
-              <h2>Resources for your next move.</h2>
-              <p>
-                Search guides, discover tools and find practical
-                resources for your work.
-              </p>
+              <div className="resources-hero-note">
+                <CheckCircle2 size={15} />
+                Practical information. Clear explanations. Useful tools.
+              </div>
             </div>
 
-            <div className="resources-total-count">
-              <strong>{String(resources.length).padStart(2, "0")}</strong>
-              <span>RESOURCES</span>
-            </div>
-          </div>
+            <div className="resources-hero-visual">
+              <div className="resources-visual-orbit resources-orbit-one" />
+              <div className="resources-visual-orbit resources-orbit-two" />
 
-          <div className="resources-controls">
-            <label className="resources-search">
-              <Search size={19} />
+              <div className="resources-visual-card">
+                <div className="resources-visual-card-head">
+                  <span className="resources-window-dots">
+                    <i />
+                    <i />
+                    <i />
+                  </span>
+                  <span>FAIZ / RESOURCES</span>
+                </div>
 
-              <input
-                type="search"
-                value={search}
-                onChange={(event) => setSearch(event.target.value)}
-                placeholder="Search guides, tools, topics..."
-                aria-label="Search resources"
-              />
+                <div className="resources-visual-icon">
+                  <BookOpen size={32} strokeWidth={1.4} />
+                </div>
 
-              {search && (
-                <button
-                  type="button"
-                  onClick={() => setSearch("")}
-                  aria-label="Clear search"
-                >
-                  <X size={16} />
-                </button>
-              )}
-            </label>
+                <span className="resources-visual-kicker">
+                  KNOWLEDGE THAT WORKS
+                </span>
 
-            <label className="resources-sort">
-              <span>Sort by</span>
+                <h2>
+                  Ideas into
+                  <br />
+                  <em>action.</em>
+                </h2>
 
-              <select
-                value={sortBy}
-                onChange={(event) => setSortBy(event.target.value)}
-                aria-label="Sort resources"
-              >
-                <option value="latest">Latest</option>
-                <option value="oldest">Oldest</option>
-                <option value="title">Title A–Z</option>
-              </select>
-            </label>
-          </div>
+                <div className="resources-visual-divider" />
 
-          <div className="resources-filter-row" aria-label="Resource categories">
-            {categories.map((category) => (
-              <button
-                key={category}
-                type="button"
-                className={
-                  activeCategory === category
-                    ? "resources-filter active"
-                    : "resources-filter"
-                }
-                onClick={() => setActiveCategory(category)}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          <div className="resources-results-bar">
-            <span>
-              Showing <strong>{filteredResources.length}</strong>{" "}
-              {filteredResources.length === 1 ? "resource" : "resources"}
-            </span>
-
-            {(search || activeCategory !== "All Resources") && (
-              <button
-                type="button"
-                onClick={clearFilters}
-                className="resources-clear-filters"
-              >
-                Clear filters
-                <X size={14} />
-              </button>
-            )}
-          </div>
-
-          {filteredResources.length > 0 ? (
-            <div className="resources-grid">
-              {filteredResources.map((resource, index) =>
-                renderResourceCard(resource, index)
-              )}
-            </div>
-          ) : (
-            <div className="resources-empty-state">
-              <div className="resources-empty-icon">
-                <Search size={26} />
+                <div className="resources-visual-stat">
+                  <span>Explore the library</span>
+                  <span>
+                    {String(resources.length).padStart(2, "0")} RESOURCES
+                  </span>
+                </div>
               </div>
 
-              <h3>No matching resources found</h3>
+              <div className="resources-floating-label resources-floating-top">
+                <Sparkles size={14} />
+                Learn something useful
+              </div>
 
-              <p>
-                Try a different keyword or choose another category.
-              </p>
-
-              <button type="button" onClick={clearFilters}>
-                Show all resources
-              </button>
+              <div className="resources-floating-label resources-floating-bottom">
+                <Download size={14} />
+                Free downloads
+              </div>
             </div>
+          </div>
+
+          <div className="resources-container resources-hero-bottom">
+            <span>BUILT FOR CURIOUS MINDS</span>
+            <span>DEVELOPMENT / CREATORS / GROWTH</span>
+          </div>
+        </section>
+
+        <section className="resources-container resources-featured-section">
+          <div className="resources-section-heading">
+            <div>
+              <span className="resources-section-kicker">EDITOR'S PICK</span>
+              <h2>Start with something useful.</h2>
+            </div>
+
+            <span className="resources-heading-index">01 / FEATURED</span>
+          </div>
+
+          {featuredIsVisible && featuredResource && (
+            <article className="resources-featured-card">
+              <div className="resources-featured-art">
+                <div className="resources-featured-art-grid" />
+
+                <div className="resources-featured-art-label">
+                  FEATURED RESOURCE
+                </div>
+
+                <div className="resources-featured-art-center">
+                  <span>01</span>
+                  <BookOpen size={52} strokeWidth={1} />
+                  <div className="resources-featured-art-line" />
+                  <span>THE PRACTICAL GUIDE</span>
+                </div>
+
+                <div className="resources-featured-art-footer">
+                  <span>RESEARCH</span>
+                  <span>LEARN</span>
+                  <span>BUILD</span>
+                </div>
+              </div>
+
+              <div className="resources-featured-copy">
+                <div className="resources-featured-meta">
+                  <span>{featuredResource.category}</span>
+                  <span>
+                    <Clock3 size={14} />
+                    {featuredResource.readTime}
+                  </span>
+                </div>
+
+                <h3>{featuredResource.title}</h3>
+
+                <p>{featuredResource.description}</p>
+
+                <div className="resources-featured-bottom">
+                  <span className="resources-featured-date">
+                    Published {formatDate(featuredResource.date)}
+                  </span>
+
+                  <Link
+                    to={`/resources/${featuredResource.slug}`}
+                    className="resources-featured-link"
+                  >
+                    Read Featured Guide
+                    <ArrowUpRight size={17} />
+                  </Link>
+                </div>
+              </div>
+            </article>
           )}
-        </div>
-      </section>
+        </section>
 
-      <section className="resources-container resources-bottom-cta">
-        <div className="resources-cta-mark">
-          <BookOpen size={28} strokeWidth={1.3} />
-        </div>
+        <section
+          className="resources-library-section"
+          id="resource-library"
+        >
+          <div className="resources-container">
+            <div className="resources-section-heading resources-library-heading">
+              <div>
+                <span className="resources-section-kicker">
+                  EXPLORE THE LIBRARY
+                </span>
+                <h2>Resources for your next move.</h2>
+                <p>
+                  Search guides, discover tools and find practical
+                  resources for your work.
+                </p>
+              </div>
 
-        <div className="resources-cta-copy">
-          <span className="resources-section-kicker">KEEP EXPLORING</span>
-          <h2>Make your next step a smarter one.</h2>
-          <p>
-            Browse tutorials, explore free resources and learn at your
-            own pace.
-          </p>
-        </div>
+              <div className="resources-total-count">
+                <strong>{String(resources.length).padStart(2, "0")}</strong>
+                <span>RESOURCES</span>
+              </div>
+            </div>
 
-        <Link to="/resources/freebies" className="resources-cta-link">
-          Explore Freebies
-          <ArrowRight size={17} />
-        </Link>
-      </section>
-    </main>
+            <div className="resources-controls">
+              <label className="resources-search">
+                <Search size={19} />
+
+                <input
+                  type="search"
+                  value={search}
+                  onChange={(event) => setSearch(event.target.value)}
+                  placeholder="Search guides, tools, topics..."
+                  aria-label="Search resources"
+                />
+
+                {search && (
+                  <button
+                    type="button"
+                    onClick={() => setSearch("")}
+                    aria-label="Clear search"
+                  >
+                    <X size={16} />
+                  </button>
+                )}
+              </label>
+
+              <label className="resources-sort">
+                <span>Sort by</span>
+
+                <select
+                  value={sortBy}
+                  onChange={(event) => setSortBy(event.target.value)}
+                  aria-label="Sort resources"
+                >
+                  <option value="latest">Latest</option>
+                  <option value="oldest">Oldest</option>
+                  <option value="title">Title A–Z</option>
+                </select>
+              </label>
+            </div>
+
+            <div className="resources-filter-row" aria-label="Resource categories">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  type="button"
+                  className={
+                    activeCategory === category
+                      ? "resources-filter active"
+                      : "resources-filter"
+                  }
+                  onClick={() => setActiveCategory(category)}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+
+            <div className="resources-results-bar">
+              <span>
+                Showing <strong>{filteredResources.length}</strong>{" "}
+                {filteredResources.length === 1 ? "resource" : "resources"}
+              </span>
+
+              {(search || activeCategory !== "All Resources") && (
+                <button
+                  type="button"
+                  onClick={clearFilters}
+                  className="resources-clear-filters"
+                >
+                  Clear filters
+                  <X size={14} />
+                </button>
+              )}
+            </div>
+
+            {filteredResources.length > 0 ? (
+              <div className="resources-grid">
+                {filteredResources.map((resource, index) =>
+                  renderResourceCard(resource, index)
+                )}
+              </div>
+            ) : (
+              <div className="resources-empty-state">
+                <div className="resources-empty-icon">
+                  <Search size={26} />
+                </div>
+
+                <h3>No matching resources found</h3>
+
+                <p>
+                  Try a different keyword or choose another category.
+                </p>
+
+                <button type="button" onClick={clearFilters}>
+                  Show all resources
+                </button>
+              </div>
+            )}
+          </div>
+        </section>
+
+        <section className="resources-container resources-bottom-cta">
+          <div className="resources-cta-mark">
+            <BookOpen size={28} strokeWidth={1.3} />
+          </div>
+
+          <div className="resources-cta-copy">
+            <span className="resources-section-kicker">KEEP EXPLORING</span>
+            <h2>Make your next step a smarter one.</h2>
+            <p>
+              Browse tutorials, explore free resources and learn at your
+              own pace.
+            </p>
+          </div>
+
+          <Link to="/resources/freebies" className="resources-cta-link">
+            Explore Freebies
+            <ArrowRight size={17} />
+          </Link>
+        </section>
+      </main>
+    </>
   );
 }
 

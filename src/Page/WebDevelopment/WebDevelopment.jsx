@@ -21,7 +21,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
-
+import SEO from "../../components/SEO";
 import "./WebDevelopment.css";
 
 const services = [
@@ -221,6 +221,11 @@ function WebDevelopment() {
 
   return (
     <main className="webdev-page">
+      <SEO
+        title="Website Development Services | React & Business Websites | Faiz Alam"
+        description="Get professional business websites, landing pages, React development, website redesign and technical SEO services from Faiz Alam. Serving Ambala and remote clients."
+        path="/web-development"
+      />
       <section className="webdev-hero">
         <div className="webdev-hero-grid" aria-hidden="true" />
 

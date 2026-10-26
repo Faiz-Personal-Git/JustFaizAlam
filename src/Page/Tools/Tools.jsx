@@ -46,7 +46,7 @@ import {
 
 import "./Tools.css";
 import toolsHero from "../../assets/tool-hero.png";
-
+import SEO from "../../components/SEO";
 const categories = [
   "All",
   "YouTube",
@@ -360,6 +360,11 @@ function Tools() {
 
   return (
     <main className="tools-page">
+      <SEO
+        title="Free Online Tools for Creators, Developers & SEO | Faiz Alam"
+        description="Explore free online tools for YouTube creators, writers, developers, SEO, design and productivity. Generate video titles, count script words, format JSON and simplify everyday tasks."
+        path="/tools"
+      />
       {/* Hero */}
       <section
         className="tools-hero"
@@ -476,9 +481,8 @@ function Tools() {
                 <button
                   key={category}
                   type="button"
-                  className={`tools-category-tab ${
-                    activeCategory === category ? "active" : ""
-                  }`}
+                  className={`tools-category-tab ${activeCategory === category ? "active" : ""
+                    }`}
                   onClick={() => setActiveCategory(category)}
                 >
                   {category}
@@ -535,9 +539,8 @@ function Tools() {
                     </div>
 
                     <span
-                      className={`tool-access-badge ${
-                        tool.type === "PRO" ? "pro" : "free"
-                      }`}
+                      className={`tool-access-badge ${tool.type === "PRO" ? "pro" : "free"
+                        }`}
                     >
                       {tool.type === "PRO" && <LockKeyhole size={10} />}
                       {tool.type}

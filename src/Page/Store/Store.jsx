@@ -17,6 +17,7 @@ import {
   X,
 } from "lucide-react";
 import "./Store.css";
+import SEO from "../../components/SEO";
 
 const products = [
   {
@@ -276,6 +277,12 @@ function Store() {
 
   return (
     <main className="store-page">
+      <SEO
+        title="Digital Products, Website Templates & Code Kits | Faiz Alam"
+        description="Explore React website templates, reusable UI components, SEO guides, YouTube planners and digital downloads for developers and content creators."
+        path="/store"
+      />
+
       <section className="store-hero">
         <div className="store-hero-grid" aria-hidden="true" />
 
