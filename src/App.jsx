@@ -105,6 +105,9 @@ const WebDevelopment = lazy(
   () => import("./Page/WebDevelopment/WebDevelopment")
 );
 
+const Social = lazy(() => import("./Page/Social/Social"));
+const PostDetail = lazy(() => import("./Page/Social/PostDetail"));
+
 function PageLoader() {
   return (
     <div className="page-loader">
@@ -241,13 +244,16 @@ function App() {
               path="/affiliate-disclosure"
               element={<AffiliateDisclosure />}
             />
-            
+
             <Route path="/store" element={<Store />} />
 
             <Route
               path="/services/web-development"
               element={<WebDevelopment />}
             />
+
+            <Route path="/social" element={<Social />} />
+            <Route path="/social/:postId" element={<PostDetail />} />
 
           </Route>
 

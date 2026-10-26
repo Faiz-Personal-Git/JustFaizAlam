@@ -135,6 +135,7 @@ function Footer() {
               Web Development
             </Link>
             <Link to="/tools">AI Tools</Link>
+            <Link to="/social">Post Timeline</Link>
 
           </div>
 
