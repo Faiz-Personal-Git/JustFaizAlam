@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import {
 
   ArrowDownRight,
-  Youtube,
+  Video,
 
   ArrowRight,
 
@@ -115,7 +115,7 @@ const tools = [
 
     type: "FREE",
 
-    icon: Youtube,
+    icon: Video,
 
     available: true,
 
