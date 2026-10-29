@@ -1,56 +1,275 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
->
+    <url>
+        <loc>https://justfaizalam.vercel.app/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
 
-  <!-- Home -->
-  <url>
-    <loc>https://justfaizalam.vercel.app/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+    <url>
+        <loc>https://justfaizalam.vercel.app/about</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
-  <!-- About -->
-  <url>
-    <loc>https://justfaizalam.vercel.app/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+    <url>
+        <loc>https://justfaizalam.vercel.app/projects</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
 
-  <!-- Projects -->
-  <url>
-    <loc>https://justfaizalam.vercel.app/projects</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
+    <url>
+        <loc>https://justfaizalam.vercel.app/videos</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
 
-  <!-- Videos -->
-  <url>
-    <loc>https://justfaizalam.vercel.app/videos</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
+    <url>
+        <loc>https://justfaizalam.vercel.app/videos/1</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
-  <!-- Quiz -->
-  <url>
-    <loc>https://justfaizalam.vercel.app/quiz</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+    <url>
+        <loc>https://justfaizalam.vercel.app/quiz</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
-  <!-- Contact -->
-  <url>
-    <loc>https://justfaizalam.vercel.app/contact</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+    <url>
+        <loc>https://justfaizalam.vercel.app/quiz/video/1</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
 
-  <!-- Social Links -->
-  <url>
-    <loc>https://justfaizalam.vercel.app/links</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+    <url>
+        <loc>https://justfaizalam.vercel.app/quiz/current-affairs</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/tools</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/tools/youtube-title-generator</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/tools/youtube-hook-generator</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/tools/script-word-counter</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/tools/social-caption-generator</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/tools/website-cost-estimator</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/tools/youtube-description-generator</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/tools/thumbnail-planner</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/tools/seo-content-analyzer</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/contact</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/blog</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/blog/gyanesh-kumar-cjp-voter-list-controversy</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/blog/about-faiz-alam</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/privacy-policy</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/terms-and-conditions</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/disclaimer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/content-usage</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/cookie-policy</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/resources</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/resources/tutorials</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/resources/reviews</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/resources/freebies</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/resources/recommended-tools</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/resources/free-tools-for-react-developers</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/resources/youtube-creator-toolkit</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/resources/website-seo-checklist</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/resources/free-creator-planning-template</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/resources/choosing-a-website-hosting-platform</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/affiliate-disclosure</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/store</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/services/web-development</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/social</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/social/building-in-public</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/social/behind-the-scenes</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/social/storytelling-and-code</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/social/small-improvements</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/links</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
 
 </urlset>

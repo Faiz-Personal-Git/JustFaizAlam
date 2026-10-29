@@ -1,10 +1,6 @@
 import { Link } from "react-router-dom";
-import {
-  ArrowLeft,
-  ArrowUpRight,
-  Cookie,
-  ShieldCheck,
-} from "lucide-react";
+import { ArrowUpRight, Cookie, ShieldCheck } from "lucide-react";
+
 import SEO from "../../components/SEO";
 import "./CookiePolicy.css";
 
@@ -70,9 +66,7 @@ const sections = [
     title: "Types of Cookies",
     content: (
       <>
-        <p>
-          Cookies generally fall into the following categories:
-        </p>
+        <p>Cookies generally fall into the following categories:</p>
         <ul>
           <li>
             <strong>Strictly necessary cookies:</strong> Support
@@ -113,7 +107,7 @@ const sections = [
         <p>
           Their data practices are governed by their own policies, not
           this Cookie Policy. We recommend reviewing the relevant
-          provider's privacy and cookie policies.
+          provider&apos;s privacy and cookie policies.
         </p>
       </>
     ),
@@ -127,7 +121,7 @@ const sections = [
         <p>
           Most web browsers allow you to view, block, or delete cookies
           through their settings. You can usually find these options in
-          the browser's Privacy or Security section.
+          the browser&apos;s Privacy or Security section.
         </p>
         <ul>
           <li>Review the cookies stored by your browser.</li>
@@ -209,7 +203,7 @@ const sections = [
           href="mailto:justfaizalam@gmail.com?subject=Cookie%20Policy%20Question"
         >
           justfaizalam@gmail.com
-          <ArrowUpRight size={16} />
+          <ArrowUpRight size={16} aria-hidden="true" />
         </a>
       </>
     ),
@@ -227,50 +221,23 @@ export default function CookiePolicy() {
 
       <main className="cp-page">
         <div className="cp-container">
-          <Link to="/" className="cp-back">
-            <ArrowLeft size={16} />
-            Back to Home
-          </Link>
-
-          <header className="cp-hero">
-            <div className="cp-eyebrow">
-              <Cookie size={15} />
-              <span>WEBSITE POLICIES</span>
-            </div>
-
-            <h1>
-              Cookie <span>Policy.</span>
-            </h1>
-
-            <p className="cp-intro">
-              Transparency matters. Learn how cookies and similar
-              technologies may be used when you visit this website
-              and how you can manage your preferences.
-            </p>
-
-            <div className="cp-meta">
-              <span>LAST UPDATED: OCTOBER 16, 2026</span>
-              <span className="cp-meta-divider" />
-              <span className="cp-status">
-                <ShieldCheck size={14} />
-                Transparency & Privacy
-              </span>
-            </div>
-          </header>
+          <div className="cp-topline">
+            <span className="cp-eyebrow">
+              <Cookie size={15} aria-hidden="true" />
+              WEBSITE POLICIES · COOKIE POLICY
+            </span>
+            <span className="cp-updated">
+              LAST UPDATED: OCTOBER 16, 2026
+            </span>
+          </div>
 
           <div className="cp-layout">
             <aside className="cp-sidebar">
               <div className="cp-sidebar-inner">
-                <span className="cp-sidebar-label">
-                  ON THIS PAGE
-                </span>
-
+                <span className="cp-sidebar-label">ON THIS PAGE</span>
                 <nav aria-label="Cookie Policy sections">
                   {sections.map((section) => (
-                    <a
-                      key={section.id}
-                      href={`#${section.id}`}
-                    >
+                    <a key={section.id} href={`#${section.id}`}>
                       <span>{section.number}</span>
                       {section.title}
                     </a>
@@ -281,13 +248,13 @@ export default function CookiePolicy() {
 
             <article className="cp-content">
               <div className="cp-notice">
-                <Cookie size={20} />
+                <Cookie size={20} aria-hidden="true" />
                 <p>
                   <strong>A note about cookies</strong>
                   <span>
-                    This policy explains possible cookie uses. The
-                    actual cookies on the website depend on the
-                    services and integrations currently enabled.
+                    This policy explains possible cookie uses. The actual
+                    cookies on the website depend on the services and
+                    integrations currently enabled.
                   </span>
                 </p>
               </div>
@@ -298,15 +265,10 @@ export default function CookiePolicy() {
                   id={section.id}
                   key={section.id}
                 >
-                  <div className="cp-section-number">
-                    {section.number}
-                  </div>
-
+                  <div className="cp-section-number">{section.number}</div>
                   <div className="cp-section-body">
                     <h2>{section.title}</h2>
-                    <div className="cp-section-text">
-                      {section.content}
-                    </div>
+                    <div className="cp-section-text">{section.content}</div>
                   </div>
                 </section>
               ))}
@@ -315,27 +277,29 @@ export default function CookiePolicy() {
                 <span>RELATED POLICIES</span>
                 <div>
                   <Link to="/privacy-policy">
-                    Privacy Policy <ArrowUpRight size={14} />
+                    Privacy Policy <ArrowUpRight size={14} aria-hidden="true" />
                   </Link>
                   <Link to="/terms-and-conditions">
-                    Terms & Conditions <ArrowUpRight size={14} />
+                    Terms &amp; Conditions <ArrowUpRight size={14} aria-hidden="true" />
                   </Link>
                   <Link to="/disclaimer">
-                    Disclaimer <ArrowUpRight size={14} />
+                    Disclaimer <ArrowUpRight size={14} aria-hidden="true" />
                   </Link>
                   <Link to="/content-usage">
-                    Copyright & Content Usage{" "}
-                    <ArrowUpRight size={14} />
+                    Copyright &amp; Content Usage{" "}
+                    <ArrowUpRight size={14} aria-hidden="true" />
                   </Link>
                 </div>
               </div>
             </article>
           </div>
 
-          <footer className="cp-bottom">
-            <span>© {new Date().getFullYear()} FAIZ ALAM</span>
-            <span>BUILT ON TRANSPARENCY.</span>
-          </footer>
+          <div className="cp-bottom">
+            <span>FAIZ ALAM · COOKIE POLICY</span>
+            <span>
+              <ShieldCheck size={13} aria-hidden="true" /> TRANSPARENCY &amp; PRIVACY
+            </span>
+          </div>
         </div>
       </main>
     </>

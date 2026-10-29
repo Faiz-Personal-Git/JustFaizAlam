@@ -95,7 +95,7 @@ function BlogPost() {
             <span>{article.readTime}</span>
           </div>
 
-          <h1>{article.title}</h1>
+          <h2>{article.title}</h2>
 
           <p className="blog-post-excerpt">
             {article.excerpt}

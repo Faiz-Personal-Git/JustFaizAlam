@@ -86,17 +86,6 @@ function ResourceDetail() {
 
       <main className="resource-detail-page">
         <div className="resources-shell">
-          {/* Breadcrumb */}
-          <nav
-            className="resource-breadcrumb"
-            aria-label="Breadcrumb"
-          >
-            <Link to="/">Home</Link>
-            <span>/</span>
-            <Link to="/resources">Resources</Link>
-            <span>/</span>
-            <span>{resource.category}</span>
-          </nav>
 
           {/* Resource Article */}
           <article className="resource-article">

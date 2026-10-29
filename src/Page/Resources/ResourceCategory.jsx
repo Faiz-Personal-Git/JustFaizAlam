@@ -95,22 +95,61 @@ function ResourceCategory({ categorySlug }) {
               All Resources
             </Link>
 
-            <div className="rc-eyebrow">
-              <Sparkles size={14} />
-              {config.eyebrow}
+            <div className="rc-hero-content">
+              <div className="rc-eyebrow">
+                <Sparkles size={14} />
+                {config.eyebrow}
+              </div>
+
+              <h1>{config.title}</h1>
+
+              <p className="rc-hero-description">
+                {config.description}
+              </p>
+
+              <p className="rc-hero-intro">
+                Discover practical ideas, carefully selected resources and
+                useful tools designed to help you learn faster, work smarter
+                and turn your ideas into something real.
+              </p>
+
+              <div className="rc-hero-highlights">
+                <div className="rc-hero-highlight">
+                  <span className="rc-highlight-icon">
+                    <BookOpen size={17} />
+                  </span>
+                  <div>
+                    <strong>Learn something useful</strong>
+                    <span>Clear, practical insights</span>
+                  </div>
+                </div>
+
+                <div className="rc-hero-highlight">
+                  <span className="rc-highlight-icon">
+                    <Download size={17} />
+                  </span>
+                  <div>
+                    <strong>Save time and effort</strong>
+                    <span>Resources made to be used</span>
+                  </div>
+                </div>
+
+                <div className="rc-hero-highlight">
+                  <span className="rc-highlight-icon">
+                    <Sparkles size={17} />
+                  </span>
+                  <div>
+                    <strong>Build with confidence</strong>
+                    <span>Ideas you can put into action</span>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <h1>{config.title}</h1>
-
-            <p className="rc-hero-description">
-              {config.description}
-            </p>
 
             <div className="rc-hero-bottom">
               <span>
                 <BookOpen size={15} />
-                {String(categoryResources.length).padStart(2, "0")}{" "}
-                RESOURCES
+                {String(categoryResources.length).padStart(2, "0")} RESOURCES
               </span>
 
               <a href="#category-library" className="rc-browse-link">

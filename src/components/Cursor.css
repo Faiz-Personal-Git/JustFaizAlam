@@ -1,184 +1,66 @@
-/* =========================================================
-   CUSTOM CURSOR
-========================================================= */
+
+/* =========================================
+   MINIMAL EDITORIAL CURSOR
+   No animations. No hover effects.
+========================================= */
 
 .custom-cursor {
   position: fixed;
-
   top: 0;
   left: 0;
 
-  width: 1px;
-  height: 1px;
-
-  pointer-events: none;
-
   z-index: 99999;
 
+  width: 0;
+  height: 0;
+
+  pointer-events: none;
   opacity: 0;
-
-  transform: translate3d(
-    var(--cursor-x, -100px),
-    var(--cursor-y, -100px),
-    0
-  );
-
-  transition: opacity 0.15s ease;
-
-  will-change: transform;
-
-  /* Important for smooth rendering */
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 .custom-cursor.is-visible {
   opacity: 1;
 }
 
-
-/* =========================================================
-   INNER DOT
-========================================================= */
-
-.cursor-dot {
-  position: absolute;
-
-  top: 0;
-  left: 0;
-
-  width: 7px;
-  height: 7px;
-
-  transform:
-    translate(-50%, -50%)
-    scale(1);
-
-  border-radius: 50%;
-
-  background: #c7a66a;
-
-  box-shadow:
-    0 0 12px rgba(199, 166, 106, 0.45);
-
-  transition:
-    transform 0.18s
-      cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.18s ease,
-    box-shadow 0.18s ease;
-
-  will-change: transform;
-}
-
-
-/* =========================================================
-   OUTER RING
-========================================================= */
+/* Thin outer ring */
 
 .cursor-ring {
   position: absolute;
-
   top: 0;
   left: 0;
 
-  width: 34px;
-  height: 34px;
+  width: 28px;
+  height: 28px;
 
-  transform:
-    translate(-50%, -50%)
-    scale(1);
+  border: 1px solid var(--editorial-rust-light, #d18a69);
+  border-radius: 50%;
 
-  border: 1px solid
-    rgba(199, 166, 106, 0.65);
+  background: transparent;
+
+  transform: translate(-50%, -50%);
+}
+
+/* Solid center dot */
+
+.cursor-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 6px;
+  height: 6px;
 
   border-radius: 50%;
 
-  background:
-    rgba(199, 166, 106, 0.025);
+  background: var(--editorial-rust, #b75e3d);
 
-  transition:
-    width 0.22s
-      cubic-bezier(0.22, 1, 0.36, 1),
-    height 0.22s
-      cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.22s
-      cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.18s ease,
-    background 0.18s ease,
-    box-shadow 0.18s ease;
-
-  will-change: transform, width, height;
+  transform: translate(-50%, -50%);
 }
 
-
-/* =========================================================
-   HOVER
-========================================================= */
-
-.custom-cursor.is-hovering .cursor-dot {
-  transform:
-    translate(-50%, -50%)
-    scale(0.55);
-
-  background: #f2eee7;
-
-  box-shadow:
-    0 0 15px
-    rgba(242, 238, 231, 0.35);
-}
-
-.custom-cursor.is-hovering .cursor-ring {
-  width: 52px;
-  height: 52px;
-
-  transform:
-    translate(-50%, -50%)
-    scale(1.02);
-
-  border-color:
-    rgba(199, 166, 106, 0.9);
-
-  background:
-    rgba(199, 166, 106, 0.08);
-
-  box-shadow:
-    0 0 25px
-    rgba(199, 166, 106, 0.08);
-}
-
-
-/* =========================================================
-   CLICK
-========================================================= */
-
-.custom-cursor.is-clicking .cursor-dot {
-  transform:
-    translate(-50%, -50%)
-    scale(0.8);
-}
-
-.custom-cursor.is-clicking .cursor-ring {
-  transform:
-    translate(-50%, -50%)
-    scale(0.82);
-
-  border-color:
-    rgba(225, 208, 178, 1);
-
-  background:
-    rgba(199, 166, 106, 0.13);
-}
-
-
-/* =========================================================
-   DESKTOP
-========================================================= */
+/* Hide the native cursor only on fine-pointer devices */
 
 @media (pointer: fine) {
-  body {
-    cursor: none;
-  }
-
+  body,
   a,
   button,
   input,
@@ -189,21 +71,24 @@
   }
 }
 
-
-/* =========================================================
-   TOUCH
-========================================================= */
+/* Touch devices */
 
 @media (pointer: coarse) {
   .custom-cursor {
     display: none;
   }
+
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    cursor: auto;
+  }
 }
 
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
+/* Reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
   .custom-cursor {

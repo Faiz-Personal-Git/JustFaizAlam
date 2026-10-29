@@ -1,80 +1,125 @@
+
+/* =========================================================
+   SCROLL TO TOP — EDITORIAL THEME
+========================================================= */
+
 .scroll-to-top {
   position: fixed;
-  right: 24px;
+  right: 28px;
   bottom: 28px;
+  z-index: 9999;
 
+  display: grid;
   width: 48px;
   height: 48px;
+  place-items: center;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0;
+  overflow: hidden;
 
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 50%;
+  border: 1px solid var(--editorial-rust);
+  border-radius: 3px;
 
-  background: rgba(21, 21, 20, 0.88);
-  color: #f2eee7;
+  background: var(--editorial-rust);
+  color: var(--editorial-white);
 
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  cursor: pointer;
+  box-shadow: 0 5px 18px rgba(23, 25, 22, 0.12);
 
   opacity: 0;
   visibility: hidden;
-  transform: translateY(15px);
+  pointer-events: none;
+  transform: translateY(12px);
 
   transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease,
-    transform 0.3s ease,
-    background 0.25s ease,
-    border-color 0.25s ease;
-
-  z-index: 9999;
+    opacity 200ms ease,
+    visibility 200ms ease,
+    transform 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
 }
 
 .scroll-to-top.show {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
   transform: translateY(0);
 }
 
+.scroll-to-top-icon {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+
+  transition: transform 200ms ease;
+}
+
 .scroll-to-top:hover {
-  background: #c7a66a;
-  border-color: #c7a66a;
-  color: #0d0d0c;
-  transform: translateY(-4px);
+  border-color: var(--editorial-rust-dark);
+  background: var(--editorial-rust-dark);
+
+  box-shadow: 0 8px 22px rgba(23, 25, 22, 0.18);
+}
+
+.scroll-to-top:hover .scroll-to-top-icon {
+  transform: translateY(-2px);
 }
 
 .scroll-to-top:active {
-  transform: translateY(-1px);
+  transform: translateY(1px);
+  box-shadow: none;
 }
 
-/* Mobile */
+.scroll-to-top:focus-visible {
+  outline: 2px solid var(--editorial-rust);
+  outline-offset: 4px;
+}
+
+/* Light sections: subtle border and depth are retained.
+   The rust button stays consistent across all pages. */
+
+/* Tablet and mobile */
+
 @media (max-width: 700px) {
   .scroll-to-top {
-    right: 16px;
-    bottom: 18px;
+    right: 18px;
+    bottom: 20px;
+
     width: 44px;
     height: 44px;
   }
 }
 
-/* Touch devices */
-@media (hover: none) {
-  .scroll-to-top:hover {
-    background: rgba(21, 21, 20, 0.88);
-    border-color: rgba(255, 255, 255, 0.14);
-    color: #f2eee7;
-    transform: translateY(0);
+@media (max-width: 380px) {
+  .scroll-to-top {
+    right: 14px;
+    bottom: 16px;
+
+    width: 42px;
+    height: 42px;
   }
 }
 
-/* Reduced motion */
+/* Touch devices */
+
+@media (hover: none) {
+  .scroll-to-top:hover {
+    border-color: var(--editorial-rust);
+    background: var(--editorial-rust);
+    box-shadow: 0 5px 18px rgba(23, 25, 22, 0.12);
+  }
+
+  .scroll-to-top:hover .scroll-to-top-icon {
+    transform: none;
+  }
+}
+
+/* Accessibility */
+
 @media (prefers-reduced-motion: reduce) {
-  .scroll-to-top {
+  .scroll-to-top,
+  .scroll-to-top-icon {
     transition: none;
   }
 }

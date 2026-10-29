@@ -21,32 +21,11 @@ function Social() {
 
   return <div className="social-page">
     <SEO title="Social Feed | Faiz Alam" description="Notes, photos, videos and updates from Faiz Alam — software engineer, website developer and documentary creator." path="/social" />
-    <section className="social-intro">
-      <div className="social-shell">
-        <div className="social-eyebrow"><span className="social-eyebrow-dot" /> THE PERSONAL FEED</div>
-        <div className="social-intro-grid">
-          <div>
-            <h1>Life between<br /><em>the projects.</em></h1>
-            <p className="social-intro-copy">Thoughts, work in progress, things I’m learning, and stories worth sharing. A little more personal, a little less polished.</p>
-          </div>
-          <div className="social-profile-card">
-            <div className="social-profile-topline"><span>CREATOR PROFILE</span><span className="social-profile-status"><i /> PUBLIC</span></div>
-            <div className="social-profile-main">
-              <div className="social-avatar-ring"><img src="/Images/dp.png" alt="Faiz Alam" /></div>
-              <div className="social-profile-identity"><h2>Faiz Alam</h2><span>@justfaizalam</span><p>Software Engineer · YouTuber · Storyteller</p></div>
-            </div>
-            <p className="social-profile-bio">Building digital products and making complex stories easier to understand.</p>
-            <div className="social-profile-links"><Link to="/about">About me <ArrowUpRight size={14} /></Link><Link to="/contact">Get in touch <ArrowUpRight size={14} /></Link></div>
-          </div>
-        </div>
-        <div className="social-intro-bottom"><span>NOTES / PHOTOS / VIDEOS</span><span>UPDATED AS I GO <b>↘</b></span></div>
-      </div>
-    </section>
-
+    
     <section className="social-feed-section">
       <div className="social-shell">
         <div className="social-feed-heading">
-          <div><div className="social-section-label"><span>01</span> THE TIMELINE</div><h2>Latest <em>updates.</em></h2></div>
+          <div><div className="social-section-label"></div><h2>Latest <em>updates.</em></h2></div>
           <span className="social-post-count">{String(socialPosts.length).padStart(2, "0")} POSTS</span>
         </div>
         <div className="social-feed-layout">

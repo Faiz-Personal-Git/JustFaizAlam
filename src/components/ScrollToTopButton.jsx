@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 import "./ScrollToTopButton.css";
@@ -6,11 +7,22 @@ function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsVisible(window.scrollY > 400);
+      if (ticking) return;
+
+      ticking = true;
+
+      window.requestAnimationFrame(() => {
+        setIsVisible(window.scrollY > 400);
+        ticking = false;
+      });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
     handleScroll();
 
@@ -34,8 +46,12 @@ function ScrollToTopButton() {
       onClick={scrollToTop}
       aria-label="Scroll to top"
       title="Back to top"
+      tabIndex={isVisible ? 0 : -1}
+      aria-hidden={!isVisible}
     >
-      <ArrowUp size={18} strokeWidth={2} />
+      <span className="scroll-to-top-icon">
+        <ArrowUp size={19} strokeWidth={1.8} />
+      </span>
     </button>
   );
 }

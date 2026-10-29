@@ -1147,3 +1147,771 @@
     transition: none !important;
   }
 }
+
+
+/* =====================================================
+   WEB DEVELOPMENT — ABOUT PAGE EDITORIAL THEME
+   Append to the END of WebDevelopment.css
+===================================================== */
+
+.webdev-page {
+  --wd-bg: #f4f1e9;
+  --wd-panel: #fffdf8;
+  --wd-border: rgba(23, 25, 22, 0.14);
+  --wd-text: #171916;
+  --wd-muted: #696c62;
+  --wd-gold: #b75e3d;
+  --wd-rust-dark: #8e452c;
+  --wd-rust-light: #d18a69;
+
+  background: var(--wd-bg);
+  color: var(--wd-text);
+  font-family: var(--sans-font, "Manrope", sans-serif);
+}
+
+.webdev-page h1,
+.webdev-page h2,
+.webdev-page h3,
+.webdev-page p,
+.webdev-page a,
+.webdev-page button {
+  font-family: var(--sans-font, "Manrope", sans-serif);
+}
+
+.webdev-page h1,
+.webdev-page h2 {
+  color: var(--wd-text);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+}
+
+.webdev-page p {
+  color: var(--wd-muted);
+}
+
+/* HERO — editorial composition with photographic backdrop */
+
+.webdev-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-bottom: 1px solid var(--wd-border);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(244, 241, 233, 0.98) 0%,
+      rgba(244, 241, 233, 0.94) 48%,
+      rgba(244, 241, 233, 0.72) 100%
+    ),
+    url("https://images.unsplash.com/photo-1579403124614-197f69d8187b?auto=format&fit=crop&w=2200&q=85")
+      center / cover no-repeat,
+    #f4f1e9;
+}
+
+.webdev-hero-grid {
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(23, 25, 22, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 25, 22, 0.045) 1px, transparent 1px);
+  background-size: 58px 58px;
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.webdev-hero-inner {
+  position: relative;
+  z-index: 1;
+  min-height: 650px;
+  gap: clamp(28px, 4vw, 64px);
+  padding-top: 88px;
+  padding-bottom: 76px;
+}
+
+.webdev-eyebrow,
+.webdev-section-label {
+  color: var(--wd-gold);
+  font-family: var(--mono-font, "DM Mono", monospace);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.13em;
+  line-height: 1.7;
+}
+
+.webdev-eyebrow {
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.webdev-eyebrow > span {
+  width: 7px;
+  height: 7px;
+  background: var(--wd-gold);
+  box-shadow: none;
+}
+
+.webdev-hero h1 {
+  max-width: 620px;
+  margin: 0;
+  font-size: clamp(43px, 5.2vw, 68px);
+  line-height: 0.99;
+  font-weight: 500;
+  letter-spacing: -0.065em;
+}
+
+.webdev-hero h1 em,
+.webdev-intro h2 em,
+.webdev-final-inner h2 em {
+  color: var(--wd-gold);
+  font-family: var(--display-font, "Instrument Serif", Georgia, serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+
+.webdev-hero-copy > p {
+  max-width: 480px;
+  margin-top: 23px;
+  color: #55594f;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.webdev-hero-actions {
+  gap: 22px;
+  margin-top: 28px;
+}
+
+.webdev-primary-button,
+.webdev-text-button {
+  min-height: 49px;
+  padding: 0 18px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.webdev-primary-button {
+  border: 1px solid var(--wd-gold);
+  background: var(--wd-gold);
+  color: #fffdf8;
+}
+
+.webdev-primary-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--wd-rust-dark);
+  background: var(--wd-rust-dark);
+  color: #fffdf8;
+}
+
+.webdev-text-button {
+  color: var(--wd-text);
+}
+
+.webdev-text-button:hover {
+  color: var(--wd-gold);
+}
+
+.webdev-hero-points {
+  gap: 10px 17px;
+  margin-top: 27px;
+}
+
+.webdev-hero-points span {
+  color: #696c62;
+  font-size: 10px;
+}
+
+.webdev-hero-points svg {
+  color: var(--wd-gold);
+}
+
+.webdev-hero-visual {
+  min-width: 0;
+}
+
+.webdev-visual-glow {
+  background: rgba(183, 94, 61, 0.12);
+  filter: blur(75px);
+}
+
+/* Browser mockup — warm paper and ink */
+
+.webdev-browser {
+  border: 1px solid rgba(23, 25, 22, 0.16);
+  background: #fffdf8;
+  box-shadow: 0 28px 80px rgba(40, 34, 25, 0.13);
+  transform: perspective(1100px) rotateY(-3deg) rotateX(1deg);
+}
+
+.webdev-browser-top {
+  border-bottom-color: var(--wd-border);
+  background: #f4f1e9;
+  color: #696c62;
+  font-family: var(--mono-font, "DM Mono", monospace);
+}
+
+.webdev-browser-top > svg {
+  color: var(--wd-gold);
+}
+
+.webdev-browser-dots i {
+  background: #d6d0c5;
+}
+
+.webdev-browser-dots i:first-child {
+  background: var(--wd-gold);
+}
+
+.webdev-demo-nav {
+  border-bottom-color: var(--wd-border);
+  color: var(--wd-text);
+  font-family: var(--mono-font, "DM Mono", monospace);
+}
+
+.webdev-demo-nav i {
+  background: #d9d2c6;
+}
+
+.webdev-demo-layout {
+  gap: 18px;
+}
+
+.webdev-demo-copy > span {
+  color: var(--wd-gold);
+  font-family: var(--mono-font, "DM Mono", monospace);
+  letter-spacing: 0.1em;
+}
+
+.webdev-demo-copy h2 {
+  color: var(--wd-text);
+  font-size: clamp(24px, 2.5vw, 35px);
+  letter-spacing: -0.06em;
+}
+
+.webdev-demo-copy > p {
+  color: var(--wd-muted);
+}
+
+.webdev-demo-cta {
+  background: var(--wd-gold);
+  color: #fffdf8;
+}
+
+.webdev-demo-visual {
+  border-color: rgba(183, 94, 61, 0.2);
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(183, 94, 61, 0.12),
+      transparent 65%
+    ),
+    #f4f1e9;
+}
+
+.webdev-demo-orb {
+  border-color: rgba(183, 94, 61, 0.4);
+  box-shadow:
+    0 0 40px rgba(183, 94, 61, 0.06),
+    inset 0 0 30px rgba(183, 94, 61, 0.05);
+}
+
+.webdev-demo-panel {
+  color: var(--wd-gold);
+}
+
+.webdev-demo-panel span {
+  color: var(--wd-muted);
+}
+
+.webdev-demo-bottom {
+  border-top-color: var(--wd-border);
+  color: #777a70;
+  font-family: var(--mono-font, "DM Mono", monospace);
+}
+
+.webdev-floating-card {
+  border: 1px solid var(--wd-border);
+  background: #fffdf8;
+  box-shadow: 0 12px 35px rgba(40, 34, 25, 0.1);
+}
+
+.webdev-floating-card > svg {
+  color: var(--wd-gold);
+}
+
+.webdev-floating-card strong {
+  color: var(--wd-text);
+}
+
+.webdev-floating-card span {
+  color: var(--wd-muted);
+}
+
+.webdev-hero-footer {
+  position: relative;
+  z-index: 1;
+  border-top-color: var(--wd-border);
+  color: #777a70;
+  font-family: var(--mono-font, "DM Mono", monospace);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+/* Intro */
+
+.webdev-intro {
+  border-bottom-color: var(--wd-border);
+  background: #fffdf8;
+}
+
+.webdev-intro h2 {
+  font-size: clamp(32px, 3.5vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+}
+
+.webdev-intro-copy p {
+  color: var(--wd-muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+/* Shared sections */
+
+.webdev-services-section,
+.webdev-packages-section,
+.webdev-process-section,
+.webdev-fit-section,
+.webdev-faq-section {
+  border-bottom: 1px solid var(--wd-border);
+}
+
+.webdev-services-section,
+.webdev-process-section,
+.webdev-faq-section {
+  background: #f4f1e9;
+}
+
+.webdev-packages-section,
+.webdev-fit-section {
+  background: #fffdf8;
+}
+
+.webdev-section-heading h2 {
+  font-size: clamp(29px, 3.3vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+}
+
+.webdev-section-heading p {
+  color: var(--wd-muted);
+  line-height: 1.8;
+}
+
+.webdev-section-index {
+  color: #777a70;
+  font-family: var(--mono-font, "DM Mono", monospace);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+
+/* Service cards */
+
+.webdev-service-card {
+  border: 1px solid var(--wd-border);
+  background: #fffdf8;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.webdev-service-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(183, 94, 61, 0.4);
+  box-shadow: 0 12px 30px rgba(40, 34, 25, 0.055);
+}
+
+.webdev-service-icon {
+  border-color: rgba(183, 94, 61, 0.22);
+  background: rgba(183, 94, 61, 0.06);
+  color: var(--wd-gold);
+}
+
+.webdev-service-card-top > span:last-child {
+  color: #8a8b80;
+  font-family: var(--display-font, "Instrument Serif", Georgia, serif);
+  font-style: italic;
+}
+
+.webdev-service-card h3 {
+  color: var(--wd-text);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.webdev-service-card > p {
+  color: var(--wd-muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.webdev-service-card li,
+.webdev-package-card li {
+  color: #55594f;
+}
+
+.webdev-service-card li svg,
+.webdev-package-card li svg {
+  color: var(--wd-gold);
+}
+
+.webdev-service-link {
+  border-top-color: var(--wd-border);
+  color: var(--wd-gold);
+}
+
+.webdev-service-link:hover {
+  color: var(--wd-rust-dark);
+}
+
+/* Pricing packages */
+
+.webdev-package-card {
+  border: 1px solid var(--wd-border);
+  background: #fffdf8;
+}
+
+.webdev-package-card.featured {
+  border-color: rgba(183, 94, 61, 0.55);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(183, 94, 61, 0.045),
+      transparent 45%
+    ),
+    #fffdf8;
+  box-shadow: 0 14px 40px rgba(40, 34, 25, 0.06);
+}
+
+.webdev-package-ribbon {
+  background: var(--wd-gold);
+  color: #fffdf8;
+  font-family: var(--mono-font, "DM Mono", monospace);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.webdev-package-label {
+  color: #777a70;
+  font-family: var(--mono-font, "DM Mono", monospace);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.webdev-package-card h3 {
+  color: var(--wd-text);
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+}
+
+.webdev-package-price {
+  color: var(--wd-gold);
+  font-size: 31px;
+  letter-spacing: -0.06em;
+}
+
+.webdev-package-card > p {
+  color: var(--wd-muted);
+  line-height: 1.85;
+}
+
+.webdev-package-divider {
+  background: var(--wd-border);
+}
+
+.webdev-package-button {
+  border-color: rgba(23, 25, 22, 0.2);
+  color: var(--wd-text);
+  border-radius: 3px;
+}
+
+.webdev-package-button:hover {
+  border-color: var(--wd-gold);
+  color: var(--wd-gold);
+}
+
+.webdev-package-button.primary {
+  border-color: var(--wd-gold);
+  background: var(--wd-gold);
+  color: #fffdf8;
+}
+
+.webdev-package-button.primary:hover {
+  border-color: var(--wd-rust-dark);
+  background: var(--wd-rust-dark);
+  color: #fffdf8;
+}
+
+.webdev-package-disclaimer {
+  color: #777a70;
+  line-height: 1.8;
+}
+
+/* Process */
+
+.webdev-process-number {
+  color: var(--wd-gold);
+  font-family: var(--display-font, "Instrument Serif", Georgia, serif);
+  font-size: 39px;
+  font-style: italic;
+}
+
+.webdev-process-line {
+  background: linear-gradient(
+    90deg,
+    var(--wd-gold),
+    rgba(183, 94, 61, 0.06)
+  );
+}
+
+.webdev-process-card h3 {
+  color: var(--wd-text);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.webdev-process-card p {
+  color: var(--wd-muted);
+  line-height: 1.9;
+}
+
+/* Audience fit */
+
+.webdev-fit-copy h2 {
+  font-size: clamp(32px, 3.7vw, 45px);
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+}
+
+.webdev-fit-copy > p {
+  color: var(--wd-muted);
+  line-height: 1.9;
+}
+
+.webdev-audience-grid > div {
+  border: 1px solid var(--wd-border);
+  background: #f4f1e9;
+}
+
+.webdev-audience-grid svg {
+  color: var(--wd-gold);
+}
+
+.webdev-audience-grid h3 {
+  color: var(--wd-text);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.webdev-audience-grid p {
+  color: var(--wd-muted);
+  line-height: 1.8;
+}
+
+/* FAQ */
+
+.webdev-faq-intro h2 {
+  color: var(--wd-text);
+  font-size: clamp(30px, 3.5vw, 42px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.055em;
+}
+
+.webdev-faq-intro > p {
+  color: var(--wd-muted);
+  line-height: 1.9;
+}
+
+.webdev-faq-contact {
+  color: var(--wd-gold);
+}
+
+.webdev-faq-item,
+.webdev-faq-item:first-child {
+  border-color: var(--wd-border);
+}
+
+.webdev-faq-item > button {
+  color: var(--wd-text);
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.webdev-faq-item > button svg {
+  color: var(--wd-gold);
+}
+
+.webdev-faq-item > p {
+  color: var(--wd-muted);
+  line-height: 1.9;
+}
+
+/* Final CTA */
+
+.webdev-final-cta {
+  border-top-color: var(--wd-border);
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(183, 94, 61, 0.1),
+      transparent 48%
+    ),
+    #eae5d9;
+}
+
+.webdev-final-icon {
+  border-color: rgba(183, 94, 61, 0.28);
+  background: rgba(183, 94, 61, 0.06);
+  color: var(--wd-gold);
+}
+
+.webdev-final-inner h2 {
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.06em;
+}
+
+.webdev-final-inner > p {
+  color: var(--wd-muted);
+  line-height: 1.9;
+}
+
+.webdev-final-note {
+  color: #777a70;
+}
+
+/* Keep mobile layouts comfortable */
+
+@media (max-width: 700px) {
+  .webdev-hero {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(244, 241, 233, 0.9) 0%,
+        rgba(244, 241, 233, 0.97) 52%,
+        #f4f1e9 100%
+      ),
+      url("https://images.unsplash.com/photo-1579403124614-197f69d8187b?auto=format&fit=crop&w=1200&q=80")
+        center top / auto 460px no-repeat,
+      #f4f1e9;
+  }
+
+  .webdev-hero-inner {
+    gap: 28px;
+    padding-top: 75px;
+    padding-bottom: 35px;
+  }
+
+  .webdev-hero h1 {
+    font-size: clamp(40px, 10vw, 55px);
+    line-height: 1.02;
+    letter-spacing: -0.065em;
+  }
+
+  .webdev-hero-copy > p {
+    font-size: 13px;
+    line-height: 1.85;
+  }
+
+  .webdev-hero-actions {
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .webdev-primary-button {
+    justify-content: space-between;
+  }
+
+  .webdev-text-button {
+    justify-content: flex-start;
+  }
+
+  .webdev-hero-visual {
+    min-height: 310px;
+    margin-top: 0;
+  }
+
+  .webdev-browser {
+    width: 100%;
+    transform: none;
+  }
+
+  .webdev-floating-card {
+    background: #fffdf8;
+  }
+
+  .webdev-intro,
+  .webdev-services-section,
+  .webdev-packages-section,
+  .webdev-process-section,
+  .webdev-fit-section,
+  .webdev-faq-section {
+    padding: 60px 0;
+  }
+
+  .webdev-section-heading h2 {
+    font-size: 30px;
+  }
+
+  .webdev-service-grid,
+  .webdev-package-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .webdev-package-card > p {
+    min-height: 0;
+  }
+
+  .webdev-process-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .webdev-audience-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .webdev-final-cta {
+    background:
+      radial-gradient(
+        ellipse at 50% 0%,
+        rgba(183, 94, 61, 0.1),
+        transparent 48%
+      ),
+      #eae5d9;
+  }
+}
+
+@media (max-width: 380px) {
+  .webdev-container {
+    width: calc(100% - 28px);
+  }
+
+  .webdev-hero h1 {
+    font-size: 39px;
+  }
+
+  .webdev-audience-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
