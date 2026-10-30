@@ -242,33 +242,26 @@
     </url>
 
     <url>
-        <loc>https://justfaizalam.vercel.app/social/building-in-public</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-    </url>
-
-    <url>
-        <loc>https://justfaizalam.vercel.app/social/behind-the-scenes</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-    </url>
-
-    <url>
-        <loc>https://justfaizalam.vercel.app/social/storytelling-and-code</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-    </url>
-
-    <url>
-        <loc>https://justfaizalam.vercel.app/social/small-improvements</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.5</priority>
-    </url>
-
-    <url>
         <loc>https://justfaizalam.vercel.app/links</loc>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+   
+    <url>
+        <loc>https://justfaizalam.vercel.app/social/explore</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
 
+    <url>
+        <loc>https://justfaizalam.vercel.app/social/profile</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://justfaizalam.vercel.app/social/messages</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
 </urlset>

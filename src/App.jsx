@@ -1,6 +1,6 @@
 
 import { lazy, Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import MainLayout from "./layouts/MainLayout";
 
@@ -8,8 +8,13 @@ import ScrollToTop from "./components/ScrollToTop";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import Cursor from "./components/Cursor";
 
-import Blog from "./Page/Blog/Blog";
-import BlogPost from "./Page/Blog/BlogPost";
+// Blog pages
+const BlogPost = lazy(() =>
+  import("./Page/Blog/BlogPost")
+);
+const Blog = lazy(() =>
+  import("./Page/Blog/Blog")
+);
 
 // Resources pages
 const Resources = lazy(() =>
@@ -100,13 +105,33 @@ const Links = lazy(() =>
   import("./Page/Links/Links")
 );
 
-const Store = lazy(() => import("./Page/Store/Store"));
-const WebDevelopment = lazy(
-  () => import("./Page/WebDevelopment/WebDevelopment")
+const Store = lazy(() =>
+  import("./Page/Store/Store")
 );
 
-const Social = lazy(() => import("./Page/Social/Social"));
-const PostDetail = lazy(() => import("./Page/Social/PostDetail"));
+const WebDevelopment = lazy(() =>
+  import("./Page/WebDevelopment/WebDevelopment")
+);
+
+const Social = lazy(() =>
+  import("./Page/Social/Social")
+);
+
+const Explore = lazy(() =>
+  import("./Page/Social/Explore")
+);
+
+const Profile = lazy(() =>
+  import("./Page/Social/Profile")
+);
+
+const Messages = lazy(() =>
+  import("./Page/Social/Messages")
+);
+
+const SocialLayout = lazy(() =>
+  import("./Page/Social/Layout/SocialLayout")
+);
 
 function PageLoader() {
   return (
@@ -133,11 +158,20 @@ function PageLoader() {
 }
 
 function App() {
+  const location = useLocation();
+
+  // Disable global UI components on Social page
+  const isSocialPage = location.pathname.includes("social");
+
   return (
     <>
       <Cursor />
       <ScrollToTop />
-      <ScrollToTopButton />
+      {!isSocialPage && (
+        <>
+          <ScrollToTopButton />
+        </>
+      )}
 
       <Suspense fallback={<PageLoader />}>
         <Routes>
@@ -205,31 +239,23 @@ function App() {
               element={<Resources />}
             />
 
-            {/* Explicit category routes */}
+            {/* Resource categories */}
             <Route
               path="/resources/tutorials"
-              element={
-                <ResourceCategory categorySlug="tutorials" />
-              }
+              element={<ResourceCategory categorySlug="tutorials" />}
             />
             <Route
               path="/resources/reviews"
-              element={
-                <ResourceCategory categorySlug="reviews" />
-              }
+              element={<ResourceCategory categorySlug="reviews" />}
             />
             <Route
               path="/resources/freebies"
-              element={
-                <ResourceCategory categorySlug="freebies" />
-              }
+              element={<ResourceCategory categorySlug="freebies" />}
             />
             <Route
               path="/resources/recommended-tools"
               element={
-                <ResourceCategory
-                  categorySlug="recommended-tools"
-                />
+                <ResourceCategory categorySlug="recommended-tools" />
               }
             />
 
@@ -245,20 +271,27 @@ function App() {
               element={<AffiliateDisclosure />}
             />
 
+            {/* Store */}
             <Route path="/store" element={<Store />} />
 
+            {/* Web Development */}
             <Route
               path="/services/web-development"
               element={<WebDevelopment />}
             />
-
-            <Route path="/social" element={<Social />} />
-            <Route path="/social/:postId" element={<PostDetail />} />
-
           </Route>
 
-          {/* Standalone social links page */}
+          {/* Standalone pages */}
           <Route path="/links" element={<Links />} />
+
+          {/* Social Platform */}
+          <Route element={<SocialLayout />}>
+            <Route path="/social" element={<Social />} />
+            <Route path="/social/explore" element={<Explore />} />
+            <Route path="/social/profile" element={<Profile />} />
+            <Route path="/social/message" element={<Messages />} />
+          </Route>
+
         </Routes>
       </Suspense>
     </>

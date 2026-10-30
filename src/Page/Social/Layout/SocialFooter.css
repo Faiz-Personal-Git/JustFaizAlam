@@ -1,0 +1,86 @@
+
+.social-footer {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .social-footer {
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    height: calc(65px + env(safe-area-inset-bottom));
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 5px 9px env(safe-area-inset-bottom);
+
+    border-top: 1px solid var(--editorial-line, rgba(23, 25, 22, 0.13));
+    background: var(--editorial-white, #fffdf8);
+    box-shadow: 0 -5px 20px rgba(23, 25, 22, 0.045);
+  }
+
+  .social-footer > a,
+  .social-footer > button {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    padding: 3px 0;
+    border: 0;
+
+    color: var(--editorial-muted, #777a70);
+    background: transparent;
+
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .social-footer > a svg,
+  .social-footer > button svg {
+    width: 21px;
+    height: 21px;
+    stroke-width: 1.8;
+  }
+
+  .social-footer > a span {
+    font-family: var(--sans-font, "Manrope", sans-serif);
+    font-size: 8px;
+    font-weight: 500;
+  }
+
+  .social-footer > a.active {
+    color: var(--editorial-rust, #b75e3d);
+  }
+
+  .social-footer > .social-footer-create {
+    flex: 0 0 47px;
+    width: 47px;
+    height: 47px;
+
+    border-radius: 50%;
+    color: #fff;
+    background: var(--editorial-rust, #b75e3d);
+    box-shadow: 0 4px 12px rgba(183, 94, 61, 0.25);
+  }
+
+  .social-footer > .social-footer-create svg {
+    width: 25px;
+    height: 25px;
+    stroke-width: 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-footer * {
+    transition: none !important;
+  }
+}
